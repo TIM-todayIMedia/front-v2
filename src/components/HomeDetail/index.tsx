@@ -1,3 +1,4 @@
+"use client";
 import { listProps } from "@/types";
 import * as S from "./styled";
 import Image from "next/image";

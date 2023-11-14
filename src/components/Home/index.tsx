@@ -1,3 +1,4 @@
+"use client";
 import { listProps } from "@/types";
 import { ListBox } from "../common";
 import * as S from "./styled";

@@ -1,4 +1,15 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  reactStrictMode: true,
+  images: {
+    domains: [
+      "www.notion.so",
+      "images.unsplash.com",
+      "s3.us-west-2.amazonaws.com",
+      "w.namu.la",
+      "i.namu.wiki",
+    ],
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

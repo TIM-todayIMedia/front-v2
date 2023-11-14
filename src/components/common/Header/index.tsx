@@ -1,6 +1,5 @@
 import * as S from "./styled";
 import { useState } from "react";
-import { CategorySelect } from "..";
 import { CategoryArray } from "@/utils/CategoryArray";
 import { useRecoilState } from "recoil";
 import {
@@ -9,8 +8,9 @@ import {
   filterObjectAtom,
   SearchValueAtom,
 } from "@/atom";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { SearchIcon } from "@/assets/svg";
+import CategorySelect from "../CategorySelect";
 
 const Header = () => {
   const router = useRouter();
