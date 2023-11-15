@@ -6,7 +6,7 @@ const CategorySelect = ({ name, onClick, isClick }: CategorySelectProps) => {
     <S.Wrapper
       style={{
         color: isClick ? "white" : "#353535",
-        backgroundColor: isClick ? "#637AAE" : "white",
+        backgroundColor: isClick ? "#9288f8" : "white",
       }}
       onClick={onClick}
     >

@@ -1,13 +1,6 @@
 import * as S from "./styled";
 import { useState } from "react";
 import { CategoryArray } from "@/utils/CategoryArray";
-import { useRecoilState } from "recoil";
-import {
-  fieldStateAtom,
-  filterCategoryAtom,
-  filterObjectAtom,
-  SearchValueAtom,
-} from "@/atom";
 import { useRouter } from "next/navigation";
 import { SearchIcon } from "@/assets/svg";
 import CategorySelect from "../CategorySelect";
@@ -15,12 +8,9 @@ import CategorySelect from "../CategorySelect";
 const Header = () => {
   const router = useRouter();
   const [filterToggleBtn, setFilterToggleBtn] = useState(false);
-  const [filterCategoryArray, setFilterCategoryArray] =
-    useRecoilState<string[]>(filterCategoryAtom);
-  const [field, setField] = useRecoilState(fieldStateAtom);
-  const [filterObjectArray, setFilterObjectArray] =
-    useRecoilState(filterObjectAtom);
-  const [searchValue, SetSearchValue] = useRecoilState<string>(SearchValueAtom);
+  const [filterCategoryArray, setFilterCategoryArray] = useState<string[]>([]);
+  const [field, setField] = useState("");
+  const [searchValue, SetSearchValue] = useState<string>("");
 
   const handleClick = () => {
     if (!searchValue) {
@@ -34,41 +24,33 @@ const Header = () => {
   const handleCategorySelectClick = (name: string) => {
     if (!filterCategoryArray.includes(name)) {
       setFilterCategoryArray([...filterCategoryArray, name]);
-      setFilterObjectArray([
-        ...filterObjectArray,
-        {
-          property: "Category",
-          multi_select: {
-            contains: name,
-          },
-        },
-      ]);
+      handleSubmitBtnClick(field, [...filterCategoryArray, name]);
     } else {
       const arr = filterCategoryArray.filter((i) => i !== name);
-      const arr2 = filterObjectArray.filter(
-        (i) => i.multi_select.contains !== name
-      );
+      handleSubmitBtnClick(field, arr);
       setFilterCategoryArray(arr);
-      setFilterObjectArray(arr2);
     }
   };
 
-  const handleSubmitBtnClick = () => {
-    setFilterToggleBtn(false);
-    if (filterCategoryArray.length === 0 && !field) {
+  const handleSubmitBtnClick = (field: string, arr?: string[]) => {
+    if (
+      arr?.length === 0 ||
+      (arr === undefined && filterCategoryArray.length === 0)
+    ) {
       setFilterCategoryArray([]);
-      return router.push("/");
+      if (field !== "") {
+        return router.push(`/filter/${field}`);
+      } else {
+        return router.push("/");
+      }
     }
+    const filterQuery = arr ? arr.join(" ") : filterCategoryArray.join(" ");
 
-    const filterQuery = filterCategoryArray.join(" ");
     router.push(`/filter/${filterQuery} ${field}`);
   };
 
-  const handleClickTogglrBtn = () => {
-    setFilterToggleBtn((pre) => !pre);
-  };
-
   const handleTitleClick = () => {
+    setField("");
     setFilterCategoryArray([]);
     return router.push("/");
   };
@@ -86,9 +68,7 @@ const Header = () => {
             value={searchValue}
             onChange={(e) => SetSearchValue(e.target.value)}
             onKeyDown={(e: any) => {
-              if (e.key === "Enter") {
-                handleClick();
-              }
+              if (e.key === "Enter") handleClick();
             }}
           />
           <label>
@@ -99,22 +79,14 @@ const Header = () => {
 
       <S.TagBtns>
         <input
-          defaultChecked
-          type="radio"
-          value={""}
-          id="전체"
-          name="분야"
-          onClick={() => setField("")}
-        />
-        <label htmlFor="전체" style={{ borderBottomLeftRadius: "6px" }}>
-          전체
-        </label>
-        <input
           type="radio"
           value={field}
           id="영화"
           name="분야"
-          onClick={() => setField("영화")}
+          onClick={() => {
+            handleSubmitBtnClick("영화");
+            setField("영화");
+          }}
         />
         <label htmlFor="영화">영화</label>
         <input
@@ -122,13 +94,30 @@ const Header = () => {
           value={field}
           id="드라마"
           name="분야"
-          onClick={() => setField("드라마")}
+          onClick={() => {
+            handleSubmitBtnClick("드라마");
+            setField("드라마");
+          }}
         />
         <label htmlFor="드라마">드라마</label>
+        <input
+          defaultChecked
+          type="radio"
+          value={field}
+          id="전체"
+          name="분야"
+          onClick={() => {
+            handleSubmitBtnClick("");
+            setField("");
+          }}
+        />
+        <label htmlFor="전체">전체</label>
       </S.TagBtns>
 
       <S.RightWrapper>
-        <S.FilterBtn onClick={handleClickTogglrBtn}>카테고리</S.FilterBtn>
+        <S.FilterBtn onClick={() => setFilterToggleBtn((pre) => !pre)}>
+          카테고리
+        </S.FilterBtn>
 
         {filterToggleBtn && (
           <S.FilterBox>
@@ -142,11 +131,6 @@ const Header = () => {
                 />
               ))}
             </S.BoxTop>
-            <S.BoxBottom>
-              <S.SubmitBtn>
-                <button onClick={handleSubmitBtnClick}>검색</button>
-              </S.SubmitBtn>
-            </S.BoxBottom>
           </S.FilterBox>
         )}
       </S.RightWrapper>

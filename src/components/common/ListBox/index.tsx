@@ -23,8 +23,11 @@ const ListBox = ({
           alt="포스터 이미지"
           width={200}
           height={296}
-          objectFit="cover"
-          style={{ borderTopLeftRadius: "5px", borderTopRightRadius: "5px" }}
+          style={{
+            borderTopLeftRadius: "5px",
+            borderTopRightRadius: "5px",
+            objectFit: "cover",
+          }}
         />
       ) : (
         <S.WhiteBox />

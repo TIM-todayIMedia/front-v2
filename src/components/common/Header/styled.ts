@@ -108,12 +108,12 @@ export const FilterBtn = styled.div`
 export const FilterBox = styled.div`
   position: absolute;
   top: 50px;
-  left: -200px;
-  width: 400px;
-  height: 180px;
+  left: -00px;
+  width: 200px;
+  height: 380px;
   display: flex;
   flex-direction: column;
-  border: 1px solid #637aae;
+  border: 1px solid #9288f8;
   border-radius: 10px;
   background-color: white;
   z-index: 100;
@@ -122,20 +122,12 @@ export const FilterBox = styled.div`
 
 export const BoxTop = styled.div`
   width: 100%;
-  height: 120px;
+  height: 100%;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   border-bottom: 1px solid gray;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-`;
-
-export const BoxBottom = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 `;
 
 export const TagBtns = styled.div`
@@ -144,47 +136,25 @@ export const TagBtns = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  border-right: 1px solid gray;
   input {
     display: none;
   }
 
   input[type="radio"] + label {
     width: 88px;
-    height: 90%;
+    /* height: 90%; */
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.3rem;
-    color: #637aae;
+    color: #9288f8;
     background-color: white;
     cursor: pointer;
     font-weight: bold;
-    border-radius: 5px;
   }
 
   input[type="radio"]:checked + label {
-    color: white;
-    background-color: #637aae;
-  }
-`;
-
-export const SubmitBtn = styled.div`
-  width: 130px;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  button {
-    width: 105px;
-    height: 50px;
-    font-size: 1.45rem;
-    color: white;
-    background-color: #282a3a;
-    border-radius: 5px;
-    border: none;
-    font-weight: bold;
-    cursor: pointer;
+    border-bottom: 3px solid #9288f8;
   }
 `;
 

@@ -19,8 +19,8 @@ const HomeDetail = ({ data }: { data: listProps }) => {
         <Image
           src={data?.cover?.external?.url || data?.cover?.file?.url || ""}
           alt={"디테일 페이지"}
-          objectFit={"cover"}
-          layout="fill"
+          style={{ objectFit: "cover" }}
+          fill
         />
       </S.LeftWrapper>
       <S.RightWrapper>
