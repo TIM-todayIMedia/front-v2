@@ -11,7 +11,6 @@ export default async function HomePage() {
   const list: listProps[] = data.results;
   return (
     <>
-      <Header />
       <Home list={list} />
     </>
   );

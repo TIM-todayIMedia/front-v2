@@ -96,8 +96,40 @@ const Header = () => {
           </label>
         </S.InputWapper>
       </S.CenterWrapper>
+
+      <S.TagBtns>
+        <input
+          defaultChecked
+          type="radio"
+          value={""}
+          id="전체"
+          name="분야"
+          onClick={() => setField("")}
+        />
+        <label htmlFor="전체" style={{ borderBottomLeftRadius: "6px" }}>
+          전체
+        </label>
+        <input
+          type="radio"
+          value={field}
+          id="영화"
+          name="분야"
+          onClick={() => setField("영화")}
+        />
+        <label htmlFor="영화">영화</label>
+        <input
+          type="radio"
+          value={field}
+          id="드라마"
+          name="분야"
+          onClick={() => setField("드라마")}
+        />
+        <label htmlFor="드라마">드라마</label>
+      </S.TagBtns>
+
       <S.RightWrapper>
         <S.FilterBtn onClick={handleClickTogglrBtn}>카테고리</S.FilterBtn>
+
         {filterToggleBtn && (
           <S.FilterBox>
             <S.BoxTop>
@@ -111,35 +143,6 @@ const Header = () => {
               ))}
             </S.BoxTop>
             <S.BoxBottom>
-              <S.TagBtns>
-                <input
-                  defaultChecked
-                  type="radio"
-                  value={""}
-                  id="전체"
-                  name="분야"
-                  onClick={() => setField("")}
-                />
-                <label htmlFor="전체" style={{ borderBottomLeftRadius: "6px" }}>
-                  전체
-                </label>
-                <input
-                  type="radio"
-                  value={field}
-                  id="영화"
-                  name="분야"
-                  onClick={() => setField("영화")}
-                />
-                <label htmlFor="영화">영화</label>
-                <input
-                  type="radio"
-                  value={field}
-                  id="드라마"
-                  name="분야"
-                  onClick={() => setField("드라마")}
-                />
-                <label htmlFor="드라마">드라마</label>
-              </S.TagBtns>
               <S.SubmitBtn>
                 <button onClick={handleSubmitBtnClick}>검색</button>
               </S.SubmitBtn>

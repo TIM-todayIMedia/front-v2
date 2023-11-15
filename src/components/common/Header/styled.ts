@@ -60,7 +60,7 @@ export const InputWapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  border: 2px solid #637aae;
+  border: 2px solid #9288f8;
   border-radius: 10px;
   padding-left: 20px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -81,7 +81,7 @@ export const InputWapper = styled.div`
     left: 350px;
     width: 25px;
     cursor: pointer;
-    color: #637aae;
+    color: #9288f8;
   }
 `;
 export const CenterWrapper = styled.div`
@@ -94,11 +94,11 @@ export const FilterBtn = styled.div`
   width: 200px;
   height: 4.5vh;
   display: flex;
-  border: 1px solid #637aae;
+  border: 1px solid #9288f8;
   display: flex;
   align-items: center;
   border-radius: 10px;
-  color: #637aae;
+  color: #9288f8;
   padding-left: 15px;
   cursor: pointer;
   font-weight: bold;

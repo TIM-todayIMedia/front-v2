@@ -12,7 +12,6 @@ export const FilterPage = async ({
   return (
     <>
       <Shead seoTitle={"검색페이지"} />
-      <Header />
       <Home list={list} />
     </>
   );

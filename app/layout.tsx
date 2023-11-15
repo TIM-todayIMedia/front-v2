@@ -1,3 +1,4 @@
+import { Header } from "@/components/common";
 import RecoilRootProvider from "@/utils/recoilRootProvider";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -18,7 +19,10 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={inter.className}>
-        <RecoilRootProvider>{children}</RecoilRootProvider>
+        <RecoilRootProvider>
+          <Header />
+          {children}
+        </RecoilRootProvider>
       </body>
     </html>
   );

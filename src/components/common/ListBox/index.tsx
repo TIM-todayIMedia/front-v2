@@ -21,8 +21,8 @@ const ListBox = ({
         <Image
           src={cover?.external?.url || cover?.file?.url || ""}
           alt="포스터 이미지"
-          width={100}
-          height={330}
+          width={200}
+          height={296}
           objectFit="cover"
           style={{ borderTopLeftRadius: "5px", borderTopRightRadius: "5px" }}
         />

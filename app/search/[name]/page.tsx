@@ -1,5 +1,4 @@
 import { Header } from "@/components/common";
-import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { listProps } from "@/types";
 import CustomAxios from "@/utils/lib/CustomAxios";
 import Home from "@/components/Home";
@@ -12,7 +11,6 @@ export const SearchPage = async ({
   const list: listProps[] = await getList(decodeURI(name));
   return (
     <>
-      <Header />
       <Home list={list} />
     </>
   );
