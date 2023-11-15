@@ -2,7 +2,7 @@
 import { listProps } from "@/types";
 import * as S from "./styled";
 import Image from "next/image";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { BackIcon, LinkIcon, SquareIcon, StartIcon } from "@/assets/svg";
 import { CategoryBox } from "../common";
 

@@ -9,7 +9,7 @@ export const SearchPage = async ({
 }: {
   params: { name: string };
 }) => {
-  const list: listProps[] = await getList(name);
+  const list: listProps[] = await getList(decodeURI(name));
   return (
     <>
       <Header />

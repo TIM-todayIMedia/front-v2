@@ -8,7 +8,8 @@ export const HomeDetailPage = async ({
 }: {
   params: { name: string };
 }) => {
-  const detailData = await getPost(name);
+  const detailData = await getPost(decodeURI(name));
+
   return (
     <>
       <Shead seoTitle={"디테일페이지"} />
