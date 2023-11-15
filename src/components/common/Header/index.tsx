@@ -115,23 +115,26 @@ const Header = () => {
       </S.TagBtns>
 
       <S.RightWrapper>
-        <S.FilterBtn onClick={() => setFilterToggleBtn((pre) => !pre)}>
+        <S.FilterBtn onMouseOver={() => setFilterToggleBtn(true)}>
           카테고리
         </S.FilterBtn>
 
         {filterToggleBtn && (
-          <S.FilterBox>
-            <S.BoxTop>
-              {CategoryArray.map((i, index) => (
-                <CategorySelect
-                  onClick={() => handleCategorySelectClick(i)}
-                  key={index}
-                  name={i}
-                  isClick={filterCategoryArray.includes(i)}
-                />
-              ))}
-            </S.BoxTop>
-          </S.FilterBox>
+          <>
+            <S.ModalOverlay onClick={() => setFilterToggleBtn(false)} />
+            <S.FilterBox>
+              <S.BoxTop>
+                {CategoryArray.map((i, index) => (
+                  <CategorySelect
+                    onClick={() => handleCategorySelectClick(i)}
+                    key={index}
+                    name={i}
+                    isClick={filterCategoryArray.includes(i)}
+                  />
+                ))}
+              </S.BoxTop>
+            </S.FilterBox>
+          </>
         )}
       </S.RightWrapper>
     </S.HeaderWapper>

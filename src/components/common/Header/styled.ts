@@ -116,7 +116,7 @@ export const FilterBox = styled.div`
   border: 1px solid #9288f8;
   border-radius: 10px;
   background-color: white;
-  z-index: 100;
+  z-index: 5;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 `;
 
@@ -142,7 +142,7 @@ export const TagBtns = styled.div`
 
   input[type="radio"] + label {
     width: 88px;
-    /* height: 90%; */
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -151,13 +151,27 @@ export const TagBtns = styled.div`
     background-color: white;
     cursor: pointer;
     font-weight: bold;
+    transition: all 0.1s ease;
   }
 
   input[type="radio"]:checked + label {
-    border-bottom: 3px solid #9288f8;
+    border-bottom: 7px solid #9288f8;
+  }
+
+  input[type="radio"] + label:hover {
+    border-bottom: 7px solid #9288f8;
   }
 `;
 
 export const RightWrapper = styled.div`
   position: relative;
+`;
+
+export const ModalOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 5;
 `;
