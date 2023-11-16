@@ -8,11 +8,17 @@ import * as S from "./styled";
 
 const Home = ({ list }: { list: listProps[] }) => {
   const [, setImgsArr] = useRecoilState(imgsAtom);
+  const RANDOMN = Math.random() * (list.length - 1);
 
   useEffect(() => {
     setImgsArr(
       list.map((i) => i.cover?.external?.url || i.cover?.file?.url || "")
     );
+    // setImgsArr([
+    //   list[Math.floor(RANDOMN)]?.cover?.external?.url ||
+    //     list[Math.floor(RANDOMN)]?.cover?.file?.url ||
+    //     "",
+    // ]);
   }, []);
 
   return (

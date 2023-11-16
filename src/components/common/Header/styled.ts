@@ -1,14 +1,11 @@
 import styled from "@emotion/styled";
 
 export const HeaderWapper = styled.div`
-  height: 500px;
+  height: 540px;
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 2%;
   transition: all 0.3s ease-in;
   background-color: white;
+  position: relative;
 `;
 
 export const LeftWapper = styled.div`
@@ -23,6 +20,7 @@ export const LeftWapper = styled.div`
     text-decoration: none;
     color: #9288f8;
     cursor: pointer;
+    z-index: 1;
   }
 `;
 
@@ -145,7 +143,6 @@ export const TagBtns = styled.div`
     justify-content: center;
     font-size: 1.3rem;
     color: #9288f8;
-    background-color: white;
     cursor: pointer;
     font-weight: bold;
     transition: all 0.1s ease;
@@ -174,4 +171,23 @@ export const ModalOverlay = styled.div`
   bottom: 0;
   right: 0;
   z-index: 5;
+`;
+
+export const HeaderImg = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 540px;
+
+  img {
+    object-fit: cover;
+  }
+`;
+
+export const HeaderTopWrapper = styled.div`
+  position: fixed;
+  width: 100%;
+  padding: 2%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 `;

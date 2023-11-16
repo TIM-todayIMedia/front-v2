@@ -1,11 +1,12 @@
 import * as S from "./styled";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CategoryArray } from "@/utils/CategoryArray";
 import { useRouter } from "next/navigation";
 import { SearchIcon } from "@/assets/svg";
 import CategorySelect from "../CategorySelect";
 import { useRecoilState } from "recoil";
 import { imgsAtom } from "@/atom";
+import Image from "next/image";
 
 const Header = () => {
   const router = useRouter();
@@ -14,6 +15,13 @@ const Header = () => {
   const [field, setField] = useState("");
   const [searchValue, SetSearchValue] = useState<string>("");
   const [imgsArr, setImgsArr] = useRecoilState(imgsAtom);
+  // const RANDOMN = Math.random() * (imgsArr.length - 1);
+  // const imgUrl = imgsArr[Math.floor(RANDOMN)];
+  const [imgUrl, setImgUrl] = useState("");
+
+  useEffect(() => {
+    setImgUrl(imgsArr[Math.floor(Math.random() * (imgsArr.length - 1))]);
+  }, [imgUrl]);
 
   const handleClick = () => {
     if (!searchValue) {
@@ -59,86 +67,98 @@ const Header = () => {
   };
 
   return (
-    <S.HeaderWapper style={{}}>
-      <S.LeftWapper>
-        <p onClick={handleTitleClick}>TIM</p>
-      </S.LeftWapper>
-      <S.CenterWrapper>
-        <S.InputWapper>
-          <input
-            type="text"
-            placeholder="영화/드라마 이름을 입력하세요"
-            value={searchValue}
-            onChange={(e) => SetSearchValue(e.target.value)}
-            onKeyDown={(e: any) => {
-              if (e.key === "Enter") handleClick();
-            }}
-          />
-          <label>
-            <SearchIcon />
-          </label>
-        </S.InputWapper>
-      </S.CenterWrapper>
+    <S.HeaderWapper>
+      <S.HeaderImg>
+        <Image
+          src={imgUrl}
+          alt={"headerCoverImag"}
+          fill
+          priority
+          quality={60}
+          style={{ filter: "brightness(40%)" }}
+        />
+      </S.HeaderImg>
+      <S.HeaderTopWrapper>
+        <S.LeftWapper>
+          <p onClick={handleTitleClick}>TIM</p>
+        </S.LeftWapper>
+        <S.CenterWrapper>
+          <S.InputWapper>
+            <input
+              type="text"
+              placeholder="영화/드라마 이름을 입력하세요"
+              value={searchValue}
+              onChange={(e) => SetSearchValue(e.target.value)}
+              onKeyDown={(e: any) => {
+                if (e.key === "Enter") handleClick();
+              }}
+            />
+            <label>
+              <SearchIcon />
+            </label>
+          </S.InputWapper>
+        </S.CenterWrapper>
 
-      <S.RightWrapper>
-        <S.TagBtns>
-          <input
-            type="radio"
-            value={field}
-            id="영화"
-            name="분야"
-            onClick={() => {
-              handleSubmitBtnClick("영화");
-              setField("영화");
-            }}
-          />
-          <label htmlFor="영화">movie</label>
-          <input
-            type="radio"
-            value={field}
-            id="드라마"
-            name="분야"
-            onClick={() => {
-              handleSubmitBtnClick("드라마");
-              setField("드라마");
-            }}
-          />
-          <label htmlFor="드라마">drama</label>
-          <input
-            defaultChecked
-            type="radio"
-            value={field}
-            id="전체"
-            name="분야"
-            onClick={() => {
-              handleSubmitBtnClick("");
-              setField("");
-            }}
-          />
-          <label htmlFor="전체">all</label>
-        </S.TagBtns>
-        <S.FilterBtn onMouseOver={() => setFilterToggleBtn(true)}>
-          카테고리
-        </S.FilterBtn>
+        <S.RightWrapper>
+          <S.TagBtns>
+            <input
+              type="radio"
+              value={field}
+              id="영화"
+              name="분야"
+              onClick={() => {
+                handleSubmitBtnClick("영화");
+                setField("영화");
+              }}
+            />
+            <label htmlFor="영화">movie</label>
+            <input
+              type="radio"
+              value={field}
+              id="드라마"
+              name="분야"
+              onClick={() => {
+                handleSubmitBtnClick("드라마");
+                setField("드라마");
+              }}
+            />
+            <label htmlFor="드라마">drama</label>
+            <input
+              defaultChecked
+              type="radio"
+              value={field}
+              id="전체"
+              name="분야"
+              onClick={() => {
+                handleSubmitBtnClick("");
+                setField("");
+              }}
+            />
+            <label htmlFor="전체">all</label>
+          </S.TagBtns>
+          <S.FilterBtn onMouseOver={() => setFilterToggleBtn(true)}>
+            카테고리
+          </S.FilterBtn>
 
-        {filterToggleBtn && (
-          <>
-            <S.ModalOverlay onClick={() => setFilterToggleBtn(false)} />
-            <S.FilterBox>
-              <S.BoxTop>
-                {CategoryArray.map((i, index) => (
-                  <CategorySelect
-                    onClick={() => handleCategorySelectClick(i)}
-                    key={index}
-                    name={i}
-                    isClick={filterCategoryArray.includes(i)}
-                  />
-                ))}
-              </S.BoxTop>
-            </S.FilterBox>
-          </>
-        )}
-      </S.RightWrapper>
+          {filterToggleBtn && (
+            <>
+              <S.ModalOverlay onClick={() => setFilterToggleBtn(false)} />
+              <S.FilterBox>
+                <S.BoxTop>
+                  {CategoryArray.map((i, index) => (
+                    <CategorySelect
+                      onClick={() => handleCategorySelectClick(i)}
+                      key={index}
+                      name={i}
+                      isClick={filterCategoryArray.includes(i)}
+                    />
+                  ))}
+                </S.BoxTop>
+              </S.FilterBox>
+            </>
+          )}
+        </S.RightWrapper>
+      </S.HeaderTopWrapper>
     </S.HeaderWapper>
   );
 };

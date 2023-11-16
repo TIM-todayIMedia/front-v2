@@ -1,4 +1,3 @@
-import { Header } from "@/components/common";
 import Home from "@/components/Home";
 import { listProps } from "@/types";
 import CustomAxios from "@/utils/lib/CustomAxios";
