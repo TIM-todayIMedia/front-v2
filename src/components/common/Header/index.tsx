@@ -15,8 +15,6 @@ const Header = () => {
   const [field, setField] = useState("");
   const [searchValue, SetSearchValue] = useState<string>("");
   const [imgsArr, setImgsArr] = useRecoilState(imgsAtom);
-  // const RANDOMN = Math.random() * (imgsArr.length - 1);
-  // const imgUrl = imgsArr[Math.floor(RANDOMN)];
   const [imgUrl, setImgUrl] = useState("");
 
   useEffect(() => {

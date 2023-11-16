@@ -62,7 +62,7 @@ export const InputWapper = styled.div`
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
   input {
-    color: gray;
+    color: white;
     border: none;
     width: 87%;
     height: 100%;
@@ -131,6 +131,7 @@ export const TagBtns = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 5px;
   input {
     display: none;
   }
@@ -186,8 +187,9 @@ export const HeaderImg = styled.div`
 export const HeaderTopWrapper = styled.div`
   position: fixed;
   width: 100%;
-  padding: 2%;
+  padding: 1%;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  /* background-color: rgb(0, 0, 0, 0.8); */
 `;

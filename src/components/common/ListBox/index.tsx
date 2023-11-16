@@ -4,6 +4,7 @@ import * as S from "./styled";
 import Image from "next/image";
 import { CategoryBox } from "..";
 import { useRouter } from "next/navigation";
+import { CategoryColorArr } from "@/utils/CategoryArray";
 
 const ListBox = ({
   cover,
@@ -15,6 +16,8 @@ const ListBox = ({
   category: MultiSelectProps[];
 }) => {
   const router = useRouter();
+  console.log(category);
+
   return (
     <S.Wrapper onClick={() => router.push(`/${title}`)}>
       {cover ? (
@@ -38,7 +41,7 @@ const ListBox = ({
           {category.map((i) => (
             <CategoryBox
               key={i.id}
-              color={i.color}
+              color={CategoryColorArr[i.color] ?? i.color}
               name={i.name}
               fontSize={"0.8rem"}
             />

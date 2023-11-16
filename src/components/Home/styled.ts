@@ -2,12 +2,10 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   width: 100%;
-  height: 91vh;
-  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-y: hidden;
+  background-color: rgba(0, 0, 0, 0.9);
 `;
 
 export const FilterWrapper = styled.div`

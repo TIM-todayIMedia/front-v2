@@ -8,6 +8,6 @@ export const Wrapper = styled.div`
   justify-content: center;
   border-radius: 5px;
   font-size: 0.8rem;
-  color: ${(props) => props.color};
-  border: 1px solid ${(props) => props.color};
+  color: #eeeaf3;
+  border: 2px solid ${(props) => props.color};
 `;

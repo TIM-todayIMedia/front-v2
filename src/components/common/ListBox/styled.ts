@@ -34,12 +34,13 @@ export const Decs = styled.div`
   padding: 0 4%;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.04);
 `;
 
 export const Title = styled.div`
   font-size: 1.2rem;
   font-weight: bold;
-  color: black;
+  color: white;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
