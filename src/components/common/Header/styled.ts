@@ -1,20 +1,18 @@
 import styled from "@emotion/styled";
 
 export const HeaderWapper = styled.div`
-  height: 8vh;
+  height: 500px;
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 0 2%;
+  align-items: flex-start;
+  padding: 2%;
   transition: all 0.3s ease-in;
-  border: 1px solid gray;
   background-color: white;
 `;
 
 export const LeftWapper = styled.div`
   width: 250px;
-  height: 100%;
   display: flex;
   align-items: center;
   p {
@@ -107,8 +105,8 @@ export const FilterBtn = styled.div`
 
 export const FilterBox = styled.div`
   position: absolute;
-  top: 50px;
-  left: -00px;
+  top: 65px;
+  right: 00px;
   width: 200px;
   height: 380px;
   display: flex;
@@ -132,7 +130,6 @@ export const BoxTop = styled.div`
 
 export const TagBtns = styled.div`
   width: 270px;
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -155,16 +152,19 @@ export const TagBtns = styled.div`
   }
 
   input[type="radio"]:checked + label {
-    border-bottom: 7px solid #9288f8;
+    border-bottom: 6.5px solid #9288f8;
   }
 
   input[type="radio"] + label:hover {
-    border-bottom: 7px solid #9288f8;
+    border-bottom: 6.5px solid #9288f8;
   }
 `;
 
 export const RightWrapper = styled.div`
   position: relative;
+  display: flex;
+  align-items: center;
+  gap: 40px;
 `;
 
 export const ModalOverlay = styled.div`

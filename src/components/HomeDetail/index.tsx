@@ -25,9 +25,9 @@ const HomeDetail = ({ data }: { data: listProps }) => {
       </S.LeftWrapper>
       <S.RightWrapper>
         <S.TopWrapper>
-          <S.TopLeft onClick={() => router.back()}>
+          {/* <S.TopLeft onClick={() => router.back()}>
             <BackIcon />
-          </S.TopLeft>
+          </S.TopLeft> */}
         </S.TopWrapper>
 
         <S.MiddleWrapper>
@@ -50,7 +50,12 @@ const HomeDetail = ({ data }: { data: listProps }) => {
           <S.MiddleBottom>
             <S.CategoryBtns>
               {data?.properties.Category.multi_select.map((i) => (
-                <CategoryBox key={i.id} color={i.color} name={i.name} />
+                <CategoryBox
+                  key={i.id}
+                  color={i.color}
+                  name={i.name}
+                  fontSize={"20px"}
+                />
               ))}
             </S.CategoryBtns>
             <S.Grade>
@@ -65,26 +70,17 @@ const HomeDetail = ({ data }: { data: listProps }) => {
 
         <S.DecsWrapper>
           <S.DecsLong>
-            <span>
-              <SquareIcon />
-              {"설명"}
-            </span>
+            <span>{"설명"}</span>
             <div>
               {data?.properties?.Described?.rich_text[0]?.text?.content}
             </div>
           </S.DecsLong>
           <S.DecsLong>
-            <span>
-              <SquareIcon />
-              {"후기"}
-            </span>
+            <span>{"후기"}</span>
             <div>{data?.properties?.Review?.rich_text[0]?.text?.content}</div>
           </S.DecsLong>
           <S.DecsLong>
-            <span>
-              <SquareIcon />
-              {"명대사"}
-            </span>
+            <span>{"명대사"}</span>
             <pre>
               {data?.properties?.FamousLine?.rich_text[0]?.text?.content}
             </pre>

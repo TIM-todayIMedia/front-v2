@@ -4,6 +4,8 @@ import { CategoryArray } from "@/utils/CategoryArray";
 import { useRouter } from "next/navigation";
 import { SearchIcon } from "@/assets/svg";
 import CategorySelect from "../CategorySelect";
+import { useRecoilState } from "recoil";
+import { imgsAtom } from "@/atom";
 
 const Header = () => {
   const router = useRouter();
@@ -11,6 +13,7 @@ const Header = () => {
   const [filterCategoryArray, setFilterCategoryArray] = useState<string[]>([]);
   const [field, setField] = useState("");
   const [searchValue, SetSearchValue] = useState<string>("");
+  const [imgsArr, setImgsArr] = useRecoilState(imgsAtom);
 
   const handleClick = () => {
     if (!searchValue) {
@@ -56,7 +59,7 @@ const Header = () => {
   };
 
   return (
-    <S.HeaderWapper>
+    <S.HeaderWapper style={{}}>
       <S.LeftWapper>
         <p onClick={handleTitleClick}>TIM</p>
       </S.LeftWapper>
@@ -77,44 +80,43 @@ const Header = () => {
         </S.InputWapper>
       </S.CenterWrapper>
 
-      <S.TagBtns>
-        <input
-          type="radio"
-          value={field}
-          id="영화"
-          name="분야"
-          onClick={() => {
-            handleSubmitBtnClick("영화");
-            setField("영화");
-          }}
-        />
-        <label htmlFor="영화">영화</label>
-        <input
-          type="radio"
-          value={field}
-          id="드라마"
-          name="분야"
-          onClick={() => {
-            handleSubmitBtnClick("드라마");
-            setField("드라마");
-          }}
-        />
-        <label htmlFor="드라마">드라마</label>
-        <input
-          defaultChecked
-          type="radio"
-          value={field}
-          id="전체"
-          name="분야"
-          onClick={() => {
-            handleSubmitBtnClick("");
-            setField("");
-          }}
-        />
-        <label htmlFor="전체">전체</label>
-      </S.TagBtns>
-
       <S.RightWrapper>
+        <S.TagBtns>
+          <input
+            type="radio"
+            value={field}
+            id="영화"
+            name="분야"
+            onClick={() => {
+              handleSubmitBtnClick("영화");
+              setField("영화");
+            }}
+          />
+          <label htmlFor="영화">movie</label>
+          <input
+            type="radio"
+            value={field}
+            id="드라마"
+            name="분야"
+            onClick={() => {
+              handleSubmitBtnClick("드라마");
+              setField("드라마");
+            }}
+          />
+          <label htmlFor="드라마">drama</label>
+          <input
+            defaultChecked
+            type="radio"
+            value={field}
+            id="전체"
+            name="분야"
+            onClick={() => {
+              handleSubmitBtnClick("");
+              setField("");
+            }}
+          />
+          <label htmlFor="전체">all</label>
+        </S.TagBtns>
         <S.FilterBtn onMouseOver={() => setFilterToggleBtn(true)}>
           카테고리
         </S.FilterBtn>

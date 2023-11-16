@@ -36,7 +36,12 @@ const ListBox = ({
         <S.Title>{title}</S.Title>
         <S.Categorys>
           {category.map((i) => (
-            <CategoryBox key={i.id} color={i.color} name={i.name} />
+            <CategoryBox
+              key={i.id}
+              color={i.color}
+              name={i.name}
+              fontSize={"0.8rem"}
+            />
           ))}
         </S.Categorys>
       </S.Decs>

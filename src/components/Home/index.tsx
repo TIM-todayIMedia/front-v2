@@ -1,9 +1,20 @@
 "use client";
+import { imgsAtom } from "@/atom";
 import { listProps } from "@/types";
+import { useEffect } from "react";
+import { useRecoilState } from "recoil";
 import { ListBox } from "../common";
 import * as S from "./styled";
 
 const Home = ({ list }: { list: listProps[] }) => {
+  const [, setImgsArr] = useRecoilState(imgsAtom);
+
+  useEffect(() => {
+    setImgsArr(
+      list.map((i) => i.cover?.external?.url || i.cover?.file?.url || "")
+    );
+  }, []);
+
   return (
     <S.Wrapper>
       <S.ListWrapper>
