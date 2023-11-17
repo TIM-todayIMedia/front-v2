@@ -4,33 +4,35 @@ export const Wrapper = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;
+  justify-content: space-between;
   background-color: rgba(255, 255, 255, 0.05);
   color: #e7e7e7;
   overflow-y: hidden;
+  padding: 0 20% 0 0;
 `;
 
 export const RightWrapper = styled.div`
-  position: absolute;
-  left: 0%;
+  position: relative;
   width: 40%;
   height: 100vh;
-  z-index: -1;
+  z-index: 2;
 `;
 
 export const DetailImagOverlay = styled.div`
   position: fixed;
   width: 100vw;
   height: 100vh;
-  z-index: -12;
+  z-index: -2;
 `;
 
 export const LeftWrapper = styled.div`
-  width: 35%;
+  width: 50%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding: 5% 0 10% 5%;
-  margin-left: 48%;
+  margin-top: 10%;
+  padding: 0 10% 10% 0;
+  overflow-y: scroll;
 `;
 
 export const TopWrapper = styled.div`
@@ -93,21 +95,34 @@ export const Title = styled.div`
   font-weight: bold;
 `;
 
-export const OstWrapper = styled.div`
+export const LinkWrapper = styled.div`
   position: fixed;
-  right: 10px;
-  bottom: -860px;
+  right: 20px;
+  bottom: 0px;
   width: 70px;
-  height: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
   padding: 5px 0;
 
   svg {
     cursor: pointer;
     width: 20px;
+  }
+  .spotiIcon {
     :hover {
       path {
         transition: all 0.5s ease;
         fill: #1ed760;
+      }
+    }
+  }
+  .wpIcon {
+    :hover {
+      g rect {
+        transition: all 0.5s ease;
+        fill: #ff0558;
       }
     }
   }
@@ -151,18 +166,6 @@ export const DecsLong = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-
-  span {
-    font-size: 1.5rem;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    color: #9288f8;
-
-    svg {
-      width: 30px;
-    }
-  }
 
   div {
     font-size: 1.3rem;
