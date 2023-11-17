@@ -113,6 +113,7 @@ export const FilterBox = styled.div`
   border-radius: 10px;
   z-index: 5;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: rgba(0, 0, 0, 0.6);
 `;
 
 export const TagBtns = styled.div`

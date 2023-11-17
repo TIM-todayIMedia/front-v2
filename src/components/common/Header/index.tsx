@@ -175,7 +175,7 @@ const Header = () => {
 
           {filterToggleBtn && (
             <>
-              <S.ModalOverlay />
+              <S.ModalOverlay onClick={() => setFilterToggleBtn(false)} />
               <S.FilterBox onMouseLeave={() => setFilterToggleBtn(false)}>
                 {CategoryArray.map((i, index) => (
                   <CategorySelect
