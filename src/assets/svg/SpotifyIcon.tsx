@@ -1,10 +1,11 @@
-const SpotifyIcon = () => (
+const SpotifyIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     height="168px"
     width="168px"
     version="1.1"
     viewBox="0 0 168 168"
+    {...props}
   >
     <path
       fill="#454a47"
