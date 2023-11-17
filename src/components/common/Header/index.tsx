@@ -1,7 +1,7 @@
 import * as S from "./styled";
 import { useEffect, useState } from "react";
 import { CategoryArray } from "@/utils/CategoryArray";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { SearchIcon } from "@/assets/svg";
 import CategorySelect from "../CategorySelect";
 import { useRecoilState } from "recoil";
@@ -17,10 +17,22 @@ const Header = () => {
   const [imgsArr] = useRecoilState(imgsAtom);
   const [imgUrl, setImgUrl] = useState("");
   const [isScroll540, setIsScroll540] = useState(false);
+  const [isDetailPage, setIsDetailPage] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     setImgUrl(imgsArr[Math.floor(Math.random() * (imgsArr.length - 1))]);
   }, [imgUrl]);
+
+  useEffect(() => {
+    if (
+      !decodeURI(pathname).includes("filter") &&
+      !decodeURI(pathname).includes("search") &&
+      pathname !== "/"
+    ) {
+      setIsDetailPage(true);
+    } else setIsDetailPage(false);
+  }, [pathname]);
 
   const handleClick = () => {
     if (!searchValue) {
@@ -68,10 +80,9 @@ const Header = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY || document.documentElement.scrollTop;
-      if (scrollY >= 540) {
+      if (scrollY >= 475) {
         setIsScroll540(true);
       } else {
-        console.log("현재 스크롤 위치:", scrollY);
         setIsScroll540(false);
       }
     };
@@ -83,7 +94,7 @@ const Header = () => {
   }, []);
 
   return (
-    <S.HeaderWapper>
+    <S.HeaderWapper style={{ display: isDetailPage ? "none" : "block" }}>
       <S.HeaderImg>
         <Image
           src={imgUrl}

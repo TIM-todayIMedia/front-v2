@@ -2,23 +2,35 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   width: 100%;
-  height: 92vh;
-  background-color: white;
+  height: 100vh;
   display: flex;
-  justify-content: space-between;
-`;
-
-export const LeftWrapper = styled.div`
-  position: relative;
-  width: 40%;
-  height: 100%;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #e7e7e7;
+  overflow-y: hidden;
 `;
 
 export const RightWrapper = styled.div`
-  width: 65%;
+  position: absolute;
+  left: 0%;
+  width: 40%;
+  height: 100vh;
+  z-index: -1;
+`;
+
+export const DetailImagOverlay = styled.div`
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: -12;
+`;
+
+export const LeftWrapper = styled.div`
+  width: 35%;
   height: 100%;
   display: flex;
   flex-direction: column;
+  padding: 5% 0 10% 5%;
+  margin-left: 48%;
 `;
 
 export const TopWrapper = styled.div`
@@ -47,26 +59,28 @@ export const MiddleWrapper = styled.div`
   width: 90%;
   display: flex;
   flex-direction: column;
-  margin: 0 5%;
 `;
 
 export const MiddleTop = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid gray;
 `;
 
 export const MiddleBottom = styled.div`
-  width: 100%;
+  width: 300px;
+  position: fixed;
+  right: -170px;
+  top: 50px;
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
+  gap: 30px;
 `;
 
 export const TitleWrapper = styled.div`
   display: flex;
   align-items: center;
-  gap: 10px;
 
   span {
     padding-top: 20px;
@@ -75,33 +89,36 @@ export const TitleWrapper = styled.div`
 `;
 
 export const Title = styled.div`
-  font-size: 3rem;
+  font-size: 3.5rem;
   font-weight: bold;
 `;
 
 export const OstWrapper = styled.div`
+  position: fixed;
+  right: 10px;
+  bottom: -860px;
   width: 70px;
   height: 100%;
-  display: flex;
-  align-items: flex-end;
-  color: purple;
-  gap: 5px;
   padding: 5px 0;
-  font-size: 1.2rem;
+
   svg {
     cursor: pointer;
     width: 20px;
-  }
-  span {
-    cursor: pointer;
+    :hover {
+      path {
+        transition: all 0.5s ease;
+        fill: #1ed760;
+      }
+    }
   }
 `;
 
 export const CategoryBtns = styled.div`
-  width: 30%;
-  height: 50px;
+  width: 300px;
+  height: 40px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 20px;
 `;
 
@@ -112,20 +129,22 @@ export const Grade = styled.div`
   align-items: center;
 
   svg {
-    width: 15px;
-    color: #637aae;
+    width: 25px;
+    color: #9288f8;
+  }
+
+  span {
+    font-size: 25px;
   }
 `;
 
 export const DecsWrapper = styled.div`
   width: 100%;
   height: 80vh;
-  padding: 0 5%;
-
   display: flex;
   flex-direction: column;
   gap: 50px;
-  padding-top: 100px;
+  padding-top: 50px;
 `;
 
 export const DecsLong = styled.div`
@@ -138,7 +157,7 @@ export const DecsLong = styled.div`
     font-weight: bold;
     display: flex;
     align-items: center;
-    color: #637aae;
+    color: #9288f8;
 
     svg {
       width: 30px;
@@ -146,11 +165,11 @@ export const DecsLong = styled.div`
   }
 
   div {
-    padding-left: 40px;
     font-size: 1.3rem;
   }
 
   pre {
+    margin-top: 5%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -159,6 +178,6 @@ export const DecsLong = styled.div`
     white-space: pre-wrap;
     word-break: break-all;
     overflow: auto;
-    height: 35vh;
+    height: 100%;
   }
 `;

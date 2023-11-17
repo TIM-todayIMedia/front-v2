@@ -4,7 +4,7 @@ export const HeaderWapper = styled.div`
   height: 540px;
   width: 100%;
   transition: all 0.3s ease-in;
-  background-color: white;
+  background-color: rgba(0, 0, 0, 0.9);
   position: relative;
 `;
 
