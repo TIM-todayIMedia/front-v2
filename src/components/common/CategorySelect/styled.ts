@@ -7,8 +7,9 @@ export const Wrapper = styled.div`
   font-weight: bold;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: 9px;
   border: none;
+  padding-left: 15px;
 `;

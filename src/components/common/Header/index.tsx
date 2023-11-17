@@ -14,8 +14,9 @@ const Header = () => {
   const [filterCategoryArray, setFilterCategoryArray] = useState<string[]>([]);
   const [field, setField] = useState("");
   const [searchValue, SetSearchValue] = useState<string>("");
-  const [imgsArr, setImgsArr] = useRecoilState(imgsAtom);
+  const [imgsArr] = useRecoilState(imgsAtom);
   const [imgUrl, setImgUrl] = useState("");
+  const [isScroll540, setIsScroll540] = useState(false);
 
   useEffect(() => {
     setImgUrl(imgsArr[Math.floor(Math.random() * (imgsArr.length - 1))]);
@@ -64,6 +65,23 @@ const Header = () => {
     return router.push("/");
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY || document.documentElement.scrollTop;
+      if (scrollY >= 540) {
+        setIsScroll540(true);
+      } else {
+        console.log("현재 스크롤 위치:", scrollY);
+        setIsScroll540(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <S.HeaderWapper>
       <S.HeaderImg>
@@ -76,7 +94,13 @@ const Header = () => {
           style={{ filter: "brightness(40%)" }}
         />
       </S.HeaderImg>
-      <S.HeaderTopWrapper>
+      <S.HeaderTopWrapper
+        style={{
+          backgroundColor: isScroll540
+            ? "rgb(0, 0, 0, 0.8)"
+            : "rgb(0, 0, 0, 0)",
+        }}
+      >
         <S.LeftWapper>
           <p onClick={handleTitleClick}>TIM</p>
         </S.LeftWapper>
@@ -140,18 +164,16 @@ const Header = () => {
 
           {filterToggleBtn && (
             <>
-              <S.ModalOverlay onClick={() => setFilterToggleBtn(false)} />
-              <S.FilterBox>
-                <S.BoxTop>
-                  {CategoryArray.map((i, index) => (
-                    <CategorySelect
-                      onClick={() => handleCategorySelectClick(i)}
-                      key={index}
-                      name={i}
-                      isClick={filterCategoryArray.includes(i)}
-                    />
-                  ))}
-                </S.BoxTop>
+              <S.ModalOverlay />
+              <S.FilterBox onMouseLeave={() => setFilterToggleBtn(false)}>
+                {CategoryArray.map((i, index) => (
+                  <CategorySelect
+                    onClick={() => handleCategorySelectClick(i)}
+                    key={index}
+                    name={i}
+                    isClick={filterCategoryArray.includes(i)}
+                  />
+                ))}
               </S.FilterBox>
             </>
           )}

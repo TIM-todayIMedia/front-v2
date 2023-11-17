@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
   border-radius: 5px;
 
   :hover {
-    transform: translateY(-5px);
+    box-shadow: rgba(105, 105, 115, 0.56) 0px 22px 70px 4px;
   }
 `;
 
@@ -34,7 +34,7 @@ export const Decs = styled.div`
   padding: 0 4%;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.04);
+  background-color: rgba(255, 255, 255, 0.045);
 `;
 
 export const Title = styled.div`

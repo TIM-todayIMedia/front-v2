@@ -87,7 +87,7 @@ export const CenterWrapper = styled.div`
 `;
 
 export const FilterBtn = styled.div`
-  width: 200px;
+  width: 150px;
   height: 4.5vh;
   display: flex;
   border: 1px solid #9288f8;
@@ -103,27 +103,16 @@ export const FilterBtn = styled.div`
 
 export const FilterBox = styled.div`
   position: absolute;
-  top: 65px;
+  top: 50px;
   right: 00px;
-  width: 200px;
-  height: 380px;
+  width: 150px;
+  height: 450px;
   display: flex;
   flex-direction: column;
   border: 1px solid #9288f8;
   border-radius: 10px;
-  background-color: white;
   z-index: 5;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-`;
-
-export const BoxTop = styled.div`
-  width: 100%;
-  height: 100%;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  border-bottom: 1px solid gray;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
 `;
 
 export const TagBtns = styled.div`
@@ -190,6 +179,5 @@ export const HeaderTopWrapper = styled.div`
   padding: 1%;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  /* background-color: rgb(0, 0, 0, 0.8); */
+  align-items: center;
 `;

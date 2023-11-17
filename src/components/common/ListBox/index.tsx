@@ -16,7 +16,6 @@ const ListBox = ({
   category: MultiSelectProps[];
 }) => {
   const router = useRouter();
-  console.log(category);
 
   return (
     <S.Wrapper onClick={() => router.push(`/${title}`)}>
