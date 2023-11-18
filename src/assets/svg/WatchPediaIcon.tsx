@@ -7,7 +7,7 @@ const WatchPediaIcon = (props: React.SVGProps<SVGSVGElement>) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g clip-path="url(#clip0_3980_1978)">
+    <g clipPath="url(#clip0_3980_1978)">
       <mask
         id="mask0_3980_1978"
         // style={{"mask-type:alpha"}}
