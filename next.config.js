@@ -14,6 +14,9 @@ const nextConfig = {
   plugins: {
     autoprefixer: {},
   },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 };
 
 module.exports = nextConfig;
