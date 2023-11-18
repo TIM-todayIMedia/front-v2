@@ -7,3 +7,9 @@ export interface CategorySelectProps {
 export interface CategoryColorType {
   [key: string]: string;
 }
+
+export interface Props {
+  params: {
+    name: string;
+  };
+}
