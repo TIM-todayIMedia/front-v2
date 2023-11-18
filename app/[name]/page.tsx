@@ -1,15 +1,11 @@
 import CustomAxios from "@/utils/lib/CustomAxios";
-import { listProps } from "@/types";
 import { Shead } from "@/components/common";
 import HomeDetail from "@/components/HomeDetail";
+import { Props } from "@/types/common";
+import { decodeParams } from "@/utils/decodeParams";
 
-export const HomeDetailPage = async ({
-  params: { name },
-}: {
-  params: { name: string };
-}) => {
-  const detailData = await getPost(decodeURI(name));
-
+export const HomeDetailPage = async ({ params: { name } }: Props) => {
+  const detailData = await getPost(decodeParams(name));
   return (
     <>
       <Shead seoTitle={"디테일페이지"} />
@@ -17,20 +13,6 @@ export const HomeDetailPage = async ({
     </>
   );
 };
-
-export async function generateStaticParams() {
-  const { data } = await CustomAxios.post(
-    `/${process.env.NEXT_PUBLIC_NOTION_DATABASE_ID}/query`,
-    {}
-  );
-  const list = data.results;
-
-  const paths = list.map((item: listProps) => ({
-    params: { name: item.properties.Name.title[0].text.content },
-  }));
-
-  return paths;
-}
 
 export const getPost = async (name: string) => {
   try {
