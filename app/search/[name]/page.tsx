@@ -1,14 +1,12 @@
-import { Header } from "@/components/common";
 import { listProps } from "@/types";
 import CustomAxios from "@/utils/lib/CustomAxios";
 import Home from "@/components/Home";
+import { Props } from "@/types/common";
+import { decodeParams } from "@/utils/decodeParams";
 
-export const SearchPage = async ({
-  params: { name },
-}: {
-  params: { name: string };
-}) => {
-  const list: listProps[] = await getList(decodeURI(name));
+export const SearchPage = async ({ params: { name } }: Props) => {
+  const list: listProps[] = await getList(decodeParams(name));
+
   return (
     <>
       <Home list={list} />
