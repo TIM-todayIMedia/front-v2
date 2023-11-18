@@ -9,7 +9,7 @@ import YouTube from "react-youtube";
 
 const HomeDetail = ({ data }: { data: listProps }) => {
   const match =
-    data.properties.Trailer.url.match(
+    data?.properties.Trailer.url.match(
       /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/
     ) ?? "";
   const videoId = match[7];
@@ -44,23 +44,23 @@ const HomeDetail = ({ data }: { data: listProps }) => {
               {data?.properties?.Described?.rich_text[0]?.text?.content}
             </div>
           </S.DecsLong>
-
-          <YouTube
-            videoId={videoId}
-            opts={{
-              width: "608",
-              height: "342",
-              playerVars: {
-                autoplay: 1,
-                rel: 0,
-                modestbranding: 1,
-              },
-            }}
-            onEnd={(e) => {
-              e.target.stopVideo(0);
-            }}
-          />
-
+          <S.YouTubeWrapper>
+            <YouTube
+              videoId={videoId}
+              opts={{
+                width: "704",
+                height: "396",
+                playerVars: {
+                  autoplay: 1,
+                  rel: 0,
+                  modestbranding: 1,
+                },
+              }}
+              onEnd={(e) => {
+                e.target.stopVideo(0);
+              }}
+            />
+          </S.YouTubeWrapper>
           <S.DecsLong>
             <pre>
               {data?.properties?.FamousLine?.rich_text[0]?.text?.content}

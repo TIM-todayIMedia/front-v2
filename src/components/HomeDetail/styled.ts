@@ -4,11 +4,11 @@ export const Wrapper = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;
-  justify-content: space-between;
+  gap: 5%;
   background-color: rgba(255, 255, 255, 0.05);
   color: #e7e7e7;
   overflow-y: hidden;
-  padding: 0 20% 0 0;
+  padding: 0 0% 0 0;
 `;
 
 export const RightWrapper = styled.div`
@@ -26,11 +26,11 @@ export const DetailImagOverlay = styled.div`
 `;
 
 export const LeftWrapper = styled.div`
-  width: 50%;
+  width: 60%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  margin-top: 10%;
+  margin-top: 8%;
   padding: 0 10% 10% 0;
   overflow-y: scroll;
 `;
@@ -97,18 +97,18 @@ export const Title = styled.div`
 
 export const LinkWrapper = styled.div`
   position: fixed;
-  right: 20px;
+  right: 30px;
   bottom: 0px;
   width: 70px;
   height: 50px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
   padding: 5px 0;
 
   svg {
     cursor: pointer;
-    width: 20px;
+    width: 30px;
   }
   .spotiIcon {
     :hover {
@@ -153,13 +153,18 @@ export const Grade = styled.div`
   }
 `;
 
+export const YouTubeWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
 export const DecsWrapper = styled.div`
   width: 100%;
   height: 80vh;
   display: flex;
   flex-direction: column;
   gap: 50px;
-  padding-top: 50px;
+  padding: 50px 0 200px 0;
 `;
 
 export const DecsLong = styled.div`
