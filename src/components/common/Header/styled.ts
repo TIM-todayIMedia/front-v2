@@ -171,6 +171,7 @@ export const HeaderImg = styled.div`
 
   img {
     object-fit: cover;
+    cursor: pointer;
   }
 `;
 

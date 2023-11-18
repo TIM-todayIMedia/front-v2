@@ -5,7 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { SearchIcon } from "@/assets/svg";
 import CategorySelect from "../CategorySelect";
 import { useRecoilValue } from "recoil";
-import { imgsAtom } from "@/atom";
+import { imgAtom } from "@/atom";
 import Image from "next/image";
 
 const Header = () => {
@@ -14,15 +14,10 @@ const Header = () => {
   const [filterCategoryArray, setFilterCategoryArray] = useState<string[]>([]);
   const [field, setField] = useState("");
   const [searchValue, SetSearchValue] = useState<string>("");
-  const imgsArr = useRecoilValue(imgsAtom);
-  const [imgUrl, setImgUrl] = useState("");
+  const imgUrl = useRecoilValue(imgAtom);
   const [isScroll540, setIsScroll540] = useState(false);
   const [isDetailPage, setIsDetailPage] = useState(false);
   const pathname = usePathname();
-
-  useEffect(() => {
-    setImgUrl(imgsArr[Math.floor(Math.random() * (imgsArr.length - 1))]);
-  }, [imgUrl]);
 
   useEffect(() => {
     if (
@@ -97,12 +92,13 @@ const Header = () => {
     <S.HeaderWapper style={{ display: isDetailPage ? "none" : "block" }}>
       <S.HeaderImg>
         <Image
-          src={imgUrl}
+          src={imgUrl[0]}
           alt={"headerCoverImag"}
           fill
           priority
           quality={60}
           style={{ filter: "brightness(40%)" }}
+          onClick={() => router.push(`/${imgUrl[1]}`)}
         />
       </S.HeaderImg>
       <S.HeaderTopWrapper
