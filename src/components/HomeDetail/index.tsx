@@ -9,7 +9,7 @@ import YouTube from "react-youtube";
 
 const HomeDetail = ({ data }: { data: listProps }) => {
   const match =
-    data?.properties.Trailer.url.match(
+    data?.properties?.Trailer.url.match(
       /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/
     ) ?? "";
   const videoId = match[7];
@@ -72,7 +72,10 @@ const HomeDetail = ({ data }: { data: listProps }) => {
       <S.MiddleBottom>
         <S.Grade>
           {data?.properties.Grade.multi_select.map((i) => (
-            <span key={i.id}>{`${i.name} / 5`} </span>
+            <span key={i.id}>
+              <span className="myScore">{i.name}</span>
+              {`/5`}{" "}
+            </span>
           ))}
         </S.Grade>
         <S.CategoryBtns>

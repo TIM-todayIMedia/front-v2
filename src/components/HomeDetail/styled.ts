@@ -151,6 +151,10 @@ export const Grade = styled.div`
   span {
     font-size: 25px;
   }
+
+  .myScore {
+    font-size: 45px;
+  }
 `;
 
 export const YouTubeWrapper = styled.div`
@@ -164,7 +168,7 @@ export const DecsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 50px;
-  padding: 50px 0 200px 0;
+  padding-top: 50px;
 `;
 
 export const DecsLong = styled.div`
@@ -178,6 +182,7 @@ export const DecsLong = styled.div`
 
   pre {
     margin-top: 5%;
+    margin-bottom: 30%;
     display: flex;
     align-items: center;
     justify-content: center;
