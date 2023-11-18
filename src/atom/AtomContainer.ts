@@ -1,6 +1,6 @@
 import { atom } from "recoil";
 
-export const imgsAtom = atom<string[]>({
+export const imgAtom = atom<string[]>({
   key: "imgsAtom",
   default: [],
 });

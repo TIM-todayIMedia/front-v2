@@ -4,7 +4,7 @@ import HomeDetail from "@/components/HomeDetail";
 import { Props } from "@/types/common";
 import { decodeParams } from "@/utils/decodeParams";
 
-export const HomeDetailPage = async ({ params: { name } }: Props) => {
+export const DetailPage = async ({ params: { name } }: Props) => {
   const detailData = await getPost(decodeParams(name));
   return (
     <>
@@ -35,4 +35,4 @@ export const getPost = async (name: string) => {
   }
 };
 
-export default HomeDetailPage;
+export default DetailPage;
