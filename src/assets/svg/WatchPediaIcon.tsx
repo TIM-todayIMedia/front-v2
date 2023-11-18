@@ -10,7 +10,6 @@ const WatchPediaIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <g clipPath="url(#clip0_3980_1978)">
       <mask
         id="mask0_3980_1978"
-        // style={{"mask-type:alpha"}}
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"

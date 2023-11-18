@@ -4,7 +4,7 @@ import { CategoryArray } from "@/utils/CategoryArray";
 import { usePathname, useRouter } from "next/navigation";
 import { SearchIcon } from "@/assets/svg";
 import CategorySelect from "../CategorySelect";
-import { useRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 import { imgsAtom } from "@/atom";
 import Image from "next/image";
 
@@ -14,7 +14,7 @@ const Header = () => {
   const [filterCategoryArray, setFilterCategoryArray] = useState<string[]>([]);
   const [field, setField] = useState("");
   const [searchValue, SetSearchValue] = useState<string>("");
-  const [imgsArr] = useRecoilState(imgsAtom);
+  const imgsArr = useRecoilValue(imgsAtom);
   const [imgUrl, setImgUrl] = useState("");
   const [isScroll540, setIsScroll540] = useState(false);
   const [isDetailPage, setIsDetailPage] = useState(false);
