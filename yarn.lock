@@ -866,6 +866,11 @@ cosmiconfig@^7.0.0:
     path-type "^4.0.0"
     yaml "^1.10.0"
 
+countup.js@2.5.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/countup.js/-/countup.js-2.5.0.tgz#156d300044b6dd8239f6e8315addfc3f8143b5a3"
+  integrity sha512-/59H8Q6wzu6VfHeqGUgXoyh6kgboGr5mALmRKi8YA11DlcaXSnT1PZG6mTyBRLco4ZjExKlmfNHeMbQgZvis9Q==
+
 cross-spawn@^7.0.2:
   version "7.0.3"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-7.0.3.tgz#f73a85b9d5d41d045551c177e2882d4ac85728a6"
@@ -1664,7 +1669,7 @@ hasown@^2.0.0:
   dependencies:
     function-bind "^1.1.2"
 
-hoist-non-react-statics@^3.3.1:
+hoist-non-react-statics@^3.3.1, hoist-non-react-statics@^3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz#ece0acaf71d62c2969c2ec59feff42a4b1a85b45"
   integrity sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==

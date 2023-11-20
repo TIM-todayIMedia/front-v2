@@ -2,13 +2,38 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: [
-      "www.notion.so",
-      "images.unsplash.com",
-      "s3.us-west-2.amazonaws.com",
-      "prod-files-secure.s3.us-west-2.amazonaws.com",
-      "w.namu.la",
-      "i.namu.wiki",
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "www.notion.so",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "s3.us-west-2.amazonaws.com",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        pathname: "**",
+      },
+
+      {
+        protocol: "https",
+        hostname: "w.namu.la",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "i.namu.wiki",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "prod-files-secure.s3.us-west-2.amazonaws.com",
+        pathname: "**",
+      },
     ],
   },
   plugins: {
