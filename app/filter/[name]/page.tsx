@@ -4,6 +4,12 @@ import { Shead } from "@/components/common";
 import { listProps } from "@/types";
 import { Props } from "@/types/common";
 import { decodeParams } from "@/utils/decodeParams";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "TIM | Filter",
+  description: "영화/드라마 본것을 기록한 웹사이트",
+};
 
 export const FilterPage = async ({ params: { name } }: Props) => {
   const list: listProps[] = await getList(decodeParams(name));

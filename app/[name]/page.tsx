@@ -3,6 +3,12 @@ import { Shead } from "@/components/common";
 import HomeDetail from "@/components/HomeDetail";
 import { Props } from "@/types/common";
 import { decodeParams } from "@/utils/decodeParams";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "TIM | Detail",
+  description: "영화/드라마 본것을 기록한 웹사이트",
+};
 
 export const DetailPage = async ({ params: { name } }: Props) => {
   const detailData = await getPost(decodeParams(name));
