@@ -91,15 +91,17 @@ const Header = () => {
   return (
     <S.HeaderWapper style={{ display: isDetailPage ? "none" : "block" }}>
       <S.HeaderImg>
-        <Image
-          src={imgUrl[0]}
-          alt={"headerCoverImag"}
-          fill
-          priority
-          quality={60}
-          style={{ filter: "brightness(40%)" }}
-          onClick={() => router.push(`/${imgUrl[1]}`)}
-        />
+        {imgUrl[0] && (
+          <Image
+            src={imgUrl[0]}
+            alt={"headerCoverImag"}
+            fill
+            priority
+            quality={60}
+            style={{ filter: "brightness(40%)" }}
+            onClick={() => router.push(`/${imgUrl[1]}`)}
+          />
+        )}
       </S.HeaderImg>
       <S.HeaderTopWrapper
         style={{
