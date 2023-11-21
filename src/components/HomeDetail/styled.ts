@@ -77,13 +77,14 @@ export const MiddleBottom = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  align-items: flex-start;
   gap: 30px;
 `;
 
 export const TitleWrapper = styled.div`
   display: flex;
-  align-items: center;
-
+  align-items: flex-end;
+  gap: 10px;
   span {
     padding-top: 20px;
     font-size: 1.3rem;
@@ -96,15 +97,12 @@ export const Title = styled.div`
 `;
 
 export const LinkWrapper = styled.div`
-  position: fixed;
-  right: 30px;
-  bottom: 0px;
   width: 70px;
-  height: 50px;
+  height: 65px;
   display: flex;
   align-items: center;
-  gap: 15px;
-  padding: 5px 0;
+  gap: 10px;
+  padding: 10px 0;
 
   svg {
     cursor: pointer;
@@ -130,11 +128,10 @@ export const LinkWrapper = styled.div`
 
 export const CategoryBtns = styled.div`
   width: 300px;
-  height: 40px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 20px;
+  gap: 7px;
 `;
 
 export const Grade = styled.div`

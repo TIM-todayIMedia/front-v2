@@ -20,13 +20,25 @@ const HomeDetail = ({ data }: { data: listProps }) => {
         <Image
           src={data?.cover?.external?.url || data?.cover?.file?.url || ""}
           alt={"디테일 페이지"}
-          style={{ objectFit: "cover", filter: "brightness(50%)" }}
+          style={{ objectFit: "cover", filter: "brightness(80%)" }}
           fill
         />
       </S.RightWrapper>
       <S.LeftWrapper>
         <S.MiddleWrapper>
-          <S.Title>{data?.properties?.Name?.title[0]?.text?.content}</S.Title>
+          <S.TitleWrapper>
+            <S.Title>{data?.properties?.Name?.title[0]?.text?.content}</S.Title>
+            <S.LinkWrapper>
+              <SpotifyIcon
+                onClick={() => window.open(data.properties.Ost.url)}
+                className="spotiIcon"
+              />
+              <WatchPediaIcon
+                onClick={() => window.open(data.properties.WatchaPedia.url)}
+                className="wpIcon"
+              />
+            </S.LinkWrapper>
+          </S.TitleWrapper>
           <S.MiddleTop>
             <S.TitleWrapper>
               <span>
@@ -84,21 +96,11 @@ const HomeDetail = ({ data }: { data: listProps }) => {
               key={i.id}
               color={CategoryColorArr[i.color] ?? i.color}
               name={i.name}
-              fontSize={"20px"}
+              fontSize={"15px"}
             />
           ))}
         </S.CategoryBtns>
       </S.MiddleBottom>
-      <S.LinkWrapper>
-        <SpotifyIcon
-          onClick={() => window.open(data.properties.Ost.url)}
-          className="spotiIcon"
-        />
-        <WatchPediaIcon
-          onClick={() => window.open(data.properties.WatchaPedia.url)}
-          className="wpIcon"
-        />
-      </S.LinkWrapper>
       <S.DetailImagOverlay>
         <Image
           src={data?.cover?.external?.url || data?.cover?.file?.url || ""}
