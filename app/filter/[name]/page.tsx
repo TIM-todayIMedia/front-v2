@@ -1,6 +1,5 @@
 import CustomAxios from "@/utils/lib/CustomAxios";
 import Home from "@/components/Home";
-import { Shead } from "@/components/common";
 import { listProps } from "@/types";
 import { Props } from "@/types/common";
 import { decodeParams } from "@/utils/decodeParams";
@@ -13,12 +12,7 @@ export const metadata: Metadata = {
 
 export const FilterPage = async ({ params: { name } }: Props) => {
   const list: listProps[] = await getList(decodeParams(name));
-  return (
-    <>
-      <Shead seoTitle={"검색페이지"} />
-      <Home list={list} />
-    </>
-  );
+  return <Home list={list} />;
 };
 
 export const getList = async (names: string) => {

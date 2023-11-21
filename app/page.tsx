@@ -8,9 +8,5 @@ export default async function HomePage() {
     {}
   );
   const list: listProps[] = data.results;
-  return (
-    <>
-      <Home list={list} />
-    </>
-  );
+  return <Home list={list} />;
 }

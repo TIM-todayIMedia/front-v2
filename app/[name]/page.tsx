@@ -1,5 +1,4 @@
 import CustomAxios from "@/utils/lib/CustomAxios";
-import { Shead } from "@/components/common";
 import HomeDetail from "@/components/HomeDetail";
 import { Props } from "@/types/common";
 import { decodeParams } from "@/utils/decodeParams";
@@ -12,12 +11,7 @@ export const metadata: Metadata = {
 
 export const DetailPage = async ({ params: { name } }: Props) => {
   const detailData = await getPost(decodeParams(name));
-  return (
-    <>
-      <Shead seoTitle={"디테일페이지"} />
-      <HomeDetail data={detailData} />
-    </>
-  );
+  return <HomeDetail data={detailData} />;
 };
 
 export const getPost = async (name: string) => {

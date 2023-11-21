@@ -13,11 +13,7 @@ export const metadata: Metadata = {
 export const SearchPage = async ({ params: { name } }: Props) => {
   const list: listProps[] = await getList(decodeParams(name));
 
-  return (
-    <>
-      <Home list={list} />
-    </>
-  );
+  return <Home list={list} />;
 };
 
 export const getList = async (name: string) => {
