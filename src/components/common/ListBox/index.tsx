@@ -26,8 +26,8 @@ const ListBox = ({
           width={200}
           height={296}
           style={{
-            borderTopLeftRadius: "5px",
-            borderTopRightRadius: "5px",
+            borderTopLeftRadius: "7px",
+            borderTopRightRadius: "7px",
             objectFit: "cover",
           }}
         />

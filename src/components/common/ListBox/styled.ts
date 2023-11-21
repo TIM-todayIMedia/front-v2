@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
   cursor: pointer;
   transition: all 0.15s ease-in-out;
   margin: 25px 0;
-  border-radius: 5px;
+  border-radius: 7px;
 
   :hover {
     box-shadow: rgba(105, 105, 115, 0.56) 0px 22px 70px 4px;
