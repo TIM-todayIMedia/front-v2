@@ -7,6 +7,7 @@ import CategorySelect from "../CategorySelect";
 import { useRecoilValue } from "recoil";
 import { imgAtom } from "@/atom";
 import Image from "next/image";
+import WImg from "@/assets/png/W.png";
 
 const Header = () => {
   const router = useRouter();
@@ -111,7 +112,13 @@ const Header = () => {
         }}
       >
         <S.LeftWapper>
-          <p onClick={handleTitleClick}>TIM</p>
+          <Image
+            src={WImg}
+            alt={"logoImag"}
+            width={67}
+            quality={60}
+            onClick={handleTitleClick}
+          />
         </S.LeftWapper>
         <S.CenterWrapper>
           <S.InputWapper>

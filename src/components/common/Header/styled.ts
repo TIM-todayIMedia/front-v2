@@ -22,6 +22,9 @@ export const LeftWapper = styled.div`
     cursor: pointer;
     z-index: 1;
   }
+  img {
+    cursor: pointer;
+  }
 `;
 
 export const ProfileBox = styled.div`
