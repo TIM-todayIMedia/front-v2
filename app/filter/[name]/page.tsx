@@ -6,8 +6,8 @@ import { decodeParams } from "@/utils/decodeParams";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "TIM | Filter",
-  description: "영화/드라마 본것을 기록한 웹사이트",
+  title: "WTM | Filter",
+  description: "오늘 볼 영화/드라마를 추천해주는 사이트",
 };
 
 export const FilterPage = async ({ params: { name } }: Props) => {
