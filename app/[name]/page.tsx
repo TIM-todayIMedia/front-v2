@@ -16,17 +16,14 @@ export const DetailPage = async ({ params: { name } }: Props) => {
 
 export const getPost = async (name: string) => {
   try {
-    const { data } = await CustomAxios.post(
-      `/${process.env.NEXT_PUBLIC_NOTION_DATABASE_ID}/query`,
-      {
-        filter: {
-          property: "Name",
-          title: {
-            equals: name,
-          },
+    const { data } = await CustomAxios.post("", {
+      filter: {
+        property: "Name",
+        title: {
+          equals: name,
         },
-      }
-    );
+      },
+    });
     const detailData = data.results[0];
     return detailData;
   } catch (e) {

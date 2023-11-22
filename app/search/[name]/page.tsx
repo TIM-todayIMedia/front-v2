@@ -18,17 +18,14 @@ export const SearchPage = async ({ params: { name } }: Props) => {
 
 export const getList = async (name: string) => {
   try {
-    const { data } = await CustomAxios.post(
-      `/${process.env.NEXT_PUBLIC_NOTION_DATABASE_ID}/query`,
-      {
-        filter: {
-          property: "Name",
-          title: {
-            contains: name,
-          },
+    const { data } = await CustomAxios.post("", {
+      filter: {
+        property: "Name",
+        title: {
+          contains: name,
         },
-      }
-    );
+      },
+    });
     const list = data.results;
 
     return list;

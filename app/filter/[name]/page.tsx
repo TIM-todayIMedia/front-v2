@@ -37,14 +37,11 @@ export const getList = async (names: string) => {
   });
 
   try {
-    const { data } = await CustomAxios.post(
-      `/${process.env.NEXT_PUBLIC_NOTION_DATABASE_ID}/query`,
-      {
-        filter: {
-          and: objectArray,
-        },
-      }
-    );
+    const { data } = await CustomAxios.post("", {
+      filter: {
+        and: objectArray,
+      },
+    });
     const list = data.results;
 
     return list;

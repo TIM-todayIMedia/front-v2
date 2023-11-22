@@ -3,10 +3,7 @@ import { listProps } from "@/types";
 import CustomAxios from "@/utils/lib/CustomAxios";
 
 export default async function HomePage() {
-  const { data } = await CustomAxios.post(
-    `/${process.env.NEXT_PUBLIC_NOTION_DATABASE_ID}/query`,
-    {}
-  );
+  const { data } = await CustomAxios.post("");
   const list: listProps[] = data.results;
   return <Home list={list} />;
 }
