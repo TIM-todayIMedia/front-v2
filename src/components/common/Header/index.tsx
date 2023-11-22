@@ -95,10 +95,10 @@ const Header = () => {
         {imgUrl[0] && (
           <Image
             src={imgUrl[0]}
+            priority
             alt={"headerCoverImag"}
             fill
-            priority
-            quality={60}
+            quality={30}
             style={{ filter: "brightness(40%)" }}
             onClick={() => router.push(`/${imgUrl[1]}`)}
           />

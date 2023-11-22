@@ -4,11 +4,9 @@ export const Wrapper = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;
-  gap: 5%;
   background-color: rgba(255, 255, 255, 0.05);
   color: #e7e7e7;
   overflow-y: hidden;
-  padding: 0 0% 0 0;
 `;
 
 export const RightWrapper = styled.div`
@@ -31,7 +29,7 @@ export const LeftWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 8%;
-  padding: 0 10% 10% 0;
+  padding: 0 10% 10% 5%;
   overflow-y: scroll;
 `;
 
