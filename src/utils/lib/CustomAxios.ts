@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const CustomAxios = axios.create({
-  baseURL: "https://api.notion.com/v1/databases",
+  baseURL: `https://api.notion.com/v1/databases/${process.env.NEXT_PUBLIC_NOTION_DATABASE_ID}/query`,
   headers: {
     "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,OPTIONS,PATCH",
     Accept: "application/json",
