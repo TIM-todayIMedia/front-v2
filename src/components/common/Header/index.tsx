@@ -1,7 +1,7 @@
 import * as S from "./styled";
 import { useEffect, useState } from "react";
 import { CategoryArray } from "@/utils/CategoryArray";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, redirect } from "next/navigation";
 import { SearchIcon } from "@/assets/svg";
 import CategorySelect from "../CategorySelect";
 import { useRecoilValue } from "recoil";
@@ -10,7 +10,6 @@ import Image from "next/image";
 import WImg from "@/assets/png/W.png";
 
 const Header = () => {
-  const router = useRouter();
   const [filterToggleBtn, setFilterToggleBtn] = useState(false);
   const [filterCategoryArray, setFilterCategoryArray] = useState<string[]>([]);
   const [field, setField] = useState("");
@@ -33,9 +32,9 @@ const Header = () => {
   const handleClick = () => {
     if (!searchValue) {
       setFilterCategoryArray([]);
-      return router.push("/");
+      return redirect("/");
     }
-    router.push(`/search/${searchValue}`);
+    redirect(`/search/${searchValue}`);
     setFilterToggleBtn(false);
   };
 
@@ -57,20 +56,20 @@ const Header = () => {
     ) {
       setFilterCategoryArray([]);
       if (field !== "") {
-        return router.push(`/filter/${field}`);
+        return redirect(`/filter/${field}`);
       } else {
-        return router.push("/");
+        return redirect("/");
       }
     }
     const filterQuery = arr ? arr.join(" ") : filterCategoryArray.join(" ");
 
-    router.push(`/filter/${filterQuery} ${field}`);
+    redirect(`/filter/${filterQuery} ${field}`);
   };
 
   const handleTitleClick = () => {
     setField("");
     setFilterCategoryArray([]);
-    return router.push("/");
+    return redirect("/");
   };
 
   useEffect(() => {
@@ -100,7 +99,7 @@ const Header = () => {
             fill
             quality={30}
             style={{ filter: "brightness(40%)" }}
-            onClick={() => router.push(`/${imgUrl[1]}`)}
+            onClick={() => redirect(`/${imgUrl[1]}`)}
             loading={"eager"}
           />
         )}
