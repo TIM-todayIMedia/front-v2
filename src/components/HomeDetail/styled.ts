@@ -85,26 +85,26 @@ export const TitleWrapper = styled.div`
   gap: 10px;
   span {
     padding-top: 20px;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
 `;
 
 export const Title = styled.div`
-  font-size: 3.5rem;
+  font-size: 3rem;
   font-weight: bold;
 `;
 
 export const LinkWrapper = styled.div`
   width: 70px;
-  height: 65px;
+  height: 50px;
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 0;
+  padding: 20px 0;
 
   svg {
     cursor: pointer;
-    width: 30px;
+    width: 28px;
   }
   .spotiIcon {
     :hover {
@@ -172,7 +172,7 @@ export const DecsLong = styled.div`
   gap: 10px;
 
   div {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
   }
 
   pre {
@@ -181,7 +181,7 @@ export const DecsLong = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     text-align: center;
     white-space: pre-wrap;
     word-break: break-all;

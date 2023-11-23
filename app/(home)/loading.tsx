@@ -1,6 +1,6 @@
 "use client";
 import * as S from "@/components/common/Styles/home";
-import SkeletonListBox from "../ui/Skeletons/SkeletonItem";
+import SkeletonListBox from "../ui/Skeletons/SkeletonListBox";
 
 export default function HomeLoadingPage() {
   const MockData: readonly number[] = Array.from(Array(50));
