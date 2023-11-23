@@ -7,8 +7,12 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "WTM",
+  title: {
+    template: "WTM | %s",
+    default: "WTM",
+  },
   description: "오늘 볼 영화/드라마를 추천해주는 사이트",
+  metadataBase: new URL("https://tim-v2.netlify.app/"),
 };
 
 export default function RootLayout({

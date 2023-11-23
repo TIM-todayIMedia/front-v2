@@ -28,7 +28,7 @@ export const LeftWrapper = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  margin-top: 8%;
+  margin-top: 7%;
   padding: 0 10% 10% 5%;
   overflow-y: scroll;
 `;

@@ -6,8 +6,7 @@ import { decodeParams } from "@/utils/decodeParams";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "WTM | Search",
-  description: "오늘 볼 영화/드라마를 추천해주는 사이트",
+  title: "Search",
 };
 
 export const SearchPage = async ({ params: { name } }: Props) => {
