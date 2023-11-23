@@ -42,6 +42,7 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  format: ["image/png", "images/webp", "image/jpeg"],
 };
 
 module.exports = nextConfig;
