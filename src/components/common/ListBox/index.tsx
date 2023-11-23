@@ -3,7 +3,7 @@ import { CoverProps, MultiSelectProps } from "@/types";
 import * as S from "./styled";
 import Image from "next/image";
 import { CategoryBox } from "..";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { CategoryColorArr } from "@/utils/CategoryArray";
 
 const ListBox = ({
@@ -15,8 +15,10 @@ const ListBox = ({
   title: string;
   category: MultiSelectProps[];
 }) => {
+  const router = useRouter();
+
   return (
-    <S.Wrapper onClick={() => redirect(`/${title}`)}>
+    <S.Wrapper onClick={() => router.push(`/${title}`)}>
       {cover ? (
         <Image
           src={cover?.external?.url || cover?.file?.url || ""}
