@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   width: 200px;
-  height: 380px;
+  height: 390px;
   display: flex;
   flex-direction: column;
   box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
     rgba(0, 0, 0, 0.07) 0px 16px 16px;
   cursor: pointer;
   transition: all 0.15s ease-in-out;
-  margin: 25px 0;
+  margin: 15px 0;
   border-radius: 7px;
 
   :hover {
@@ -26,7 +26,7 @@ export const WhiteBox = styled.div`
 
 export const Decs = styled.div`
   width: 100%;
-  height: 100px;
+  height: 120px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -50,5 +50,5 @@ export const Categorys = styled.div`
   width: 100%;
   display: flex;
   justify-content: flex-start;
-  gap: 3%;
+  flex-wrap: wrap;
 `;

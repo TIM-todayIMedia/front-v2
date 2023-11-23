@@ -129,7 +129,6 @@ export const CategoryBtns = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 7px;
 `;
 
 export const Grade = styled.div`

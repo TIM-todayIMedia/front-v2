@@ -86,7 +86,7 @@ const HomeDetail = ({ data }: { data: listProps }) => {
           {data?.properties.Grade.multi_select.map((i) => (
             <span key={i.id}>
               <span className="myScore">{i.name}</span>
-              {`/5`}{" "}
+              {`/5`}
             </span>
           ))}
         </S.Grade>
