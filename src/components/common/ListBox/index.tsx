@@ -19,21 +19,18 @@ const ListBox = ({
 
   return (
     <S.Wrapper onClick={() => router.push(`/${title}`)}>
-      {cover ? (
-        <Image
-          src={cover?.external?.url || cover?.file?.url || ""}
-          alt="포스터 이미지"
-          width={200}
-          height={296}
-          style={{
-            borderTopLeftRadius: "7px",
-            borderTopRightRadius: "7px",
-            objectFit: "cover",
-          }}
-        />
-      ) : (
-        <S.WhiteBox />
-      )}
+      <Image
+        src={cover?.external?.url || cover?.file?.url || ""}
+        alt="포스터 이미지"
+        priority
+        width={200}
+        height={296}
+        style={{
+          borderTopLeftRadius: "7px",
+          borderTopRightRadius: "7px",
+          objectFit: "cover",
+        }}
+      />
       <S.Decs>
         <S.Title>{title}</S.Title>
         <S.Categorys>

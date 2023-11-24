@@ -95,7 +95,7 @@ const Header = () => {
         {imgUrl[0] && (
           <Image
             src={imgUrl[0]}
-            priority
+            priority={true}
             alt={"headerCoverImag"}
             fill
             quality={30}

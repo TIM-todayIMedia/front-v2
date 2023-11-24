@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
   overflow-y: hidden;
 `;
 
-export const RightWrapper = styled.div`
+export const LeftWrapper = styled.div`
   position: relative;
   width: 40%;
   height: 100vh;
@@ -23,7 +23,7 @@ export const DetailImagOverlay = styled.div`
   z-index: -2;
 `;
 
-export const LeftWrapper = styled.div`
+export const RightWrapper = styled.div`
   width: 60%;
   height: 100%;
   display: flex;

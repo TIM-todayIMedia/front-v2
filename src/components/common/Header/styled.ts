@@ -170,7 +170,7 @@ export const ModalOverlay = styled.div`
 export const HeaderImg = styled.div`
   position: absolute;
   width: 100%;
-  height: 540px;
+  height: 100%;
 
   img {
     object-fit: cover;

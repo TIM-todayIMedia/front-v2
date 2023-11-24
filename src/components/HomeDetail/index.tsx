@@ -16,15 +16,16 @@ const HomeDetail = ({ data }: { data: listProps }) => {
 
   return (
     <S.Wrapper>
-      <S.RightWrapper>
+      <S.LeftWrapper>
         <Image
+          priority={true}
           src={data?.cover?.external?.url || data?.cover?.file?.url || ""}
           alt={"디테일 페이지"}
-          style={{ objectFit: "cover", filter: "brightness(80%)" }}
+          style={{ filter: "brightness(80%)" }}
           fill
         />
-      </S.RightWrapper>
-      <S.LeftWrapper>
+      </S.LeftWrapper>
+      <S.RightWrapper>
         <S.MiddleWrapper>
           <S.TitleWrapper>
             <S.Title>{data?.properties?.Name?.title[0]?.text?.content}</S.Title>
@@ -79,7 +80,7 @@ const HomeDetail = ({ data }: { data: listProps }) => {
             </pre>
           </S.DecsLong>
         </S.DecsWrapper>
-      </S.LeftWrapper>
+      </S.RightWrapper>
 
       <S.MiddleBottom>
         <S.Grade>
