@@ -21,6 +21,11 @@ export const DetailImagOverlay = styled.div`
   width: 100vw;
   height: 100vh;
   z-index: -2;
+
+  .detailImg {
+    objectfit: cover;
+    filter: brightness(15%) blur(7px);
+  }
 `;
 
 export const RightWrapper = styled.div`

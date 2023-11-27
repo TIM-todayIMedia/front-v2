@@ -16,6 +16,11 @@ export const Wrapper = styled.div`
   :hover {
     box-shadow: rgba(105, 105, 115, 0.56) 0px 22px 70px 4px;
   }
+
+  .listBoxImag {
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+  }
 `;
 
 export const WhiteBox = styled.div`

@@ -23,13 +23,10 @@ const ListBox = ({
         src={cover?.external?.url || cover?.file?.url || ""}
         alt="포스터 이미지"
         priority
+        layout={"fixed"}
         width={200}
         height={296}
-        style={{
-          borderTopLeftRadius: "7px",
-          borderTopRightRadius: "7px",
-          objectFit: "cover",
-        }}
+        className={"listBoxImag"}
       />
       <S.Decs>
         <S.Title>{title}</S.Title>

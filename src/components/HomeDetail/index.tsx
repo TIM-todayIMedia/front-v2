@@ -106,7 +106,7 @@ const HomeDetail = ({ data }: { data: listProps }) => {
         <Image
           src={data?.cover?.external?.url || data?.cover?.file?.url || ""}
           alt={"디테일 페이지"}
-          style={{ objectFit: "cover", filter: "brightness(15%) blur(7px)" }}
+          className={"detailImg"}
           layout={"fill"}
         />
       </S.DetailImagOverlay>
