@@ -4,6 +4,8 @@ import { listProps } from "@/types";
 import { Props } from "@/types/common";
 import { decodeParams } from "@/utils/decodeParams";
 import { Metadata } from "next";
+import HomeLoadingPage from "../../search/[name]/loading";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Filter",
@@ -11,7 +13,11 @@ export const metadata: Metadata = {
 
 export const FilterPage = async ({ params: { name } }: Props) => {
   const list: listProps[] = await getList(decodeParams(name));
-  return <Home list={list} />;
+  return (
+    <Suspense fallback={<HomeLoadingPage />}>
+      <Home list={list} />
+    </Suspense>
+  );
 };
 
 export const getList = async (names: string) => {

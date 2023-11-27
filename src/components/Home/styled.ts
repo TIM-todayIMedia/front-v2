@@ -1,11 +1,14 @@
 import styled from "@emotion/styled";
 
-export const ListWrapper = styled.div`
+export const EmptyList = styled.div`
   width: 100%;
-  padding: 0 3.5%;
+  height: calc(100vh - 540px);
+  padding: 50px 0;
+  gap: 30px;
   display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: flex-start;
-  gap: 2%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4rem;
+  color: white;
 `;
