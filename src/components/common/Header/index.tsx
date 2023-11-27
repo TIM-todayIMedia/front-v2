@@ -101,8 +101,6 @@ const Header = () => {
             quality={30}
             style={{ filter: "brightness(40%)" }}
             onClick={() => router.push(`/${imgUrl[1]}`)}
-            loading="lazy"
-            decoding="async"
           />
         )}
       </S.HeaderImg>
