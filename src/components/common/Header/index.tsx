@@ -6,7 +6,7 @@ import { SearchIcon } from "@/assets/svg";
 import CategorySelect from "../CategorySelect";
 import { useRecoilValue } from "recoil";
 import { imgAtom } from "@/atom";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import WImg from "@/assets/png/W.png";
 
 const Header = () => {
@@ -97,7 +97,7 @@ const Header = () => {
             src={imgUrl[0]}
             priority={true}
             alt={"headerCoverImag"}
-            fill
+            layout={"fill"}
             quality={30}
             style={{ filter: "brightness(40%)" }}
             onClick={() => router.push(`/${imgUrl[1]}`)}
@@ -116,7 +116,9 @@ const Header = () => {
           <Image
             src={WImg}
             alt={"logoImag"}
+            layout={"fixed"}
             width={67}
+            height={40}
             quality={60}
             onClick={handleTitleClick}
           />

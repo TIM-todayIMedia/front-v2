@@ -1,7 +1,7 @@
 "use client";
 import { CoverProps, MultiSelectProps } from "@/types";
 import * as S from "./styled";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { CategoryBox } from "..";
 import { useRouter } from "next/navigation";
 import { CategoryColorArr } from "@/utils/CategoryArray";

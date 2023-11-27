@@ -6,6 +6,7 @@ export const HeaderWapper = styled.div`
   transition: all 0.3s ease-in;
   background-color: rgba(0, 0, 0, 0.9);
   position: relative;
+  z-index: 10;
 `;
 
 export const LeftWapper = styled.div`

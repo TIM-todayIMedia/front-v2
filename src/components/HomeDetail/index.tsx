@@ -1,7 +1,7 @@
 "use client";
 import { listProps } from "@/types";
 import * as S from "./styled";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { SpotifyIcon, WatchPediaIcon } from "@/assets/svg";
 import { CategoryBox } from "../common";
 import { CategoryColorArr } from "@/utils/CategoryArray";
@@ -22,7 +22,7 @@ const HomeDetail = ({ data }: { data: listProps }) => {
           src={data?.cover?.external?.url || data?.cover?.file?.url || ""}
           alt={"디테일 페이지"}
           style={{ filter: "brightness(80%)" }}
-          fill
+          layout={"fill"}
         />
       </S.LeftWrapper>
       <S.RightWrapper>
@@ -107,7 +107,7 @@ const HomeDetail = ({ data }: { data: listProps }) => {
           src={data?.cover?.external?.url || data?.cover?.file?.url || ""}
           alt={"디테일 페이지"}
           style={{ objectFit: "cover", filter: "brightness(15%) blur(7px)" }}
-          fill
+          layout={"fill"}
         />
       </S.DetailImagOverlay>
     </S.Wrapper>
