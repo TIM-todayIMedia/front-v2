@@ -4,7 +4,7 @@ import Home from "@/components/Home";
 import { Props } from "@/types/common";
 import { decodeParams } from "@/utils/decodeParams";
 import { Metadata } from "next";
-import HomeLoadingPage from "./loading";
+import HomeLoadingPage from "../../filter/[name]/loading";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {

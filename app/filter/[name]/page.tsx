@@ -4,7 +4,7 @@ import { listProps } from "@/types";
 import { Props } from "@/types/common";
 import { decodeParams } from "@/utils/decodeParams";
 import { Metadata } from "next";
-import HomeLoadingPage from "../../search/[name]/loading";
+import HomeLoadingPage from "./loading";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {
