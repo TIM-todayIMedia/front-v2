@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     siteName: "WTM",
     images: [
       {
-        url: "@/assets/png/W.png",
+        url: "/png/w.png'",
       },
     ],
     locale: "ko",

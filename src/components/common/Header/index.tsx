@@ -7,7 +7,6 @@ import CategorySelect from "../CategorySelect";
 import { useRecoilValue } from "recoil";
 import { imgAtom } from "@/atom";
 import Image from "next/legacy/image";
-import WImg from "@/assets/png/W.png";
 
 const Header = () => {
   const router = useRouter();
@@ -113,7 +112,7 @@ const Header = () => {
       >
         <S.LeftWapper>
           <Image
-            src={WImg}
+            src={"/png/w.png"}
             alt={"logoImag"}
             layout={"fixed"}
             width={67}
