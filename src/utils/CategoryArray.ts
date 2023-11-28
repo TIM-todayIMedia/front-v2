@@ -20,4 +20,6 @@ export const CategoryColorArr: CategoryColorType = {
   gray: "#818198",
   orange: "#EE786D",
   blue: "#5966E9",
+  yellow: "#eff4af",
+  green: "#7eb293",
 };
