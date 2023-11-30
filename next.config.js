@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
   images: {
     remotePatterns: [
       {
@@ -35,13 +34,14 @@ const nextConfig = {
       },
     ],
   },
+  format: ["image/png", "images/webp", "image/jpeg"],
+  reactStrictMode: true,
   plugins: {
     autoprefixer: {},
   },
   typescript: {
     ignoreBuildErrors: true,
   },
-  format: ["image/png", "images/webp", "image/jpeg"],
 };
 
 module.exports = nextConfig;

@@ -13,13 +13,13 @@ const HomeDetail = ({ data }: { data: listProps }) => {
       /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/
     ) ?? "";
   const videoId = match[7];
+  const ImageUrl = data?.cover?.external?.url ?? data?.cover?.file?.url ?? "";
 
   return (
     <S.Wrapper>
       <S.LeftWrapper>
         <Image
-          priority={true}
-          src={data?.cover?.external?.url || data?.cover?.file?.url || ""}
+          src={ImageUrl}
           alt={"디테일 페이지"}
           style={{ filter: "brightness(80%)" }}
           layout={"fill"}
@@ -104,7 +104,7 @@ const HomeDetail = ({ data }: { data: listProps }) => {
       </S.MiddleBottom>
       <S.DetailImagOverlay>
         <Image
-          src={data?.cover?.external?.url || data?.cover?.file?.url || ""}
+          src={ImageUrl}
           alt={"디테일 페이지"}
           className={"detailImg"}
           layout={"fill"}

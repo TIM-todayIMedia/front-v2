@@ -98,6 +98,7 @@ const Header = () => {
             alt={"headerCoverImag"}
             layout={"fill"}
             quality={30}
+            unoptimized={true}
             style={{ filter: "brightness(40%)" }}
             onClick={() => router.push(`/${imgUrl[1]}`)}
           />

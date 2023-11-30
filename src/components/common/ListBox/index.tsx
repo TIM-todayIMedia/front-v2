@@ -22,7 +22,7 @@ const ListBox = ({
       <Image
         src={cover?.external?.url || cover?.file?.url || ""}
         alt="포스터 이미지"
-        priority
+        priority={true}
         layout={"fixed"}
         width={200}
         height={296}
