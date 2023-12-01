@@ -24,14 +24,24 @@ export async function generateStaticParams() {
 
 export const getPost = async (name: string) => {
   try {
-    const { data } = await CustomAxios.post("", {
-      filter: {
-        property: "Name",
-        title: {
-          equals: name,
+    const { data } = await CustomAxios.post(
+      "",
+      {
+        filter: {
+          property: "Name",
+          title: {
+            equals: name,
+          },
         },
       },
-    });
+      {
+        headers: {
+          "Cache-Control": "no-store",
+          Pragma: "no-store",
+          Expires: "0",
+        },
+      }
+    );
     const detailData = data.results[0];
     return detailData;
   } catch (e) {
