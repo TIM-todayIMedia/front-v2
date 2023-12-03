@@ -93,14 +93,14 @@ const Header = () => {
       <S.HeaderImg>
         {imgUrl[0] && (
           <Image
-            src={imgUrl[0]}
+            src={imgUrl[0] ?? "/img/basicPoster.webp"}
             priority={true}
             alt={"headerCoverImag"}
             layout={"fill"}
             quality={30}
             unoptimized={true}
             style={{ filter: "brightness(40%)" }}
-            onClick={() => router.push(`/${imgUrl[1]}`)}
+            onClick={() => router.push(`/${imgUrl[1] ?? `나의 해방일지`}`)}
           />
         )}
       </S.HeaderImg>
@@ -113,7 +113,7 @@ const Header = () => {
       >
         <S.LeftWapper>
           <Image
-            src={"/png/w.png"}
+            src={"/img/w.png"}
             alt={"logoImag"}
             layout={"fixed"}
             width={67}
