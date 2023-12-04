@@ -91,16 +91,27 @@ const Header = () => {
   return (
     <S.HeaderWapper style={{ display: isDetailPage ? "none" : "block" }}>
       <S.HeaderImg>
-        {imgUrl[0] && (
+        {imgUrl[0] ? (
           <Image
-            src={imgUrl[0] ?? "/img/basicPoster.webp"}
+            src={imgUrl[0]}
             priority={true}
             alt={"headerCoverImag"}
             layout={"fill"}
             quality={30}
             unoptimized={true}
             style={{ filter: "brightness(40%)" }}
-            onClick={() => router.push(`/${imgUrl[1] ?? `나의 해방일지`}`)}
+            onClick={() => router.push(`/${imgUrl[1]}`)}
+          />
+        ) : (
+          <Image
+            src={imgUrl[0] ?? "/img/basicPoster.webp"}
+            priority={true}
+            alt={"basicPosterHeaderCoverImag"}
+            layout={"fill"}
+            quality={30}
+            unoptimized={true}
+            style={{ filter: "brightness(40%)" }}
+            onClick={() => router.push(`/나의 해방일지`)}
           />
         )}
       </S.HeaderImg>

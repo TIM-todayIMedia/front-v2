@@ -19,9 +19,6 @@ const Home = ({ list }: { list?: listProps[] }) => {
         list[rn]?.cover?.external?.url ?? list[rn]?.cover?.file?.url ?? "",
         list[rn]?.properties.Name.title[0].text.content,
       ]);
-      setTimeout(() => {
-        setImgUrl([]);
-      }, 3600000);
     }
   }, [imgUrl, list, rn, setImgUrl]);
 
