@@ -2,7 +2,7 @@ import * as S from "./styled";
 import { useEffect, useState } from "react";
 import { CategoryArray } from "@/utils/CategoryArray";
 import { usePathname, useRouter } from "next/navigation";
-import { SearchIcon } from "@/assets/svg";
+import { SearchIcon, TriangleIcon } from "@/assets/svg";
 import CategorySelect from "../CategorySelect";
 import { useRecoilValue } from "recoil";
 import { imgAtom } from "@/atom";
@@ -153,28 +153,6 @@ const Header = () => {
         <S.RightWrapper>
           <S.TagBtns>
             <input
-              type="radio"
-              value={field}
-              id="영화"
-              name="분야"
-              onClick={() => {
-                handleSubmitBtnClick("영화");
-                setField("영화");
-              }}
-            />
-            <label htmlFor="영화">movie</label>
-            <input
-              type="radio"
-              value={field}
-              id="드라마"
-              name="분야"
-              onClick={() => {
-                handleSubmitBtnClick("드라마");
-                setField("드라마");
-              }}
-            />
-            <label htmlFor="드라마">drama</label>
-            <input
               defaultChecked
               type="radio"
               value={field}
@@ -185,10 +163,37 @@ const Header = () => {
                 setField("");
               }}
             />
-            <label htmlFor="전체">all</label>
+            <label htmlFor="전체">전체</label>
+            <input
+              type="radio"
+              value={field}
+              id="영화"
+              name="분야"
+              onClick={() => {
+                handleSubmitBtnClick("영화");
+                setField("영화");
+              }}
+            />
+            <label htmlFor="영화">영화</label>
+            <input
+              type="radio"
+              value={field}
+              id="드라마"
+              name="분야"
+              onClick={() => {
+                handleSubmitBtnClick("드라마");
+                setField("드라마");
+              }}
+            />
+            <label htmlFor="드라마">드라마</label>
           </S.TagBtns>
           <S.FilterBtn onMouseOver={() => setFilterToggleBtn(true)}>
             카테고리
+            <TriangleIcon
+              style={{
+                transform: `rotate(${filterToggleBtn ? `270deg` : `90deg`})`,
+              }}
+            />
           </S.FilterBtn>
 
           {filterToggleBtn && (

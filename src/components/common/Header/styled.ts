@@ -94,15 +94,20 @@ export const FilterBtn = styled.div`
   width: 150px;
   height: 4.5vh;
   display: flex;
-  border: 1px solid #9288f8;
-  display: flex;
   align-items: center;
+  justify-content: space-between;
+  border: 1px solid #9288f8;
   border-radius: 10px;
   color: #9288f8;
-  padding-left: 15px;
+  padding: 0 15px;
   cursor: pointer;
   font-weight: bold;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  svg {
+    transition: all ease 0.4s;
+    width: 20px;
+  }
 `;
 
 export const FilterBox = styled.div`
@@ -140,7 +145,10 @@ export const TagBtns = styled.div`
     color: #9288f8;
     cursor: pointer;
     font-weight: bold;
-    transition: all 0.1s ease;
+    transition: all 0.1s ease-in-out;
+    border-bottom: 0px solid #9288f8;
+    border-bottom-left-radius: 2.5px;
+    border-bottom-right-radius: 2.5px;
   }
 
   input[type="radio"]:checked + label {
