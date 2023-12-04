@@ -16,9 +16,12 @@ const Home = ({ list }: { list?: listProps[] }) => {
   useEffect(() => {
     if (imgUrl.length === 0 && list) {
       setImgUrl([
-        list[rn]?.cover?.external?.url || list[rn]?.cover?.file?.url || "",
+        list[rn]?.cover?.external?.url ?? list[rn]?.cover?.file?.url ?? "",
         list[rn]?.properties.Name.title[0].text.content,
       ]);
+      setTimeout(() => {
+        setImgUrl([]);
+      }, 3600000);
     }
   }, [imgUrl, list, rn, setImgUrl]);
 
