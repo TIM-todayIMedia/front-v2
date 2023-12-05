@@ -5,9 +5,6 @@ export const Wrapper = styled.div`
   height: 390px;
   display: flex;
   flex-direction: column;
-  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
-    rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px,
-    rgba(0, 0, 0, 0.07) 0px 16px 16px;
   cursor: pointer;
   transition: all 0.15s ease-in-out;
   margin: 15px 0;
@@ -39,7 +36,7 @@ export const Decs = styled.div`
   padding: 0 4%;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.045);
+  background-color: rgba(255, 255, 255, 0.055);
 `;
 
 export const Title = styled.div`

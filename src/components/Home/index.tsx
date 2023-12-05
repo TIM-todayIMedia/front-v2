@@ -9,18 +9,18 @@ import * as S from "./styled";
 import Error404Icon from "@/assets/svg/Error404Icon";
 
 const Home = ({ list }: { list?: listProps[] }) => {
-  const [imgUrl, setImgUrl] = useRecoilState(imgAtom);
+  const [, setImgUrl] = useRecoilState(imgAtom);
   const [isSSR, setIsSSR] = useState(true);
   const rn = [Math.floor(Math.random() * (list?.length ?? 1 - 1))][0];
 
   useEffect(() => {
-    if (imgUrl.length === 0 && list) {
+    if (list) {
       setImgUrl([
         list[rn]?.cover?.external?.url ?? list[rn]?.cover?.file?.url ?? "",
         list[rn]?.properties.Name.title[0].text.content,
       ]);
     }
-  }, [imgUrl, list, rn, setImgUrl]);
+  }, [list]);
 
   useEffect(() => {
     setIsSSR(false);
