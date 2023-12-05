@@ -11,6 +11,7 @@ export const CategoryArray = [
   "미스터리",
   "느와르",
   "서바이벌",
+  "SF",
 ];
 
 export const CategoryColorArr: CategoryColorType = {
