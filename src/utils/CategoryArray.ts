@@ -2,7 +2,7 @@ import { CategoryColorType } from "@/types/common";
 
 export const CategoryArray = [
   "코미디",
-  "로멘스",
+  "로맨스",
   "휴먼",
   "액션",
   "범죄",

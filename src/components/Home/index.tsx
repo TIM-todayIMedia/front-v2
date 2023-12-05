@@ -1,6 +1,6 @@
 "use client";
 import { imgAtom } from "@/atom";
-import { CoverProps, listProps } from "@/types";
+import { listProps } from "@/types";
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { ListBox } from "../common";
@@ -21,10 +21,8 @@ const Home = ({
   const [isSSR, setIsSSR] = useState(true);
 
   useEffect(() => {
-    if (list) {
-      setImgUrl([coverImgUrl, coverImgTitle]);
-    }
-  }, []);
+    setImgUrl([coverImgUrl, coverImgTitle]);
+  }, [list]);
 
   useEffect(() => {
     setIsSSR(false);
