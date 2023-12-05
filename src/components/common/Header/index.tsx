@@ -104,7 +104,7 @@ const Header = () => {
           />
         ) : (
           <Image
-            src={imgUrl[0] ?? "/img/basicPoster.webp"}
+            src={"/img/basicPoster.webp"}
             priority={true}
             alt={"basicPosterHeaderCoverImag"}
             layout={"fill"}
