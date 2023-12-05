@@ -6,6 +6,7 @@ import { decodeParams } from "@/utils/decodeParams";
 import { Metadata } from "next";
 import HomeLoadingPage from "../../filter/[name]/loading";
 import { Suspense } from "react";
+import { legnthRn } from "@/utils/lengthRn";
 
 export const metadata: Metadata = {
   title: "Search",
@@ -13,10 +14,18 @@ export const metadata: Metadata = {
 
 export const SearchPage = async ({ params: { name } }: Props) => {
   const list: listProps[] = await getList(decodeParams(name));
+  const rn = legnthRn(list);
 
   return (
     <Suspense fallback={<HomeLoadingPage />}>
-      <Home list={list} />;
+      <Home
+        list={list}
+        coverImgUrl={
+          list[rn]?.cover?.external?.url ?? list[rn]?.cover?.file?.url ?? ""
+        }
+        coverImgTitle={list[rn]?.properties.Name.title[0].text.content}
+      />
+      ;
     </Suspense>
   );
 };
