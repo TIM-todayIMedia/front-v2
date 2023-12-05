@@ -1,6 +1,6 @@
 "use client";
 import { imgAtom } from "@/atom";
-import { listProps } from "@/types";
+import { CoverProps, listProps } from "@/types";
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { ListBox } from "../common";
@@ -8,19 +8,23 @@ import * as SC from "@/components/common/Styles/home";
 import * as S from "./styled";
 import Error404Icon from "@/assets/svg/Error404Icon";
 
-const Home = ({ list }: { list?: listProps[] }) => {
+const Home = ({
+  list,
+  coverImgUrl,
+  coverImgTitle,
+}: {
+  list?: listProps[];
+  coverImgUrl: string;
+  coverImgTitle: string;
+}) => {
   const [, setImgUrl] = useRecoilState(imgAtom);
   const [isSSR, setIsSSR] = useState(true);
-  const rn = [Math.floor(Math.random() * (list?.length ?? 1 - 1))][0];
 
   useEffect(() => {
     if (list) {
-      setImgUrl([
-        list[rn]?.cover?.external?.url ?? list[rn]?.cover?.file?.url ?? "",
-        list[rn]?.properties.Name.title[0].text.content,
-      ]);
+      setImgUrl([coverImgUrl, coverImgTitle]);
     }
-  }, [list]);
+  }, []);
 
   useEffect(() => {
     setIsSSR(false);
