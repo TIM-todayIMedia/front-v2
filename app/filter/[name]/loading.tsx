@@ -1,4 +1,3 @@
-"use client";
 import HomeLoadingUi from "../../ui/loading/home";
 
 export default function HomeLoadingPage() {
