@@ -4,8 +4,6 @@ import { listProps } from "@/types";
 import { Props } from "@/types/common";
 import { decodeParams } from "@/utils/decodeParams";
 import { Metadata } from "next";
-import HomeLoadingPage from "./loading";
-import { Suspense } from "react";
 import { legnthRn } from "@/utils/lengthRn";
 
 export const metadata: Metadata = {
@@ -17,15 +15,13 @@ export const FilterPage = async ({ params: { name } }: Props) => {
   const rn = legnthRn(list);
 
   return (
-    <Suspense fallback={<HomeLoadingPage />}>
-      <Home
-        list={list}
-        coverImgUrl={
-          list[rn]?.cover?.external?.url ?? list[rn]?.cover?.file?.url ?? ""
-        }
-        coverImgTitle={list[rn]?.properties.Name.title[0].text.content}
-      />
-    </Suspense>
+    <Home
+      list={list}
+      coverImgUrl={
+        list[rn]?.cover?.external?.url ?? list[rn]?.cover?.file?.url ?? ""
+      }
+      coverImgTitle={list[rn]?.properties.Name.title[0].text.content}
+    />
   );
 };
 
