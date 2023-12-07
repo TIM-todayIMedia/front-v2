@@ -1,17 +1,17 @@
 import { listProps } from "@/types";
-import CustomAxios from "@/utils/lib/CustomAxios";
 import Home from "@/components/Home";
 import { Props } from "@/types/common";
 import { decodeParams } from "@/utils/decodeParams";
 import { Metadata } from "next";
 import { legnthRn } from "@/utils/lengthRn";
+import { getSerchList } from "@/api/list";
 
 export const metadata: Metadata = {
   title: "Search",
 };
 
 export const SearchPage = async ({ params: { name } }: Props) => {
-  const list: listProps[] = await getList(decodeParams(name));
+  const list: listProps[] = await getSerchList(decodeParams(name));
   const rn = legnthRn(list);
 
   return (
@@ -23,25 +23,6 @@ export const SearchPage = async ({ params: { name } }: Props) => {
       coverImgTitle={list[rn]?.properties.Name.title[0].text.content}
     />
   );
-};
-
-export const getList = async (name: string) => {
-  try {
-    const { data } = await CustomAxios.post("", {
-      filter: {
-        property: "Name",
-        title: {
-          contains: name,
-        },
-      },
-    });
-    const list = data.results;
-
-    return list;
-  } catch (e) {
-    console.log(e);
-    return {};
-  }
 };
 
 export default SearchPage;

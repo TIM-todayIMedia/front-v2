@@ -1,11 +1,10 @@
+import { getAllList } from "@/api/list";
 import Home from "@/components/Home";
 import { listProps } from "@/types";
 import { legnthRn } from "@/utils/lengthRn";
-import CustomAxios from "@/utils/lib/CustomAxios";
 
 export default async function HomePage() {
-  const { data } = await CustomAxios.post("");
-  const list: listProps[] = data.results;
+  const list: listProps[] = await getAllList();
   const rn = legnthRn(list);
 
   return (
