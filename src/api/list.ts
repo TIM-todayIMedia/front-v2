@@ -1,9 +1,21 @@
 import CustomAxios from "@/utils/lib/CustomAxios";
 
 export const getAllList = async () => {
+  let objectArray: object[] = [];
+  objectArray.push({
+    property: "Category",
+    multi_select: {
+      contains: "",
+    },
+  });
   try {
-    const { data } = await CustomAxios.post("");
+    const { data } = await CustomAxios.post("", {
+      filter: {
+        and: objectArray,
+      },
+    });
     const list = data.results;
+
     return list;
   } catch (e) {
     console.log(e);
@@ -43,7 +55,7 @@ export const getFilterList = async (names: string) => {
     return list;
   } catch (e) {
     console.log(e);
-    return;
+    return {};
   }
 };
 
