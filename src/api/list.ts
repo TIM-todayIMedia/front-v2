@@ -3,9 +3,9 @@ import CustomAxios from "@/utils/lib/CustomAxios";
 export const getAllList = async () => {
   let objectArray: object[] = [];
   objectArray.push({
-    property: "Category",
-    multi_select: {
-      contains: "",
+    property: "Tag",
+    select: {
+      equals: "",
     },
   });
   try {
