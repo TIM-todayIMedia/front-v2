@@ -18,7 +18,7 @@ const ListBox = ({
   const router = useRouter();
 
   return (
-    <S.Wrapper onClick={() => router.push(`/${title}`)}>
+    <S.Wrapper onClick={() => router.push(`/detail/${title}`)}>
       <Image
         src={cover?.external?.url || cover?.file?.url || ""}
         alt="포스터 이미지"

@@ -20,7 +20,7 @@ const HomeDetail = ({ data }: { data: listProps }) => {
       <S.LeftWrapper>
         <Image
           src={ImageUrl}
-          alt={"디테일 페이지"}
+          alt={"디테일 페이지 이미지"}
           style={{ filter: "brightness(80%)" }}
           layout={"fill"}
         />
@@ -105,7 +105,7 @@ const HomeDetail = ({ data }: { data: listProps }) => {
       <S.DetailImagOverlay>
         <Image
           src={ImageUrl}
-          alt={"디테일 페이지"}
+          alt={"디테일 페이지 오버레이 이미지"}
           className={"detailImg"}
           layout={"fill"}
         />
