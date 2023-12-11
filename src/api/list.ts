@@ -77,3 +77,21 @@ export const getSerchList = async (name: string) => {
     return {};
   }
 };
+
+export const getDetailData = async (name: string) => {
+  try {
+    const { data } = await CustomAxios.post("", {
+      filter: {
+        property: "Name",
+        title: {
+          equals: name,
+        },
+      },
+    });
+    const detailData = data.results[0];
+    return detailData;
+  } catch (e) {
+    console.log(e);
+    return;
+  }
+};
