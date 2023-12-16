@@ -1,8 +1,8 @@
+import { getDetailData } from "@/api/list";
 import HomeDetail from "@/components/HomeDetail";
 import { Props } from "@/types/common";
 import { decodeParams } from "@/utils/decodeParams";
 import { Metadata } from "next";
-import { getDetailData } from "@/api/list";
 
 export const metadata: Metadata = {
   title: "Detail",

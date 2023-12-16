@@ -7,6 +7,7 @@ import CategorySelect from "../CategorySelect";
 import { useRecoilValue } from "recoil";
 import { imgAtom } from "@/atom";
 import Image from "next/legacy/image";
+import { getFilterListAction } from "@/app/action";
 
 const Header = () => {
   const router = useRouter();
@@ -87,6 +88,10 @@ const Header = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const handleMovieClick = async () => {
+    const data = await getFilterListAction("영화");
+  };
 
   return (
     <S.HeaderWapper style={{ display: isDetailPage ? "none" : "block" }}>
@@ -170,7 +175,8 @@ const Header = () => {
               id="영화"
               name="분야"
               onClick={() => {
-                handleSubmitBtnClick("영화");
+                // handleSubmitBtnClick("영화");
+                handleMovieClick();
                 setField("영화");
               }}
             />
