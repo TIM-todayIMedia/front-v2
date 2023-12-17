@@ -12,17 +12,8 @@ export const metadata: Metadata = {
 
 export const FilterPage = async ({ params: { name } }: Props) => {
   const list: listProps[] = await getFilterList(decodeParams(name));
-  const rn = legnthRn(list);
 
-  return (
-    <Home
-      list={list}
-      coverImgUrl={
-        list[rn]?.cover?.external?.url ?? list[rn]?.cover?.file?.url ?? ""
-      }
-      coverImgTitle={list[rn]?.properties.Name.title[0].text.content}
-    />
-  );
+  return <Home initList={list} />;
 };
 
 export default FilterPage;
