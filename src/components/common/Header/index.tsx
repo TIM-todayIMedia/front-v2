@@ -89,10 +89,6 @@ const Header = () => {
     };
   }, []);
 
-  const handleMovieClick = async () => {
-    const data = await getFilterListAction("영화");
-  };
-
   return (
     <S.HeaderWapper style={{ display: isDetailPage ? "none" : "block" }}>
       <S.HeaderImg>
@@ -105,7 +101,7 @@ const Header = () => {
             quality={30}
             unoptimized={true}
             style={{ filter: "brightness(40%)" }}
-            onClick={() => router.push(`/${imgUrl[1]}`)}
+            onClick={() => router.push(`/detail/${imgUrl[1]}`)}
           />
         ) : (
           <Image
@@ -175,8 +171,7 @@ const Header = () => {
               id="영화"
               name="분야"
               onClick={() => {
-                // handleSubmitBtnClick("영화");
-                handleMovieClick();
+                handleSubmitBtnClick("영화");
                 setField("영화");
               }}
             />
