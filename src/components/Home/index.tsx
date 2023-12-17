@@ -7,28 +7,30 @@ import { ListBox } from "../common";
 import * as SC from "@/components/common/Styles/home";
 import * as S from "./styled";
 import Error404Icon from "@/assets/svg/Error404Icon";
+import { legnthRn } from "@/utils/lengthRn";
 
-const Home = ({
-  list,
-  coverImgUrl,
-  coverImgTitle,
-}: {
-  list?: listProps[];
-  coverImgUrl: string;
-  coverImgTitle: string;
-}) => {
+const Home = ({ initList }: { initList: listProps[] }) => {
   const [, setImgUrl] = useRecoilState(imgAtom);
-  const [isSSR, setIsSSR] = useState(true);
+  const [list, setList] = useState(initList);
+  const rn = legnthRn(initList);
 
   useEffect(() => {
-    setImgUrl([coverImgUrl, coverImgTitle]);
-  }, [list]);
-
-  useEffect(() => {
-    setIsSSR(false);
+    setImgUrl([
+      initList[rn]?.cover?.external?.url ??
+        initList[rn]?.cover?.file?.url ??
+        "",
+      initList[rn]?.properties.Name.title[0].text.content,
+    ]);
   }, []);
 
-  if (isSSR) return <></>;
+  // useEffect(() => {
+  //   async function a() {
+  //     const data = await getFilterListAction(filterItems.join(" "));
+  //     setList(data);
+  //   }
+  //   a();
+  // }, [filterItems]);
+
   return (
     <SC.Wrapper>
       <SC.ListWrapper>
