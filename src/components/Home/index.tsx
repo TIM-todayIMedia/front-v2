@@ -7,12 +7,12 @@ import { ListBox } from "../common";
 import * as SC from "@/components/common/Styles/home";
 import * as S from "./styled";
 import Error404Icon from "@/assets/svg/Error404Icon";
-import { legnthRn } from "@/utils/lengthRn";
+import { getRandomNumFromArrayLength } from "@/utils/getRandomNumFromArrayLength";
 
 const Home = ({ initList }: { initList: listProps[] }) => {
   const [, setImgUrl] = useRecoilState(imgAtom);
   const [list, setList] = useState(initList);
-  const rn = legnthRn(initList);
+  const rn = getRandomNumFromArrayLength(initList);
 
   useEffect(() => {
     setImgUrl([

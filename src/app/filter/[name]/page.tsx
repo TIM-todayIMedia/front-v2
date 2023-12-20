@@ -3,7 +3,6 @@ import { listProps } from "@/types";
 import { Props } from "@/types/common";
 import { decodeParams } from "@/utils/decodeParams";
 import { Metadata } from "next";
-import { legnthRn } from "@/utils/lengthRn";
 import { getFilterList } from "@/api/list";
 
 export const metadata: Metadata = {
