@@ -1,3 +1,5 @@
+import React from "react";
+
 const Error404Icon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -239,4 +241,5 @@ const Error404Icon = () => (
   </svg>
 );
 
-export default Error404Icon;
+const MemoError404Icon = React.memo(Error404Icon);
+export default MemoError404Icon;

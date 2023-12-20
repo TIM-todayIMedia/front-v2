@@ -1,6 +1,7 @@
 export interface listProps {
   cover: CoverProps;
   properties: PropertiesProps;
+  id: string;
 }
 
 export interface PropertiesProps {

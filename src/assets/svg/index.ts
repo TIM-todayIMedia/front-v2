@@ -6,3 +6,4 @@ export { default as SearchIcon } from "./SearchIcon";
 export { default as SpotifyIcon } from "./SpotifyIcon";
 export { default as WatchPediaIcon } from "./WatchPediaIcon";
 export { default as TriangleIcon } from "./TriangleIcon";
+export { default as Error404Icon } from "./Error404Icon";
