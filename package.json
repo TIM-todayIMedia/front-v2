@@ -12,7 +12,6 @@
     "@emotion/css": "^11.11.2",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
-    "@sentry/nextjs": "^7.89.0",
     "axios": "^1.6.1",
     "emotion": "^11.0.0",
     "hoist-non-react-statics": "^3.3.2",
