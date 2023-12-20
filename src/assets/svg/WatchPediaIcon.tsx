@@ -1,3 +1,5 @@
+import React from "react";
+
 const WatchPediaIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     width="72"
@@ -71,4 +73,5 @@ const WatchPediaIcon = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-export default WatchPediaIcon;
+const MemoWatchPediaIcon = React.memo(WatchPediaIcon);
+export default MemoWatchPediaIcon;
