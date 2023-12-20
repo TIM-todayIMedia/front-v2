@@ -14,31 +14,34 @@ export const getAllList = async () => {
         and: objectArray,
       },
     });
-    const list = data.results;
 
-    return list;
+    if (!data) throw new SyntaxError("데이터가 없습니다.");
+
+    return data.results;
   } catch (e) {
     console.log(e);
-    return {};
+    if (e instanceof ReferenceError) {
+      console.log(e.message);
+    }
   }
 };
 
 export const getFilterList = async (names: string) => {
-  const ArrayNames = names.split(" ");
+  const nameArray = names.split(" ");
   let objectArray: object[] = [];
-  ArrayNames.map((i) => {
-    if (i === "영화" || i === "드라마") {
+  nameArray.map((name) => {
+    if (name === "영화" || name === "드라마") {
       objectArray.push({
         property: "Tag",
         select: {
-          equals: i,
+          equals: name,
         },
       });
     } else {
       objectArray.push({
         property: "Category",
         multi_select: {
-          contains: i,
+          contains: name,
         },
       });
     }
@@ -50,16 +53,19 @@ export const getFilterList = async (names: string) => {
         and: objectArray,
       },
     });
-    const list = data.results;
 
-    return list;
+    if (!data) throw new SyntaxError("데이터가 없습니다.");
+
+    return data.results;
   } catch (e) {
     console.log(e);
-    return {};
+    if (e instanceof ReferenceError) {
+      console.log(e.message);
+    }
   }
 };
 
-export const getSerchList = async (name: string) => {
+export const getSearchList = async (name: string) => {
   try {
     const { data } = await CustomAxios.post("", {
       filter: {
@@ -69,12 +75,15 @@ export const getSerchList = async (name: string) => {
         },
       },
     });
-    const list = data.results;
 
-    return list;
+    if (!data) throw new SyntaxError("데이터가 없습니다.");
+
+    return data.results;
   } catch (e) {
     console.log(e);
-    return {};
+    if (e instanceof ReferenceError) {
+      console.log(e.message);
+    }
   }
 };
 
@@ -88,10 +97,11 @@ export const getDetailData = async (name: string) => {
         },
       },
     });
-    const detailData = data.results[0];
-    return detailData;
+
+    if (!data) throw new SyntaxError("데이터가 없습니다.");
+
+    return data.results[0];
   } catch (e) {
     console.log(e);
-    return;
   }
 };
