@@ -1,7 +1,7 @@
 export interface CategorySelectProps {
   name: string;
   onClick: () => void;
-  isClick: boolean;
+  isClicked: boolean;
 }
 
 export interface CategoryColorType {
