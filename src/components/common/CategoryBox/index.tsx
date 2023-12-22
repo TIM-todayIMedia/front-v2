@@ -1,3 +1,4 @@
+import React from "react";
 import * as S from "./styled";
 
 const CategoryBox = ({
@@ -12,11 +13,11 @@ const CategoryBox = ({
   return (
     <S.Wrapper
       color={color === "default" ? "gray" : color}
-      style={{ fontSize: fontSize }}
+      style={{ fontSize }}
     >
       {name}
     </S.Wrapper>
   );
 };
 
-export default CategoryBox;
+export default React.memo(CategoryBox);

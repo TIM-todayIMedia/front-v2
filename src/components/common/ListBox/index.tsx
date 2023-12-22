@@ -9,16 +9,17 @@ import { CategoryColorArr } from "@/utils/CategoryArray";
 const ListBox = ({
   cover,
   title,
-  category,
+  categorys,
 }: {
   cover: CoverProps;
   title: string;
-  category: MultiSelectProps[];
+  categorys: MultiSelectProps[];
 }) => {
   const router = useRouter();
+  const detailDirectRoute = () => router.push(`/detail/${title}`);
 
   return (
-    <S.Wrapper onClick={() => router.push(`/detail/${title}`)}>
+    <S.Wrapper onClick={detailDirectRoute}>
       <Image
         src={cover?.external?.url || cover?.file?.url || ""}
         alt="포스터 이미지"
@@ -30,16 +31,16 @@ const ListBox = ({
       />
       <S.Decs>
         <S.Title>{title}</S.Title>
-        <S.Categorys>
-          {category.map((i) => (
+        <S.CategorysWrapper>
+          {categorys.map((categoryItem) => (
             <CategoryBox
-              key={i.id}
-              color={CategoryColorArr[i.color] ?? i.color}
-              name={i.name}
+              key={categoryItem.id}
+              color={CategoryColorArr[categoryItem.color] ?? categoryItem.color}
+              name={categoryItem.name}
               fontSize={"0.8rem"}
             />
           ))}
-        </S.Categorys>
+        </S.CategorysWrapper>
       </S.Decs>
     </S.Wrapper>
   );

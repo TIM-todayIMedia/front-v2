@@ -48,7 +48,7 @@ export const Title = styled.div`
   white-space: nowrap;
 `;
 
-export const Categorys = styled.div`
+export const CategorysWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: flex-start;

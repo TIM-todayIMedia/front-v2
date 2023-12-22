@@ -50,7 +50,7 @@ const Home = ({ initList }: { initList: listProps[] }) => {
             key={i.id}
             cover={i.cover}
             title={i.properties.Name.title[0]?.text.content}
-            category={i.properties.Category.multi_select}
+            categorys={i.properties.Category.multi_select}
           />
         ))}
       </SC.ListWrapper>

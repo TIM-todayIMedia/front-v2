@@ -1,5 +1,5 @@
 import * as S from "./styled";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { CategoryArray } from "@/utils/CategoryArray";
 import { usePathname, useRouter } from "next/navigation";
 import { SearchIcon, TriangleIcon } from "@/assets/svg";
@@ -7,36 +7,37 @@ import CategorySelect from "../CategorySelect";
 import { useRecoilValue } from "recoil";
 import { imgAtom } from "@/atom";
 import Image from "next/legacy/image";
-import { getFilterListAction } from "@/app/action";
+import TagBtn from "../TagBtn";
+import { categoryArr } from "@/assets/data/categoryArr";
+import { isPathnameDetail } from "@/utils/isPathnameDetail";
 
 const Header = () => {
   const router = useRouter();
-  const [filterToggleBtn, setFilterToggleBtn] = useState(false);
-  const [filterCategoryArray, setFilterCategoryArray] = useState<string[]>([]);
-  const [field, setField] = useState("");
-  const [searchValue, SetSearchValue] = useState<string>("");
-  const imgUrl = useRecoilValue(imgAtom);
-  const [isScroll540, setIsScroll540] = useState(false);
-  const [isDetailPage, setIsDetailPage] = useState(false);
   const pathname = usePathname();
+  const imgUrl = useRecoilValue(imgAtom);
+  const [filterCategoryArray, setFilterCategoryArray] = useState<string[]>([]);
+  const [filterToggleBtn, setFilterToggleBtn] = useState(false);
+  const [searchValue, SetSearchValue] = useState<string>("");
+  const [isDetailPage, setIsDetailPage] = useState(false);
+  const [isScroll475, setIsScroll475] = useState(false);
+  const [field, setField] = useState("");
 
   useEffect(() => {
-    if (
-      !decodeURI(pathname).includes("filter") &&
-      !decodeURI(pathname).includes("search") &&
-      pathname !== "/"
-    ) {
+    if (isPathnameDetail(pathname)) {
       setIsDetailPage(true);
-    } else setIsDetailPage(false);
+    } else {
+      setIsDetailPage(false);
+    }
   }, [pathname]);
 
   const handleClick = () => {
     if (!searchValue) {
       setFilterCategoryArray([]);
-      return router.push("/");
+      router.push("/");
+    } else {
+      router.push(`/search/${searchValue}`);
+      setFilterToggleBtn(false);
     }
-    router.push(`/search/${searchValue}`);
-    setFilterToggleBtn(false);
   };
 
   const handleCategorySelectClick = (name: string) => {
@@ -67,19 +68,24 @@ const Header = () => {
     router.push(`/filter/${filterQuery} ${field}`);
   };
 
-  const handleTitleClick = () => {
+  const handleTitleClick = useCallback(() => {
     setField("");
     setFilterCategoryArray([]);
     return router.push("/");
+  }, []);
+
+  const handleTagBtnClick = (name: string) => {
+    handleSubmitBtnClick(name);
+    setField(name);
   };
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY || document.documentElement.scrollTop;
       if (scrollY >= 475) {
-        setIsScroll540(true);
+        setIsScroll475(true);
       } else {
-        setIsScroll540(false);
+        setIsScroll475(false);
       }
     };
     window.addEventListener("scroll", handleScroll);
@@ -118,7 +124,7 @@ const Header = () => {
       </S.HeaderImg>
       <S.HeaderTopWrapper
         style={{
-          backgroundColor: isScroll540
+          backgroundColor: isScroll475
             ? "rgb(0, 0, 0, 0.8)"
             : "rgb(0, 0, 0, 0)",
         }}
@@ -141,7 +147,7 @@ const Header = () => {
               placeholder="영화/드라마 이름을 입력하세요"
               value={searchValue}
               onChange={(e) => SetSearchValue(e.target.value)}
-              onKeyDown={(e: any) => {
+              onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
                 if (e.key === "Enter") handleClick();
               }}
             />
@@ -153,40 +159,15 @@ const Header = () => {
 
         <S.RightWrapper>
           <S.TagBtns>
-            <input
-              defaultChecked
-              type="radio"
-              value={field}
-              id="전체"
-              name="분야"
-              onClick={() => {
-                handleSubmitBtnClick("");
-                setField("");
-              }}
-            />
-            <label htmlFor="전체">전체</label>
-            <input
-              type="radio"
-              value={field}
-              id="영화"
-              name="분야"
-              onClick={() => {
-                handleSubmitBtnClick("영화");
-                setField("영화");
-              }}
-            />
-            <label htmlFor="영화">영화</label>
-            <input
-              type="radio"
-              value={field}
-              id="드라마"
-              name="분야"
-              onClick={() => {
-                handleSubmitBtnClick("드라마");
-                setField("드라마");
-              }}
-            />
-            <label htmlFor="드라마">드라마</label>
+            {categoryArr.map((item) => (
+              <TagBtn
+                key={item}
+                id={item}
+                field={field}
+                isdefaultChecked={item === "전체"}
+                onClick={() => handleTagBtnClick(item === "전체" ? "" : item)}
+              />
+            ))}
           </S.TagBtns>
           <S.FilterBtn onMouseOver={() => setFilterToggleBtn(true)}>
             카테고리
@@ -206,7 +187,7 @@ const Header = () => {
                     onClick={() => handleCategorySelectClick(i)}
                     key={index}
                     name={i}
-                    isClick={filterCategoryArray.includes(i)}
+                    isClicked={filterCategoryArray.includes(i)}
                   />
                 ))}
               </S.FilterBox>
