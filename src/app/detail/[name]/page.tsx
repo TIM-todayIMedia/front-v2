@@ -11,8 +11,9 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const name = params.name;
   const detailData: listProps = await getDetailData(decodeParams(name));
-
   const previousImages = (await parent).openGraph?.images || [];
+  const ImageUrl =
+    detailData?.cover?.external?.url ?? detailData?.cover?.file?.url ?? "";
 
   return {
     title: "Detail",
@@ -20,7 +21,7 @@ export async function generateMetadata(
       title: detailData?.properties?.Name?.title[0]?.text?.content,
       description:
         detailData?.properties?.Described?.rich_text[0]?.text?.content,
-      images: ["/some-specific-page-image.jpg", ...previousImages],
+      images: [ImageUrl, ...previousImages],
     },
   };
 }
