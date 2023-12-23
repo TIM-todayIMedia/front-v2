@@ -17,7 +17,6 @@ export const metadata: Metadata = {
     title: "WTM",
     description: "오늘 볼 영화/드라마를 찾고싶을때",
     url: "https://tim-v2.netlify.app/",
-    siteName: "WTM",
     images: [
       {
         url: "/img/w.png",

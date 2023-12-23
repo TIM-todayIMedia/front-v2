@@ -18,7 +18,7 @@ export async function generateMetadata(
   return {
     title: "Detail",
     openGraph: {
-      title: detailData?.properties?.Name?.title[0]?.text?.content,
+      title: `${detailData?.properties?.Name?.title[0]?.text?.content} - WTM`,
       description:
         detailData?.properties?.Described?.rich_text[0]?.text?.content,
       images: [ImageUrl, ...previousImages],
