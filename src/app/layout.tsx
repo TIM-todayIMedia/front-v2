@@ -12,10 +12,10 @@ export const metadata: Metadata = {
     default: "WTM",
   },
   applicationName: "WTM",
-  description: "오늘 볼 영화/드라마를 추천해주는 사이트",
+  description: "오늘 볼 영화/드라마를 찾고싶을때",
   openGraph: {
     title: "WTM",
-    description: "오늘 볼 영화/드라마를 추천해주는 사이트",
+    description: "오늘 볼 영화/드라마를 찾고싶을때",
     url: "https://tim-v2.netlify.app/",
     siteName: "WTM",
     images: [
