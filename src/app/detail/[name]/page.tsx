@@ -1,12 +1,30 @@
 import { getDetailData } from "@/api/list";
 import HomeDetail from "@/components/HomeDetail";
+import { listProps } from "@/types";
 import { Props } from "@/types/common";
 import { decodeParams } from "@/utils/decodeParams";
-import { Metadata } from "next";
+import type { Metadata, ResolvingMetadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Detail",
-};
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const name = params.name;
+  const detailData: listProps = await getDetailData(decodeParams(name));
+  const previousImages = (await parent).openGraph?.images || [];
+  const ImageUrl =
+    detailData?.cover?.external?.url ?? detailData?.cover?.file?.url ?? "";
+
+  return {
+    title: "Detail",
+    openGraph: {
+      title: detailData?.properties?.Name?.title[0]?.text?.content + "- WTM",
+      description:
+        detailData?.properties?.Described?.rich_text[0]?.text?.content,
+      images: [ImageUrl, ...previousImages],
+    },
+  };
+}
 
 export const DetailPage = async ({ params: { name } }: Props) => {
   const detailData = await getDetailData(decodeParams(name));
