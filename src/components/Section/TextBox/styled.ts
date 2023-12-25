@@ -5,11 +5,12 @@ export const TextBoxWrapper = styled.div`
   flex-direction: column;
   color: white;
   z-index: 10;
+  transition: all 0.5s;
 `;
 
 export const TextBoxTitle = styled.span`
   font-weight: 900;
-  font-size: 60px;
+  font-size: 70px;
 `;
 
 export const TextBoxDesc = styled.span`

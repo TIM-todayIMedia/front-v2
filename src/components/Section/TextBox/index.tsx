@@ -7,10 +7,8 @@ const TextBox = ({ title, desc }: { title: string; desc: string }) => {
   return (
     <S.TextBoxWrapper
       style={{
-        transition: visible
-          ? "transform 1500ms cubic-bezier(0, 0, 0.5, 1),opacity 1500ms cubic-bezier(0, 0, 0.5, 1),visibility 1500ms cubic-bezier(0, 0, 0.5, 1)"
-          : "all 1.5s",
         opacity: visible ? 1 : 0,
+        transform: visible ? "translateY(0px)" : "translateY(50px)",
       }}
       ref={ref}
     >
