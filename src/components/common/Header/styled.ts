@@ -10,7 +10,6 @@ export const HeaderWapper = styled.div`
 `;
 
 export const LeftWapper = styled.div`
-  width: 250px;
   display: flex;
   align-items: center;
   p {
