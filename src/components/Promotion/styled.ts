@@ -13,9 +13,7 @@ export const PromotionWrapper = styled.div`
 export const Video = styled.video`
   position: fixed;
   top: 0;
-  left: 0;
   object-fit: cover;
-  object-position: center top;
   outline: none;
   border: none;
 `;
@@ -37,12 +35,13 @@ export const MainText = styled.div`
 
 export const MainTextBox = styled.div`
   height: 100vh;
-  width: 100%;
+  width: 87%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 20px;
+  margin: 0 auto;
 `;
 
 export const DirectBtn = styled.button`

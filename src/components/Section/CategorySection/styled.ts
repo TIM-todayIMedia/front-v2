@@ -20,6 +20,7 @@ export const CategorySectionDesc = styled.span`
   font-weight: 500;
   font-size: 30px;
   transition: all 0.5s;
+  text-align: center;
 `;
 
 export const CategoryArrayWrapper = styled.div`
