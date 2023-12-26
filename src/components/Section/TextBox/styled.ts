@@ -11,11 +11,11 @@ export const TextBoxWrapper = styled.div`
 
 export const TextBoxTitle = styled.span`
   font-weight: 900;
-  font-size: 70px;
+  font-size: 71px;
   text-align: center;
 `;
 
 export const TextBoxDesc = styled.span`
   font-weight: 500;
-  font-size: 30px;
+  font-size: 27px;
 `;
