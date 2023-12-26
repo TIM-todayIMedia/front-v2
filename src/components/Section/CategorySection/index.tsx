@@ -21,7 +21,7 @@ const CategorySection = () => {
           transform: visible ? "translateY(0px)" : "translateY(50px)",
         }}
       >
-        여러가지 장르를 동시에 선택가능해 더 원하는 영화/미디어를 찾으실 수
+        여러가지 장르를 동시에 선택가능해 더 보고싶은 영화/미디어를 찾으실 수
         있습니다
       </S.CategorySectionDesc>
       <S.CategoryArrayWrapper>
