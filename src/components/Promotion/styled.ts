@@ -7,13 +7,13 @@ export const PromotionWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  overflow-y: none;
 `;
 
 export const Video = styled.video`
   position: fixed;
   top: 0;
   left: 0;
-  width: 102%;
   object-fit: cover;
   object-position: center top;
   outline: none;
