@@ -44,7 +44,7 @@ const Promotion = () => {
             </span>
             와 <br /> 다양한 정보들.
           </S.MainText>
-          <S.DirectBtn onClick={() => router.push("/home")}>
+          <S.DirectBtn onClick={() => router.push("/home/1")}>
             지금 둘러보기
           </S.DirectBtn>
         </S.MainTextBox>
