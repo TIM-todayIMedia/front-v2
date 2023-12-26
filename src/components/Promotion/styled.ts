@@ -13,9 +13,7 @@ export const PromotionWrapper = styled.div`
 export const Video = styled.video`
   position: fixed;
   top: 0;
-  left: 0;
   object-fit: cover;
-  object-position: center top;
   outline: none;
   border: none;
 `;
