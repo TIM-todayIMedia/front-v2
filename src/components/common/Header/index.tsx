@@ -60,7 +60,7 @@ const Header = () => {
       if (field !== "") {
         return router.push(`/filter/${field}`);
       } else {
-        return router.push("/");
+        return router.push("/home");
       }
     }
     const filterQuery = arr ? arr.join(" ") : filterCategoryArray.join(" ");

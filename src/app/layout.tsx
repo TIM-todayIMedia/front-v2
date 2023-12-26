@@ -1,10 +1,14 @@
 import { Header } from "@/components/common";
 import RecoilRootProvider from "@/utils/recoilRootProvider";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
+
+const do_hyeon = Noto_Sans_KR({
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: {
@@ -35,7 +39,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <body className={inter.className}>
+      <body className={do_hyeon.className}>
         <RecoilRootProvider>
           <Header />
           {children}
