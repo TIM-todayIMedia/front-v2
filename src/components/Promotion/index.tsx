@@ -42,7 +42,7 @@ const Promotion = () => {
             >
               오늘의 영화/드라마
             </span>
-            와 <br /> 다양한 정보들.
+            와 다양한 정보들.
           </S.MainText>
           <S.DirectBtn onClick={() => router.push("/home/1")}>
             지금 둘러보기

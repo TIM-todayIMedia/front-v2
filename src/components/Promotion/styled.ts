@@ -37,12 +37,13 @@ export const MainText = styled.div`
 
 export const MainTextBox = styled.div`
   height: 100vh;
-  width: 100%;
+  width: 87%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 20px;
+  margin: 0 auto;
 `;
 
 export const DirectBtn = styled.button`
