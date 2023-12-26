@@ -12,7 +12,6 @@ const Promotion = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY || document.documentElement.scrollTop;
-      console.log(scrollY);
       if (scrollY < 101) {
         setVisibleValue(1 - scrollY * 0.01);
       } else if (scrollY > 100) {
