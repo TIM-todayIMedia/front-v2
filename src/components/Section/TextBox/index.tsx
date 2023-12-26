@@ -1,4 +1,4 @@
-import { useVisible } from "@/hooks/useVisivle";
+import { useVisible } from "@/hooks/useVisible";
 import * as S from "./styled";
 
 const TextBox = ({ title, desc }: { title: string; desc: string }) => {
