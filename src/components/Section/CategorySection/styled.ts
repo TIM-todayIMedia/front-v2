@@ -13,11 +13,13 @@ export const CategorySectionWrapper = styled.div`
 export const CategorySectionTitle = styled.span`
   font-weight: 900;
   font-size: 80px;
+  transition: all 0.5s;
 `;
 
 export const CategorySectionDesc = styled.span`
   font-weight: 500;
   font-size: 30px;
+  transition: all 0.5s;
 `;
 
 export const CategoryArrayWrapper = styled.div`
@@ -30,7 +32,7 @@ export const CategoryArrayWrapper = styled.div`
 
 export const PromotionCategoryItem = styled.div`
   width: 150px;
-  height: 90px;
+  height: 85px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,4 +41,5 @@ export const PromotionCategoryItem = styled.div`
   font-weight: 600;
   font-size: 30px;
   border-radius: 15px;
+  transition: all 0.3s ease-in;
 `;
