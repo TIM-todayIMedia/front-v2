@@ -1,6 +1,6 @@
 import CustomAxios from "@/utils/lib/CustomAxios";
 
-export const getAllList = async () => {
+export const getAllList = async (names: string) => {
   let objectArray: object[] = [];
   objectArray.push({
     property: "Tag",

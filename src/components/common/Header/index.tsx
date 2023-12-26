@@ -60,7 +60,7 @@ const Header = () => {
       if (field !== "") {
         return router.push(`/filter/${field}`);
       } else {
-        return router.push("/home");
+        return router.push("/home/1");
       }
     }
     const filterQuery = arr ? arr.join(" ") : filterCategoryArray.join(" ");
@@ -71,7 +71,7 @@ const Header = () => {
   const handleTitleClick = useCallback(() => {
     setField("");
     setFilterCategoryArray([]);
-    return router.push("/");
+    return router.push("/home/1");
   }, []);
 
   const handleTagBtnClick = (name: string) => {
