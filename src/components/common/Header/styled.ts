@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const HeaderWapper = styled.div`
+export const HeaderWrapper = styled.div`
   height: 540px;
   width: 100%;
   transition: all 0.3s ease-in;
@@ -9,7 +9,7 @@ export const HeaderWapper = styled.div`
   z-index: 10;
 `;
 
-export const LeftWapper = styled.div`
+export const LeftWrapper = styled.div`
   display: flex;
   align-items: center;
   p {
@@ -52,7 +52,7 @@ export const DarkModeBtn = styled.div`
   }
 `;
 
-export const InputWapper = styled.div`
+export const InputWrapper = styled.div`
   position: relative;
   width: 400px;
   height: 4.5vh;

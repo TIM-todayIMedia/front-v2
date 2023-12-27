@@ -13,6 +13,7 @@ export const PromotionWrapper = styled.div`
 export const Video = styled.video`
   position: fixed;
   top: 0;
+  height: 100%;
   object-fit: cover;
   outline: none;
   border: none;
@@ -61,8 +62,8 @@ export const DirectBtn = styled.button`
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 
   :hover {
-    height: 93px;
-    width: 240px;
+    height: 85px;
+    width: 220px;
     font-size: 30px;
   }
 `;
@@ -74,5 +75,5 @@ export const ScrollBox = styled.div`
   align-items: center;
   margin: 0 auto;
   gap: 500px;
-  padding-bottom: 300px;
+  padding-bottom: 230px;
 `;

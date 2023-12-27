@@ -25,6 +25,10 @@ const Promotion = () => {
     };
   }, []);
 
+  useEffect(() => {
+    router.prefetch("/home/1");
+  }, []);
+
   return (
     <S.PromotionWrapper>
       <S.Video loop muted autoPlay playsInline>
@@ -49,14 +53,7 @@ const Promotion = () => {
           </S.DirectBtn>
         </S.MainTextBox>
         <S.ScrollBox>
-          <TextBox
-            title={
-              "지속적으로 업데이트되고있는 영화/드라마의 다양한 정보를 확인하세요"
-            }
-            desc={
-              "(제목, 설명, 장르, 평점, 명대사, 개봉일/상영일, 포스터, 예고편, 왓차피디아, Ost)"
-            }
-          />
+          <TextBox />
           <CategorySection />
         </S.ScrollBox>
       </S.ScrollSection>
