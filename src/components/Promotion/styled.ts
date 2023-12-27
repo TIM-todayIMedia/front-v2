@@ -75,5 +75,5 @@ export const ScrollBox = styled.div`
   align-items: center;
   margin: 0 auto;
   gap: 500px;
-  padding-bottom: 300px;
+  padding-bottom: 230px;
 `;
