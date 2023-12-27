@@ -52,7 +52,7 @@ export const PromotionCategoryItem = styled.div`
 
 export const DirectBtn = styled.button`
   width: 30%;
-  height: 75px;
+  height: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -68,8 +68,8 @@ export const DirectBtn = styled.button`
   margin: 20px 0;
 
   :hover {
-    width: 40%;
-    height: 95px;
-    font-size: 35px;
+    width: 33%;
+    height: 88px;
+    font-size: 33px;
   }
 `;
