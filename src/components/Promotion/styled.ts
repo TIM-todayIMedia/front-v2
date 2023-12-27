@@ -3,10 +3,6 @@ import styled from "@emotion/styled";
 export const PromotionWrapper = styled.div`
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   overflow-y: none;
 `;
 
@@ -17,12 +13,15 @@ export const Video = styled.video`
   object-fit: cover;
   outline: none;
   border: none;
+  overflow-y: none;
 `;
 
 export const ScrollSection = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   overflow-y: scroll;
 `;
 
@@ -43,6 +42,7 @@ export const MainTextBox = styled.div`
   align-items: center;
   gap: 20px;
   margin: 0 auto;
+  overflow-y: scroll;
 `;
 
 export const DirectBtn = styled.button`
@@ -69,11 +69,9 @@ export const DirectBtn = styled.button`
 `;
 
 export const ScrollBox = styled.div`
-  width: 80%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 auto;
-  gap: 500px;
-  padding-bottom: 230px;
+  padding: 0 10%;
 `;
