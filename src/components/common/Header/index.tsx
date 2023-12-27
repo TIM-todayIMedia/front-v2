@@ -10,6 +10,7 @@ import Image from "next/legacy/image";
 import TagBtn from "../TagBtn";
 import { categoryArr } from "@/assets/data/categoryArr";
 import { isPathnameDetail } from "@/utils/isPathnameDetail";
+import { decodeParams } from "@/utils/decodeParams";
 
 const Header = () => {
   const router = useRouter();
@@ -39,6 +40,23 @@ const Header = () => {
       setFilterToggleBtn(false);
     }
   };
+
+  useEffect(() => {
+    if (pathname.includes("filter")) {
+      const CategoryTemp: string[] = [];
+      const paramsCategoryArr = decodeParams(pathname)
+        .replace("/filter/", "")
+        .split(" ");
+      paramsCategoryArr.map((i) => {
+        if (i === "영화" || i === "드라마") {
+          setField(i);
+        } else {
+          CategoryTemp.push(i);
+        }
+      });
+      setFilterCategoryArray(CategoryTemp);
+    }
+  }, [pathname]);
 
   const handleCategorySelectClick = (name: string) => {
     if (!filterCategoryArray.includes(name)) {
