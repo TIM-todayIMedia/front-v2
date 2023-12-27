@@ -31,9 +31,9 @@ export const Decs = styled.div`
   height: 120px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 7px;
-  padding: 0 4%;
+  padding: 10px 4%;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   background-color: rgba(255, 255, 255, 0.055);
