@@ -62,8 +62,8 @@ export const DirectBtn = styled.button`
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 
   :hover {
-    height: 93px;
-    width: 240px;
+    height: 85px;
+    width: 220px;
     font-size: 30px;
   }
 `;
