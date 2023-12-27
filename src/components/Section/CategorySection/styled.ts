@@ -8,6 +8,7 @@ export const CategorySectionWrapper = styled.div`
   transition: all 0.5s;
   color: white;
   gap: 20px;
+  margin-bottom: 160px;
 `;
 
 export const CategorySectionTitle = styled.span`
@@ -68,8 +69,6 @@ export const DirectBtn = styled.button`
   margin: 20px 0;
 
   :hover {
-    width: 33%;
-    height: 88px;
-    font-size: 33px;
+    width: 35%;
   }
 `;
