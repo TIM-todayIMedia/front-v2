@@ -37,7 +37,7 @@ const Promotion = () => {
             WTM 에서 제공하는{" "}
             <span
               style={{
-                color: "#3b3681",
+                color: "#4940a4",
               }}
             >
               오늘의 영화/드라마

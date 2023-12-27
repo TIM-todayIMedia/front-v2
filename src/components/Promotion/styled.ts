@@ -57,7 +57,7 @@ export const DirectBtn = styled.button`
   border: none;
   border-radius: 20px;
   transition: all 0.2s;
-  background-color: #3b3681;
+  background-color: #4940a4;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 
   :hover {

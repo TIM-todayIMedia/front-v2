@@ -1,9 +1,25 @@
 import { useVisible } from "@/hooks/useVisible";
 import { CategoryArray } from "@/utils/CategoryArray";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 import * as S from "./styled";
 
 const CategorySection = () => {
+  const router = useRouter();
   const [ref, visible] = useVisible();
+  const [filterCategoryArray, setFilterCategoryArray] = useState<string[]>([]);
+
+  const handleCategorySelectClick = (name: string) => {
+    if (!filterCategoryArray.includes(name)) {
+      setFilterCategoryArray([...filterCategoryArray, name]);
+    } else {
+      const arr = filterCategoryArray.filter((i) => i !== name);
+      setFilterCategoryArray(arr);
+    }
+  };
+
+  const handleSubmitClick = () =>
+    router.push(`/filter/${filterCategoryArray.join(" ")}`);
 
   return (
     <S.CategorySectionWrapper ref={ref}>
@@ -28,7 +44,12 @@ const CategorySection = () => {
         {CategoryArray.map((category, idx) => (
           <S.PromotionCategoryItem
             key={idx}
+            onClick={() => handleCategorySelectClick(category)}
             style={{
+              backgroundColor: filterCategoryArray.includes(category)
+                ? "#4940a4"
+                : "white",
+              color: filterCategoryArray.includes(category) ? "white" : "gray",
               opacity: visible ? 1 : 0,
               transform: visible
                 ? "translateY(0px) translateX(0px)"
@@ -42,6 +63,14 @@ const CategorySection = () => {
             {category}
           </S.PromotionCategoryItem>
         ))}
+        <S.DirectBtn
+          style={{
+            opacity: filterCategoryArray.length > 0 ? 1 : 0,
+          }}
+          onClick={handleSubmitClick}
+        >
+          검색하기
+        </S.DirectBtn>
       </S.CategoryArrayWrapper>
     </S.CategorySectionWrapper>
   );
