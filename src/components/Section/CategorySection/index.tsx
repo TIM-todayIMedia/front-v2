@@ -29,7 +29,15 @@ const CategorySection = () => {
           transform: visible ? "translateY(0px)" : "translateY(50px)",
         }}
       >
-        여러장르를 한번에
+        <span
+          style={{
+            color: filterCategoryArray.length > 0 ? "white" : "#4940a4",
+            transition: "all 0.3s ease",
+          }}
+        >
+          여러 장르
+        </span>
+        를 한번에
       </S.CategorySectionTitle>
       <S.CategorySectionDesc
         style={{
