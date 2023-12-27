@@ -31,16 +31,6 @@ const Header = () => {
     }
   }, [pathname]);
 
-  const handleClick = () => {
-    if (!searchValue) {
-      setFilterCategoryArray([]);
-      router.push("/");
-    } else {
-      router.push(`/search/${searchValue}`);
-      setFilterToggleBtn(false);
-    }
-  };
-
   useEffect(() => {
     if (pathname.includes("filter")) {
       const CategoryTemp: string[] = [];
@@ -57,6 +47,45 @@ const Header = () => {
       setFilterCategoryArray(CategoryTemp);
     }
   }, [pathname]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY || document.documentElement.scrollTop;
+      if (scrollY >= 475) {
+        setIsScroll475(true);
+      } else {
+        setIsScroll475(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const handleTitleClick = useCallback(() => {
+    setField("");
+    setFilterCategoryArray([]);
+    return router.push("/home/1");
+  }, []);
+
+  const handleTagBtnClick = (name: string) => {
+    handleSubmitBtnClick(name);
+    setField(name);
+  };
+
+  if (isDetailPage) return <></>;
+
+  const handleClick = () => {
+    if (!searchValue) {
+      setFilterCategoryArray([]);
+      router.push("/");
+    } else {
+      router.push(`/search/${searchValue}`);
+      setFilterToggleBtn(false);
+    }
+  };
 
   const handleCategorySelectClick = (name: string) => {
     if (!filterCategoryArray.includes(name)) {
@@ -86,35 +115,8 @@ const Header = () => {
     router.push(`/filter/${filterQuery} ${field}`);
   };
 
-  const handleTitleClick = useCallback(() => {
-    setField("");
-    setFilterCategoryArray([]);
-    return router.push("/home/1");
-  }, []);
-
-  const handleTagBtnClick = (name: string) => {
-    handleSubmitBtnClick(name);
-    setField(name);
-  };
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY || document.documentElement.scrollTop;
-      if (scrollY >= 475) {
-        setIsScroll475(true);
-      } else {
-        setIsScroll475(false);
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   return (
-    <S.HeaderWapper style={{ display: isDetailPage ? "none" : "block" }}>
+    <S.HeaderWrapper>
       <S.HeaderImg>
         {imgUrl[0] ? (
           <Image
@@ -147,7 +149,7 @@ const Header = () => {
             : "rgb(0, 0, 0, 0)",
         }}
       >
-        <S.LeftWapper>
+        <S.LeftWrapper>
           <Image
             src={"/img/w.png"}
             alt={"logoImag"}
@@ -157,9 +159,9 @@ const Header = () => {
             quality={60}
             onClick={handleTitleClick}
           />
-        </S.LeftWapper>
+        </S.LeftWrapper>
         <S.CenterWrapper>
-          <S.InputWapper>
+          <S.InputWrapper>
             <input
               type="text"
               placeholder="영화/드라마 이름을 입력하세요"
@@ -172,7 +174,7 @@ const Header = () => {
             <label>
               <SearchIcon />
             </label>
-          </S.InputWapper>
+          </S.InputWrapper>
         </S.CenterWrapper>
 
         <S.RightWrapper>
@@ -213,7 +215,7 @@ const Header = () => {
           )}
         </S.RightWrapper>
       </S.HeaderTopWrapper>
-    </S.HeaderWapper>
+    </S.HeaderWrapper>
   );
 };
 
