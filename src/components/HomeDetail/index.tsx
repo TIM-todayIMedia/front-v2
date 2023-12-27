@@ -2,11 +2,12 @@
 import { listProps } from "@/types";
 import * as S from "./styled";
 import Image from "next/legacy/image";
-import { SpotifyIcon, WatchPediaIcon } from "@/assets/svg";
+import { BackIcon, SpotifyIcon, WatchPediaIcon } from "@/assets/svg";
 import { CategoryBox } from "../common";
 import { CategoryColorArr } from "@/utils/CategoryArray";
 import YouTube from "react-youtube";
-import { useCallback, useMemo } from "react";
+import { useCallback, useEffect, useMemo } from "react";
+import { useRouter } from "next/navigation";
 
 const youtubeOpts = {
   width: "704",
@@ -19,6 +20,7 @@ const youtubeOpts = {
 };
 
 const HomeDetail = ({ data }: { data: listProps }) => {
+  const router = useRouter();
   const videoId = useMemo(() => {
     return (data?.properties?.Trailer.url.match(
       /^.*((youtube.\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/
@@ -30,8 +32,19 @@ const HomeDetail = ({ data }: { data: listProps }) => {
     return window.open(link);
   }, []);
 
+  useEffect(() => {
+    router.prefetch("/home/1");
+  }, []);
+
   return (
     <S.Wrapper>
+      <S.BackIconWrapper
+        onClick={() =>
+          document.referrer ? router.back() : router.push("/home/1")
+        }
+      >
+        <BackIcon />
+      </S.BackIconWrapper>
       <S.LeftWrapper>
         <Image
           src={ImageUrl}

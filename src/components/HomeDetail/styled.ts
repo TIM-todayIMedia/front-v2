@@ -9,6 +9,15 @@ export const Wrapper = styled.div`
   overflow-y: hidden;
 `;
 
+export const BackIconWrapper = styled.div`
+  width: 50px;
+  position: fixed;
+  left: 44.5%;
+  top: 5.4vh;
+  z-index: 10;
+  cursor: pointer;
+`;
+
 export const LeftWrapper = styled.div`
   position: relative;
   width: 40%;
@@ -130,10 +139,15 @@ export const LinkWrapper = styled.div`
 `;
 
 export const CategoryBtns = styled.div`
-  width: 300px;
+  width: 305px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
+  div {
+    height: 35px !important;
+    font-weight: 700;
+  }
 `;
 
 export const Grade = styled.div`
