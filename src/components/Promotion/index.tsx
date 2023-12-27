@@ -25,6 +25,10 @@ const Promotion = () => {
     };
   }, []);
 
+  useEffect(() => {
+    router.prefetch("/home/1");
+  }, []);
+
   return (
     <S.PromotionWrapper>
       <S.Video loop muted autoPlay playsInline>
