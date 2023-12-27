@@ -7,6 +7,7 @@ export const TextBoxWrapper = styled.div`
   color: white;
   z-index: 10;
   transition: all 0.5s;
+  margin-bottom: 350px;
 `;
 
 export const TextBoxTitle = styled.span`
