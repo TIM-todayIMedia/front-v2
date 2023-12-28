@@ -18,7 +18,7 @@ const TextBox = () => {
       </S.TextBoxTitle>
       <S.TextBoxDesc>
         (제목, 설명, 장르, 평점, 명대사, 개봉일/상영일, 포스터, 예고편,
-        왓차피디아, Ost)
+        왓차피디아, OST)
       </S.TextBoxDesc>
     </S.TextBoxWrapper>
   );

@@ -75,7 +75,9 @@ const CategorySection = () => {
           style={{
             opacity: filterCategoryArray.length > 0 ? 1 : 0,
           }}
-          onClick={handleSubmitClick}
+          onClick={() => {
+            filterCategoryArray.length > 0 && handleSubmitClick();
+          }}
         >
           검색하기
         </S.DirectBtn>
