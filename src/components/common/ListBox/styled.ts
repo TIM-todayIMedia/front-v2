@@ -8,15 +8,15 @@ export const Wrapper = styled.div`
   cursor: pointer;
   transition: all 0.15s ease-in-out;
   margin: 15px 0;
-  border-radius: 7px;
+  border-radius: 3px;
 
   :hover {
     box-shadow: rgba(105, 105, 115, 0.56) 0px 22px 70px 4px;
   }
 
   .listBoxImag {
-    border-top-left-radius: 7px;
-    border-top-right-radius: 7px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
   }
 `;
 
