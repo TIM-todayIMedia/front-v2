@@ -7,11 +7,19 @@ export const HeaderWrapper = styled.div`
   background-color: rgba(0, 0, 0, 0.9);
   position: relative;
   z-index: 10;
+
+  @media (max-width: 800px) {
+    height: 290px;
+  }
 `;
 
 export const LeftWrapper = styled.div`
+  width: 50%;
+  height: 4.5vh;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+
   p {
     font-size: 2.3rem;
     font-weight: bold;
@@ -24,6 +32,11 @@ export const LeftWrapper = styled.div`
   }
   img {
     cursor: pointer;
+  }
+
+  @media (max-width: 800px) {
+    width: 100%;
+    height: 5vh;
   }
 `;
 
@@ -54,8 +67,8 @@ export const DarkModeBtn = styled.div`
 
 export const InputWrapper = styled.div`
   position: relative;
-  width: 400px;
-  height: 4.5vh;
+  width: 23.5vw;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -67,7 +80,7 @@ export const InputWrapper = styled.div`
   input {
     color: white;
     border: none;
-    width: 87%;
+    width: 80%;
     height: 100%;
     outline: none;
     font-size: 1rem;
@@ -77,21 +90,26 @@ export const InputWrapper = styled.div`
   label {
     position: absolute;
     top: 6px;
-    left: 350px;
+    left: 20vw;
     width: 25px;
     cursor: pointer;
     color: #9288f8;
   }
-`;
-export const CenterWrapper = styled.div`
-  display: flex;
-  gap: 30px;
-  position: relative;
+
+  @media (max-width: 800px) {
+    width: 70%;
+
+    label {
+      width: 3vh;
+      top: 0.5vh;
+      left: 90%;
+    }
+  }
 `;
 
 export const FilterBtn = styled.div`
   width: 150px;
-  height: 4.5vh;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -112,7 +130,7 @@ export const FilterBtn = styled.div`
 export const FilterBox = styled.div`
   position: absolute;
   top: 50px;
-  right: 00px;
+  right: 0px;
   width: 150px;
   height: 450px;
   display: flex;
@@ -130,12 +148,13 @@ export const TagBtns = styled.div`
   align-items: center;
   justify-content: center;
   gap: 5px;
+
   input {
     display: none;
   }
 
   input[type="radio"] + label {
-    width: 88px;
+    width: 30%;
     height: 100%;
     display: flex;
     align-items: center;
@@ -157,13 +176,25 @@ export const TagBtns = styled.div`
   input[type="radio"] + label:hover {
     border-bottom: 6.5px solid #9288f8;
   }
+
+  @media (max-width: 800px) {
+    width: 55%;
+  }
 `;
 
 export const RightWrapper = styled.div`
+  height: 4.5vh;
   position: relative;
   display: flex;
   align-items: center;
   gap: 40px;
+
+  @media (max-width: 800px) {
+    width: 100%;
+    height: 5vh;
+    justify-content: space-between;
+    gap: 3%;
+  }
 `;
 
 export const ModalOverlay = styled.div`
@@ -193,4 +224,9 @@ export const HeaderTopWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 800px) {
+    flex-direction: column;
+    gap: 10px;
+  }
 `;

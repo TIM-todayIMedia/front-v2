@@ -159,8 +159,6 @@ const Header = () => {
             quality={60}
             onClick={handleTitleClick}
           />
-        </S.LeftWrapper>
-        <S.CenterWrapper>
           <S.InputWrapper>
             <input
               type="text"
@@ -175,8 +173,7 @@ const Header = () => {
               <SearchIcon />
             </label>
           </S.InputWrapper>
-        </S.CenterWrapper>
-
+        </S.LeftWrapper>
         <S.RightWrapper>
           <S.TagBtns>
             {categoryArr.map((item) => (
