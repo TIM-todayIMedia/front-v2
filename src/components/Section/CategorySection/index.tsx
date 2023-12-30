@@ -71,17 +71,17 @@ const CategorySection = () => {
             {category}
           </S.PromotionCategoryItem>
         ))}
-        <S.DirectBtn
-          style={{
-            opacity: filterCategoryArray.length > 0 ? 1 : 0,
-          }}
-          onClick={() => {
-            filterCategoryArray.length > 0 && handleSubmitClick();
-          }}
-        >
-          검색하기
-        </S.DirectBtn>
       </S.CategoryArrayWrapper>
+      <S.DirectBtn
+        style={{
+          opacity: filterCategoryArray.length > 0 ? 1 : 0,
+        }}
+        onClick={() => {
+          filterCategoryArray.length > 0 && handleSubmitClick();
+        }}
+      >
+        검색하기
+      </S.DirectBtn>
     </S.CategorySectionWrapper>
   );
 };

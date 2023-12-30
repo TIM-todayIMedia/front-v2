@@ -9,12 +9,20 @@ export const CategorySectionWrapper = styled.div`
   color: white;
   gap: 20px;
   margin-bottom: 160px;
+
+  @media (max-width: 763px) {
+    margin-bottom: 100px;
+  }
 `;
 
 export const CategorySectionTitle = styled.span`
   font-weight: 900;
   font-size: 80px;
   transition: all 0.5s;
+
+  @media (max-width: 763px) {
+    font-size: 37px;
+  }
 `;
 
 export const CategorySectionDesc = styled.span`
@@ -22,6 +30,11 @@ export const CategorySectionDesc = styled.span`
   font-size: 30px;
   transition: all 0.5s;
   text-align: center;
+  word-break: keep-all;
+
+  @media (max-width: 763px) {
+    font-size: 17px;
+  }
 `;
 
 export const CategoryArrayWrapper = styled.div`
@@ -30,6 +43,11 @@ export const CategoryArrayWrapper = styled.div`
   flex-wrap: wrap;
   width: 1000px;
   gap: 20px;
+
+  @media (max-width: 1000px) {
+    width: 95%;
+    gap: 13px;
+  }
 `;
 
 export const PromotionCategoryItem = styled.div`
@@ -48,6 +66,17 @@ export const PromotionCategoryItem = styled.div`
 
   :hover {
     font-size: 32px;
+  }
+
+  @media (max-width: 763px) {
+    width: 85px;
+    height: 37.5px;
+    font-size: 17px;
+    border-radius: 10px;
+
+    :hover {
+      font-size: 18px;
+    }
   }
 `;
 
@@ -70,5 +99,16 @@ export const DirectBtn = styled.button`
 
   :hover {
     width: 35%;
+  }
+
+  @media (max-width: 763px) {
+    width: 20%;
+    font-size: 15px;
+    height: 40px;
+    border-radius: 10px;
+
+    :hover {
+      width: 25%;
+    }
   }
 `;
