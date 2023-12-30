@@ -3,8 +3,8 @@ import { useVisible } from "@/hooks/useVisible";
 import * as S from "./styled";
 
 const Footer = () => {
-  const direct = (name: string) => window.open(name);
   const [ref, visible] = useVisible();
+  const direct = (name: string) => window.open(name);
 
   return (
     <S.Footer

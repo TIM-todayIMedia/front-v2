@@ -23,4 +23,13 @@ export const Footer = styled.div`
       transform: translateY(-15px) !important;
     }
   }
+
+  @media (max-width: 1000px) {
+    width: 200px;
+    margin-bottom: 20px;
+    svg {
+      width: 40px;
+      height: 50px;
+    }
+  }
 `;
