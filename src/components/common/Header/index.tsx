@@ -1,5 +1,5 @@
 import * as S from "./styled";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { CategoryArray } from "@/utils/CategoryArray";
 import { usePathname, useRouter } from "next/navigation";
 import { SearchIcon, TriangleIcon } from "@/assets/svg";
@@ -11,6 +11,7 @@ import TagBtn from "../TagBtn";
 import { categoryArr } from "@/assets/data/categoryArr";
 import { isPathnameDetail } from "@/utils/isPathnameDetail";
 import { decodeParams } from "@/utils/decodeParams";
+import { throttle } from "lodash";
 
 const Header = () => {
   const router = useRouter();
@@ -48,21 +49,26 @@ const Header = () => {
     }
   }, [pathname]);
 
+  const throttledScroll = useMemo(
+    () =>
+      throttle(() => {
+        const scrollY = window.scrollY || document.documentElement.scrollTop;
+        if (scrollY >= 475) {
+          setIsScroll475(true);
+        } else {
+          setIsScroll475(false);
+        }
+      }, 300),
+    [isScroll475]
+  );
+
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY || document.documentElement.scrollTop;
-      if (scrollY >= 475) {
-        setIsScroll475(true);
-      } else {
-        setIsScroll475(false);
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", throttledScroll);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", throttledScroll);
     };
-  }, []);
+  }, [throttledScroll]);
 
   const handleTitleClick = useCallback(() => {
     setField("");
@@ -79,8 +85,8 @@ const Header = () => {
 
   const handleClick = () => {
     if (!searchValue) {
-      setFilterCategoryArray([]);
       router.push("/");
+      setFilterCategoryArray([]);
     } else {
       router.push(`/search/${searchValue}`);
       setFilterToggleBtn(false);
