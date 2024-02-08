@@ -1,23 +1,59 @@
 import CustomAxios from "@/utils/lib/CustomAxios";
+import { notion } from "@/utils/lib/notion";
+import {
+  APIErrorCode,
+  isNotionClientError,
+  ClientErrorCode,
+} from "@notionhq/client";
 
-export const getAllList = async (names: string) => {
-  let objectArray: object[] = [];
-  objectArray.push({
-    property: "Tag",
-    select: {
-      equals: "",
-    },
-  });
+export const getAllList = async (names?: string) => {
   try {
     const { data } = await CustomAxios.post("", {
       filter: {
-        and: objectArray,
+        property: "Tag",
+        select: {
+          equals: "",
+        },
       },
     });
 
     if (!data) throw new SyntaxError("데이터가 없습니다.");
-
     return data.results;
+  } catch (error: unknown) {
+    console.log(error);
+    if (isNotionClientError(error)) {
+      // error is now strongly typed to NotionClientError
+      switch (error.code) {
+        case ClientErrorCode.RequestTimeout:
+          // ...
+          break;
+        case APIErrorCode.ObjectNotFound:
+          // ...
+          break;
+        case APIErrorCode.Unauthorized:
+          // ...
+          break;
+        // ...
+        default:
+          // you could even take advantage of exhaustiveness checking
+          assertNever(error.code);
+      }
+    }
+  }
+};
+
+export const notionAllData = async () => {
+  try {
+    const listUsersResponse = await notion.databases.query({
+      database_id: process.env.NEXT_PUBLIC_NOTION_DATABASE_ID || "",
+      filter: {
+        property: "Tag",
+        select: {
+          equals: "",
+        },
+      },
+    });
+    return listUsersResponse;
   } catch (e) {
     console.log(e);
     if (e instanceof ReferenceError) {
@@ -105,3 +141,7 @@ export const getDetailData = async (name: string) => {
     console.log(e);
   }
 };
+
+function assertNever(code: ClientErrorCode | APIErrorCode) {
+  throw new Error("Function not implemented.");
+}

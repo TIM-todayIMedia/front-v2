@@ -33,7 +33,7 @@ const Home = ({ initList }: { initList: listProps[] }) => {
   //   a();
   // }, [filterItems]);
 
-  if (list.length <= 0 && pathname !== "/") {
+  if (list && list.length <= 0 && pathname !== "/") {
     return (
       <S.EmptyList>
         <Error404Icon />
@@ -45,7 +45,7 @@ const Home = ({ initList }: { initList: listProps[] }) => {
   return (
     <SC.Wrapper>
       <SC.ListWrapper>
-        {list.map((i) => (
+        {list?.map((i) => (
           <ListBox
             key={i.id}
             cover={i.cover}
