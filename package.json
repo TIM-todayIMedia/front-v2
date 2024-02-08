@@ -12,6 +12,7 @@
     "@emotion/css": "^11.11.2",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@notionhq/client": "^2.2.14",
     "axios": "^1.6.1",
     "emotion": "^11.0.0",
     "hoist-non-react-statics": "^3.3.2",
