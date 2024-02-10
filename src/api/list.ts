@@ -5,6 +5,12 @@ import {
   isNotionClientError,
   ClientErrorCode,
 } from "@notionhq/client";
+import {
+  DatabaseObjectResponse,
+  PageObjectResponse,
+  PartialDatabaseObjectResponse,
+  PartialPageObjectResponse,
+} from "@notionhq/client/build/src/api-endpoints";
 
 export const getAllList = async (names?: string) => {
   try {
@@ -21,8 +27,17 @@ export const getAllList = async (names?: string) => {
     return data.results;
   } catch (error: unknown) {
     console.log(error);
+  }
+};
+
+export const notionAllData = async () => {
+  try {
+    const listUsersResponse = await notion.databases.query({
+      database_id: process.env.NEXT_PUBLIC_NOTION_DATABASE_ID || "",
+    });
+    return listUsersResponse.results as PageObjectResponse[];
+  } catch (error) {
     if (isNotionClientError(error)) {
-      // error is now strongly typed to NotionClientError
       switch (error.code) {
         case ClientErrorCode.RequestTimeout:
           // ...
@@ -35,29 +50,11 @@ export const getAllList = async (names?: string) => {
           break;
         // ...
         default:
-          // you could even take advantage of exhaustiveness checking
           assertNever(error.code);
       }
     }
-  }
-};
-
-export const notionAllData = async () => {
-  try {
-    const listUsersResponse = await notion.databases.query({
-      database_id: process.env.NEXT_PUBLIC_NOTION_DATABASE_ID || "",
-      filter: {
-        property: "Tag",
-        select: {
-          equals: "",
-        },
-      },
-    });
-    return listUsersResponse;
-  } catch (e) {
-    console.log(e);
-    if (e instanceof ReferenceError) {
-      console.log(e.message);
+    if (error instanceof ReferenceError) {
+      // console.log(error.message);
     }
   }
 };

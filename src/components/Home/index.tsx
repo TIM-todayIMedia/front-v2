@@ -9,8 +9,9 @@ import * as S from "./styled";
 import Error404Icon from "@/assets/svg/Error404Icon";
 import { getRandomNumFromArrayLength } from "@/utils/getRandomNumFromArrayLength";
 import { usePathname } from "next/navigation";
+import { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 
-const Home = ({ initList }: { initList: listProps[] }) => {
+const Home = ({ initList }: { initList: PageObjectResponse[] }) => {
   const setImgUrl = useSetRecoilState(imgAtom);
   const [list] = useState(initList);
   const rn = getRandomNumFromArrayLength(initList);
@@ -18,20 +19,11 @@ const Home = ({ initList }: { initList: listProps[] }) => {
 
   useEffect(() => {
     setImgUrl([
-      initList[rn]?.cover?.external?.url ??
-        initList[rn]?.cover?.file?.url ??
-        "",
+      // initList[rn]?.cover?.external?.url ??
+      initList[rn]?.cover?.file?.url ?? "",
       initList[rn]?.properties.Name.title[0].text.content,
     ]);
   }, []);
-
-  // useEffect(() => {
-  //   async function a() {
-  //     const data = await getFilterListAction(filterItems.join(" "));
-  //     setList(data);
-  //   }
-  //   a();
-  // }, [filterItems]);
 
   if (list && list.length <= 0 && pathname !== "/") {
     return (
