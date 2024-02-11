@@ -3,6 +3,7 @@ import RecoilRootProvider from "@/utils/recoilRootProvider";
 import type { Metadata } from "next";
 import { Inter, Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
+import Providers from "./providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -42,7 +43,7 @@ export default function RootLayout({
       <body className={do_hyeon.className}>
         <RecoilRootProvider>
           <Header />
-          {children}
+          <Providers>{children}</Providers>
         </RecoilRootProvider>
       </body>
     </html>
