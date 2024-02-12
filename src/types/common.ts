@@ -4,9 +4,7 @@ export interface CategorySelectProps {
   isClicked: boolean;
 }
 
-export interface CategoryColorType {
-  [key: string]: string;
-}
+export type CategoryColorType = Record<string, string>;
 
 export interface Props {
   params: {
