@@ -35,7 +35,7 @@ export const notionAllData = async () => {
     const listUsersResponse = await notion.databases.query({
       database_id: process.env.NEXT_PUBLIC_NOTION_DATABASE_ID || "",
     });
-    return listUsersResponse.results as PageObjectResponse[];
+    return listUsersResponse.results as Array<DatabaseObjectResponse>;
   } catch (error) {
     if (isNotionClientError(error)) {
       switch (error.code) {
