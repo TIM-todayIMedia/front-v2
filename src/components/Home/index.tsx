@@ -9,10 +9,14 @@ import * as S from "./styled";
 import Error404Icon from "@/assets/svg/Error404Icon";
 import { getRandomNumFromArrayLength } from "@/utils/getRandomNumFromArrayLength";
 import { usePathname } from "next/navigation";
-import {
-  DatabaseObjectResponse,
-  PageObjectResponse,
-} from "@notionhq/client/build/src/api-endpoints";
+import { DatabaseObjectResponse } from "@notionhq/client/build/src/api-endpoints";
+
+type TitleType = Extract<
+  DatabaseObjectResponse["properties"][string],
+  { type: "title" }
+>;
+
+type UrlType = Extract<DatabaseObjectResponse["cover"], { type: "external" }>;
 
 const Home = ({ initList }: { initList: DatabaseObjectResponse[] }) => {
   const setImgUrl = useSetRecoilState(imgAtom);
@@ -21,20 +25,10 @@ const Home = ({ initList }: { initList: DatabaseObjectResponse[] }) => {
   const pathname = usePathname();
   console.log(initList[0].properties);
 
-  type TitleType = Extract<
-    DatabaseObjectResponse["properties"][string],
-    { type: "title" }
-  >;
-
   useEffect(() => {
-    const imgTitle = list[0].properties.Name as TitleType;
-    console.log(imgTitle);
-
-    const imgUrl =
-      initList[0]?.cover.type === "external"
-        ? initList[0]?.cover.external.url
-        : initList[0]?.cover?.file?.url;
-    setImgUrl([imgUrl, imgTitle.title[0]["plain_text"]]);
+    const imgTitle = list[rn].properties.Name as TitleType;
+    const imgUrl = initList[rn]?.cover as UrlType;
+    setImgUrl([imgUrl.external.url, imgTitle.title[0]["plain_text"]]);
   }, []);
 
   if (list && list.length <= 0 && pathname !== "/") {
