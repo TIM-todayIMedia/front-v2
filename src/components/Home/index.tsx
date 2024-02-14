@@ -10,13 +10,7 @@ import Error404Icon from "@/assets/svg/Error404Icon";
 import { getRandomNumFromArrayLength } from "@/utils/getRandomNumFromArrayLength";
 import { usePathname } from "next/navigation";
 import { DatabaseObjectResponse } from "@notionhq/client/build/src/api-endpoints";
-
-type TitleType = Extract<
-  DatabaseObjectResponse["properties"][string],
-  { type: "title" }
->;
-
-type UrlType = Extract<DatabaseObjectResponse["cover"], { type: "external" }>;
+import { CategoryType, TitleType, UrlType } from "@/types/databaseObjectKey";
 
 const Home = ({ initList }: { initList: DatabaseObjectResponse[] }) => {
   const setImgUrl = useSetRecoilState(imgAtom);
@@ -43,14 +37,18 @@ const Home = ({ initList }: { initList: DatabaseObjectResponse[] }) => {
   return (
     <SC.Wrapper>
       <SC.ListWrapper>
-        {/* {list?.map((i) => (
-          <ListBox
-            key={i.id}
-            cover={i.cover}
-            title={i.properties.Name.title[0]?.text.content}
-            categorys={i.properties.Category.multi_select}
-          />
-        ))} */}
+        {list?.map((i) => {
+          const boxTitle = i.properties.Name as TitleType;
+          const bixCategory = i.properties.Category as CategoryType;
+          return (
+            <ListBox
+              key={i.id}
+              cover={i.cover as UrlType}
+              title={boxTitle.title[0]["plain_text"]}
+              categorys={bixCategory.multi_select.options}
+            />
+          );
+        })}
       </SC.ListWrapper>
     </SC.Wrapper>
   );
