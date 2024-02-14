@@ -5,13 +5,15 @@ import Image from "next/legacy/image";
 import { CategoryBox } from "..";
 import { useRouter } from "next/navigation";
 import { CategoryColorArr } from "@/utils/CategoryArray";
+import { DatabaseObjectResponse } from "@notionhq/client/build/src/api-endpoints";
+import { UrlType } from "@/types/databaseObjectKey";
 
 const ListBox = ({
   cover,
   title,
   categorys,
 }: {
-  cover: CoverProps;
+  cover: UrlType;
   title: string;
   categorys: MultiSelectProps[];
 }) => {
@@ -21,7 +23,7 @@ const ListBox = ({
   return (
     <S.Wrapper onClick={detailDirectRoute}>
       <Image
-        src={cover?.external?.url || cover?.file?.url || ""}
+        src={cover?.external?.url ?? ""}
         alt="포스터 이미지"
         priority={true}
         layout={"fixed"}
