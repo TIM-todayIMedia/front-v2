@@ -12,5 +12,5 @@ export type CategoryType = Extract<
 
 export type UrlType = Extract<
   DatabaseObjectResponse["cover"],
-  { type: "external" }
+  { type: "file" }
 >;

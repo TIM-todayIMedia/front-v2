@@ -1,6 +1,5 @@
 "use client";
 import { imgAtom } from "@/atom";
-import { listProps } from "@/types";
 import { useEffect, useState } from "react";
 import { useSetRecoilState } from "recoil";
 import { ListBox } from "../common";
@@ -17,12 +16,12 @@ const Home = ({ initList }: { initList: DatabaseObjectResponse[] }) => {
   const [list] = useState(initList);
   const rn = getRandomNumFromArrayLength(initList);
   const pathname = usePathname();
-  console.log(initList[0].properties);
+  // console.log(initList[1].properties);
 
   useEffect(() => {
     const imgTitle = list[rn].properties.Name as TitleType;
     const imgUrl = initList[rn]?.cover as UrlType;
-    setImgUrl([imgUrl.external.url, imgTitle.title[0]["plain_text"]]);
+    setImgUrl([imgUrl.file.url, imgTitle.title[0]["plain_text"]]);
   }, []);
 
   if (list && list.length <= 0 && pathname !== "/") {
@@ -40,6 +39,7 @@ const Home = ({ initList }: { initList: DatabaseObjectResponse[] }) => {
         {list?.map((i) => {
           const boxTitle = i.properties.Name as TitleType;
           const bixCategory = i.properties.Category as CategoryType;
+          
           return (
             <ListBox
               key={i.id}

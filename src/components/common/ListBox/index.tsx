@@ -19,11 +19,12 @@ const ListBox = ({
 }) => {
   const router = useRouter();
   const detailDirectRoute = () => router.push(`/detail/${title}`);
+  
 
   return (
     <S.Wrapper onClick={detailDirectRoute}>
       <Image
-        src={cover?.external?.url ?? ""}
+        src={cover?.file?.url ?? ""}
         alt="포스터 이미지"
         priority={true}
         layout={"fixed"}
@@ -34,14 +35,14 @@ const ListBox = ({
       <S.Decs>
         <S.Title>{title}</S.Title>
         <S.CategorysWrapper>
-          {categorys.map((categoryItem) => (
+          {/* {categorys.map((categoryItem) => (
             <CategoryBox
               key={categoryItem.id}
               color={CategoryColorArr[categoryItem.color] ?? categoryItem.color}
               name={categoryItem.name}
               fontSize={"0.8rem"}
             />
-          ))}
+          ))} */}
         </S.CategorysWrapper>
       </S.Decs>
     </S.Wrapper>

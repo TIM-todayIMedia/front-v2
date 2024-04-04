@@ -37,22 +37,6 @@ export const notionAllData = async () => {
     });
     return listUsersResponse.results as Array<DatabaseObjectResponse>;
   } catch (error) {
-    if (isNotionClientError(error)) {
-      switch (error.code) {
-        case ClientErrorCode.RequestTimeout:
-          // ...
-          break;
-        case APIErrorCode.ObjectNotFound:
-          // ...
-          break;
-        case APIErrorCode.Unauthorized:
-          // ...
-          break;
-        // ...
-        default:
-          assertNever(error.code);
-      }
-    }
     if (error instanceof ReferenceError) {
       // console.log(error.message);
     }
@@ -138,7 +122,3 @@ export const getDetailData = async (name: string) => {
     console.log(e);
   }
 };
-
-function assertNever(code: ClientErrorCode | APIErrorCode) {
-  throw new Error("Function not implemented.");
-}
