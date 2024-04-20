@@ -24,15 +24,7 @@ const Home = ({ initList }: { initList: listProps[] }) => {
       initList[rn]?.properties.Name.title[0].text.content,
     ]);
   }, []);
-
-  // useEffect(() => {
-  //   async function a() {
-  //     const data = await getFilterListAction(filterItems.join(" "));
-  //     setList(data);
-  //   }
-  //   a();
-  // }, [filterItems]);
-
+  
   if (list.length <= 0 && pathname !== "/") {
     return (
       <S.EmptyList>
