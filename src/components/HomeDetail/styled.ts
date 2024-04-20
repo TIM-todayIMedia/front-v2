@@ -17,12 +17,15 @@ export const Wrapper = styled.div`
 `;
 
 
-
 export const LeftWrapper = styled.div`
   position: relative;
   width: 40%;
   height: 100vh;
   z-index: 2;
+
+  @media (max-width: ${detailReponsivePx}px) {
+   display: none;
+  }
 `;
 
 export const DetailImagOverlay = styled.div`
@@ -48,6 +51,7 @@ export const RightWrapper = styled.div`
 
   @media (max-width: ${detailReponsivePx}px) {
     width: 100%;
+    margin-top: 200px;
   }
 `;
 
@@ -93,6 +97,15 @@ export const DetailHeader = styled.div`
   position: fixed;
   top:5.4vh;
   left: 44.5%;
+  padding-right: 200px;
+
+  @media (max-width: ${detailReponsivePx}px) {
+    width: 100%;
+    left: 5vw;
+    top: 2.4vh;
+    padding-right: 50px;
+    z-index: 10;
+  }
 `;
 
 
@@ -103,7 +116,7 @@ export const BackIconWrapper = styled.div`
 `;
 
 export const MiddleBottom = styled.div`
-  width: 300px;
+  width: 100px;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
