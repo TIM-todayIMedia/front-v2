@@ -38,13 +38,7 @@ const HomeDetail = ({ data }: { data: listProps }) => {
 
   return (
     <S.Wrapper>
-      <S.BackIconWrapper
-        onClick={() =>
-          document.referrer ? router.back() : router.push("/home/1")
-        }
-      >
-        <BackIcon />
-      </S.BackIconWrapper>
+
       <S.LeftWrapper>
         <Image
           src={ImageUrl}
@@ -100,6 +94,16 @@ const HomeDetail = ({ data }: { data: listProps }) => {
         </S.DecsWrapper>
       </S.RightWrapper>
 
+      
+      <S.DetailHeader>
+      <S.BackIconWrapper
+        onClick={() =>
+          document.referrer ? router.back() : router.push("/home/1")
+        }
+        >
+        <BackIcon />
+      </S.BackIconWrapper>
+
       <S.MiddleBottom>
         <S.Grade>
           {data?.properties.Grade.multi_select.map((GradeItem) => (
@@ -112,14 +116,17 @@ const HomeDetail = ({ data }: { data: listProps }) => {
         <S.CategoryBtns>
           {data?.properties.Category.multi_select.map((categoryItem) => (
             <CategoryBox
-              key={categoryItem.id}
-              color={CategoryColorArr[categoryItem.color] ?? categoryItem.color}
-              name={categoryItem.name}
-              fontSize={"15px"}
+            key={categoryItem.id}
+            color={CategoryColorArr[categoryItem.color] ?? categoryItem.color}
+            name={categoryItem.name}
+            fontSize={"15px"}
             />
-          ))}
-        </S.CategoryBtns>
-      </S.MiddleBottom>
+            ))}
+          </S.CategoryBtns>
+        </S.MiddleBottom>
+      </S.DetailHeader>
+
+
       <S.DetailImagOverlay>
         <Image
           src={ImageUrl}

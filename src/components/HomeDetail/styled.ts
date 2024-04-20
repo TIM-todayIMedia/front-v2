@@ -1,5 +1,7 @@
 import styled from "@emotion/styled";
 
+export const detailReponsivePx = 763
+
 export const Wrapper = styled.div`
   width: 100%;
   height: 100vh;
@@ -7,16 +9,14 @@ export const Wrapper = styled.div`
   background-color: rgba(255, 255, 255, 0.05);
   color: #e7e7e7;
   overflow-y: hidden;
+
+  @media (max-width: ${detailReponsivePx}px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
-export const BackIconWrapper = styled.div`
-  width: 50px;
-  position: fixed;
-  left: 44.5%;
-  top: 5.4vh;
-  z-index: 10;
-  cursor: pointer;
-`;
+
 
 export const LeftWrapper = styled.div`
   position: relative;
@@ -45,6 +45,10 @@ export const RightWrapper = styled.div`
   margin-top: 7%;
   padding: 0 10% 10% 5%;
   overflow-y: scroll;
+
+  @media (max-width: ${detailReponsivePx}px) {
+    width: 100%;
+  }
 `;
 
 export const TopWrapper = styled.div`
@@ -81,11 +85,25 @@ export const MiddleTop = styled.div`
   justify-content: space-between;
 `;
 
+export const DetailHeader = styled.div`
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: fixed;
+  top:5.4vh;
+  left: 44.5%;
+`;
+
+
+export const BackIconWrapper = styled.div`
+  width: 50px;
+  z-index: 10;
+  cursor: pointer;
+`;
+
 export const MiddleBottom = styled.div`
   width: 300px;
-  position: fixed;
-  right: -170px;
-  top: 50px;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
