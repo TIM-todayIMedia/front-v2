@@ -1,43 +1,38 @@
-import { getDetailData } from "@/api/list";
-import HomeDetail from "@/components/HomeDetail";
-import { listProps } from "@/types";
-import { Props } from "@/types/common";
-import { decodeParams } from "@/utils/decodeParams";
-import type { Metadata, ResolvingMetadata } from "next";
+import { getDetailData } from '@/api/list'
+import HomeDetail from '@/components/HomeDetail'
+import { Props } from '@/types/common'
+import { decodeParams } from '@/utils/decodeParams'
+import type { Metadata, ResolvingMetadata } from 'next'
+import { WtmListType, getWtmData, getWtmSearchData } from 'wtm-api'
 
 export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const name = params.name;
-  const detailData: listProps = await getDetailData(decodeParams(name));
-  const previousImages = (await parent).openGraph?.images || [];
-  const ImageUrl =
-    detailData?.cover?.external?.url ?? detailData?.cover?.file?.url ?? "";
+  const name = params.name
+  const data: WtmListType[] = await getWtmSearchData(decodeParams(name)) // 이름이 같으면 예외사항 고려
+  const previousImages = (await parent).openGraph?.images || []
+  const detailData = data[0]
+  const ImageUrl = detailData.thumbnailUrl
 
   return {
-    title: "Detail",
+    title: 'Detail',
     openGraph: {
-      title: detailData?.properties?.Name?.title[0]?.text?.content + "- WTM",
-      description:
-        detailData?.properties?.Described?.rich_text[0]?.text?.content,
+      title: detailData.title + '- WTM',
+      description: detailData?.described,
       images: [ImageUrl, ...previousImages],
     },
-  };
+  }
+}
+
+export async function generateStaticParams() {
+  const detailData: WtmListType[] = await getWtmData()
+  return detailData.map(i => ({ name: i.title }))
 }
 
 export const DetailPage = async ({ params: { name } }: Props) => {
-  const detailData = await getDetailData(decodeParams(name));
-  return <HomeDetail data={detailData} />;
-};
+  const detailData = await getDetailData(decodeParams(name))
+  return <HomeDetail data={detailData} />
+}
 
-// 베포하면 notion img 유효기간때문에 정적인 데이터를 받아오면 유효기간끝나고 에러뜸
-// export async function generateStaticParams() {
-//   const { data } = await CustomAxios.post("");
-//   const list: listProps[] = data.results;
-//   return list.map((i) => ({
-//     name: i.properties.Name.title[0].text.content,
-//   }));
-// }
-
-export default DetailPage;
+export default DetailPage
