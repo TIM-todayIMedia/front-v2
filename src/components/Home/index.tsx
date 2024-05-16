@@ -11,27 +11,13 @@ import { getRandomNumFromArrayLength } from '@/utils/getRandomNumFromArrayLength
 import { usePathname } from 'next/navigation'
 import { WtmListType } from 'wtm-api'
 
-const Home = ({
-  initList,
-  imgList,
-}: {
-  initList: WtmListType[]
-  imgList?: string[]
-}) => {
-  const setImgUrl = useSetRecoilState(imgAtom)
-
-  const rn = getRandomNumFromArrayLength(initList)
+const Home = ({ initList }: { initList: WtmListType[] }) => {
   const pathname = usePathname()
+  const setImgUrl = useSetRecoilState(imgAtom)
+  const rn = getRandomNumFromArrayLength(initList)
 
   useEffect(() => {
-    // setImgUrl([
-    //   initList[rn]?.cover?.external?.url ??
-    //     initList[rn]?.cover?.file?.url ??
-    //     '',
-    //   initList[rn]?.properties.Name.title[0].text.content,
-    // ])
-    // [imgUrl, title]
-    // setImgUrl(imgList[rn])
+    setImgUrl([initList[rn]?.thumbnailUrl ?? '', initList[rn]?.title])
   }, [])
 
   if (initList?.length <= 0 && pathname !== '/') {
