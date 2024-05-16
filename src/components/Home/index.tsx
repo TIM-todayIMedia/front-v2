@@ -1,7 +1,7 @@
 'use client'
+
 import { imgAtom } from '@/atom'
-import { listProps } from '@/types'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useSetRecoilState } from 'recoil'
 import { ListBox } from '../common'
 import * as SC from '@/components/common/Styles/home'
@@ -11,9 +11,15 @@ import { getRandomNumFromArrayLength } from '@/utils/getRandomNumFromArrayLength
 import { usePathname } from 'next/navigation'
 import { WtmListType } from 'wtm-api'
 
-const Home = ({ initList }: { initList: WtmListType[] }) => {
+const Home = ({
+  initList,
+  imgList,
+}: {
+  initList: WtmListType[]
+  imgList?: string[]
+}) => {
   const setImgUrl = useSetRecoilState(imgAtom)
-  const [list] = useState(initList)
+
   const rn = getRandomNumFromArrayLength(initList)
   const pathname = usePathname()
 
@@ -24,9 +30,11 @@ const Home = ({ initList }: { initList: WtmListType[] }) => {
     //     '',
     //   initList[rn]?.properties.Name.title[0].text.content,
     // ])
+    // [imgUrl, title]
+    // setImgUrl(imgList[rn])
   }, [])
 
-  if (list?.length <= 0 && pathname !== '/') {
+  if (initList?.length <= 0 && pathname !== '/') {
     return (
       <S.EmptyList>
         <Error404Icon />
@@ -38,7 +46,7 @@ const Home = ({ initList }: { initList: WtmListType[] }) => {
   return (
     <SC.Wrapper>
       <SC.ListWrapper>
-        {list?.map((i, idx) => (
+        {initList?.map((i, idx) => (
           <ListBox
             key={idx}
             cover={i.thumbnailUrl}
