@@ -1,125 +1,125 @@
-import * as S from "./styled";
-import { useCallback, useEffect, useMemo, useState } from "react";
-import { CategoryArray } from "@/utils/CategoryArray";
-import { usePathname, useRouter } from "next/navigation";
-import { SearchIcon, TriangleIcon } from "@/assets/svg";
-import CategorySelect from "../CategorySelect";
-import { useRecoilValue } from "recoil";
-import { imgAtom } from "@/atom";
-import Image from "next/legacy/image";
-import TagBtn from "../TagBtn";
-import { categoryArr } from "@/assets/data/categoryArr";
-import { isPathnameDetail } from "@/utils/isPathnameDetail";
-import { decodeParams } from "@/utils/decodeParams";
-import { throttle } from "lodash";
+import * as S from './styled'
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import { usePathname, useRouter } from 'next/navigation'
+import { SearchIcon, TriangleIcon } from '@/assets/svg'
+import CategorySelect from '../CategorySelect'
+import { useRecoilValue } from 'recoil'
+import { imgAtom } from '@/atom'
+import Image from 'next/legacy/image'
+import TagBtn from '../TagBtn'
+import { categoryArr } from '@/assets/data/categoryArr'
+import { isPathnameDetail } from '@/utils/isPathnameDetail'
+import { decodeParams } from '@/utils/decodeParams'
+import { throttle } from 'lodash'
+import { CategoryItems } from 'wtm-api'
 
 const Header = () => {
-  const router = useRouter();
-  const pathname = usePathname();
-  const imgUrl = useRecoilValue(imgAtom);
-  const [filterCategoryArray, setFilterCategoryArray] = useState<string[]>([]);
-  const [filterToggleBtn, setFilterToggleBtn] = useState(false);
-  const [searchValue, SetSearchValue] = useState<string>("");
-  const [isDetailPage, setIsDetailPage] = useState(false);
-  const [isScroll475, setIsScroll475] = useState(false);
-  const [field, setField] = useState("");
+  const router = useRouter()
+  const pathname = usePathname()
+  const imgUrl = useRecoilValue(imgAtom)
+  const [filterCategoryArray, setFilterCategoryArray] = useState<string[]>([])
+  const [filterToggleBtn, setFilterToggleBtn] = useState(false)
+  const [searchValue, SetSearchValue] = useState<string>('')
+  const [isDetailPage, setIsDetailPage] = useState(false)
+  const [isScroll475, setIsScroll475] = useState(false)
+  const [field, setField] = useState('')
 
   useEffect(() => {
     if (isPathnameDetail(pathname)) {
-      setIsDetailPage(true);
+      setIsDetailPage(true)
     } else {
-      setIsDetailPage(false);
+      setIsDetailPage(false)
     }
-  }, [pathname]);
+  }, [pathname])
 
   useEffect(() => {
-    if (pathname.includes("filter")) {
-      const CategoryTemp: string[] = [];
+    if (pathname.includes('filter')) {
+      const CategoryTemp: string[] = []
       const paramsCategoryArr = decodeParams(pathname)
-        .replace("/filter/", "")
-        .split(" ");
-      paramsCategoryArr.map((i) => {
-        if (i === "영화" || i === "드라마") {
-          setField(i);
+        .replace('/filter/', '')
+        .split(' ')
+      paramsCategoryArr.map(i => {
+        if (i === '영화' || i === '드라마') {
+          setField(i)
         } else {
-          CategoryTemp.push(i);
+          CategoryTemp.push(i)
         }
-      });
-      setFilterCategoryArray(CategoryTemp);
+      })
+      setFilterCategoryArray(CategoryTemp)
     }
-  }, [pathname]);
+  }, [pathname])
 
   const throttledScroll = useMemo(
     () =>
       throttle(() => {
-        const scrollY = window.scrollY || document.documentElement.scrollTop;
+        const scrollY = window.scrollY || document.documentElement.scrollTop
         if (scrollY >= 475) {
-          setIsScroll475(true);
+          setIsScroll475(true)
         } else {
-          setIsScroll475(false);
+          setIsScroll475(false)
         }
       }, 300),
     [isScroll475]
-  );
+  )
 
   useEffect(() => {
-    window.addEventListener("scroll", throttledScroll);
+    window.addEventListener('scroll', throttledScroll)
 
     return () => {
-      window.removeEventListener("scroll", throttledScroll);
-    };
-  }, [throttledScroll]);
+      window.removeEventListener('scroll', throttledScroll)
+    }
+  }, [throttledScroll])
 
   const handleTitleClick = useCallback(() => {
-    setField("");
-    setFilterCategoryArray([]);
-    return router.push("/home/1");
-  }, []);
+    setField('')
+    setFilterCategoryArray([])
+    return router.push('/home/1')
+  }, [])
 
   const handleTagBtnClick = (name: string) => {
-    handleSubmitBtnClick(name);
-    setField(name);
-  };
+    handleSubmitBtnClick(name)
+    setField(name)
+  }
 
-  if (isDetailPage) return <></>;
+  if (isDetailPage) return <></>
 
   const handleClick = () => {
     if (!searchValue) {
-      router.push("/");
-      setFilterCategoryArray([]);
+      router.push('/')
+      setFilterCategoryArray([])
     } else {
-      router.push(`/search/${searchValue}`);
-      setFilterToggleBtn(false);
+      router.push(`/search/${searchValue}`)
+      setFilterToggleBtn(false)
     }
-  };
+  }
 
   const handleCategorySelectClick = (name: string) => {
     if (!filterCategoryArray.includes(name)) {
-      setFilterCategoryArray([...filterCategoryArray, name]);
-      handleSubmitBtnClick(field, [...filterCategoryArray, name]);
+      setFilterCategoryArray([...filterCategoryArray, name])
+      handleSubmitBtnClick(field, [...filterCategoryArray, name])
     } else {
-      const arr = filterCategoryArray.filter((i) => i !== name);
-      handleSubmitBtnClick(field, arr);
-      setFilterCategoryArray(arr);
+      const arr = filterCategoryArray.filter(i => i !== name)
+      handleSubmitBtnClick(field, arr)
+      setFilterCategoryArray(arr)
     }
-  };
+  }
 
   const handleSubmitBtnClick = (field: string, arr?: string[]) => {
     if (
       arr?.length === 0 ||
       (arr === undefined && filterCategoryArray.length === 0)
     ) {
-      setFilterCategoryArray([]);
-      if (field !== "") {
-        return router.push(`/filter/${field}`);
+      setFilterCategoryArray([])
+      if (field !== '') {
+        return router.push(`/filter/${field}`)
       } else {
-        return router.push("/home/1");
+        return router.push('/home/1')
       }
     }
-    const filterQuery = arr ? arr.join(" ") : filterCategoryArray.join(" ");
+    const filterQuery = arr ? arr.join(' ') : filterCategoryArray.join(' ')
 
-    router.push(`/filter/${filterQuery} ${field}`);
-  };
+    router.push(`/filter/${filterQuery} ${field}`)
+  }
 
   return (
     <S.HeaderWrapper>
@@ -128,22 +128,22 @@ const Header = () => {
           <Image
             src={imgUrl[0]}
             priority={true}
-            alt={"headerCoverImag"}
-            layout={"fill"}
+            alt={'headerCoverImag'}
+            layout={'fill'}
             quality={30}
             unoptimized={true}
-            style={{ filter: "brightness(40%)" }}
+            style={{ filter: 'brightness(40%)' }}
             onClick={() => router.push(`/detail/${imgUrl[1]}`)}
           />
         ) : (
           <Image
-            src={"/img/basicPoster.webp"}
+            src={'/img/basicPoster.webp'}
             priority={true}
-            alt={"basicPosterHeaderCoverImag"}
-            layout={"fill"}
+            alt={'basicPosterHeaderCoverImag'}
+            layout={'fill'}
             quality={30}
             unoptimized={true}
-            style={{ filter: "brightness(40%)" }}
+            style={{ filter: 'brightness(40%)' }}
             onClick={() => router.push(`/나의 해방일지`)}
           />
         )}
@@ -151,15 +151,15 @@ const Header = () => {
       <S.HeaderTopWrapper
         style={{
           backgroundColor: isScroll475
-            ? "rgb(0, 0, 0, 0.8)"
-            : "rgb(0, 0, 0, 0)",
+            ? 'rgb(0, 0, 0, 0.8)'
+            : 'rgb(0, 0, 0, 0)',
         }}
       >
         <S.LeftWrapper>
           <Image
-            src={"/img/w.png"}
-            alt={"logoImag"}
-            layout={"fixed"}
+            src={'/img/w.png'}
+            alt={'logoImag'}
+            layout={'fixed'}
             width={67}
             height={40}
             quality={60}
@@ -170,9 +170,9 @@ const Header = () => {
               type="text"
               placeholder="영화/드라마 이름을 입력하세요"
               value={searchValue}
-              onChange={(e) => SetSearchValue(e.target.value)}
+              onChange={e => SetSearchValue(e.target.value)}
               onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
-                if (e.key === "Enter") handleClick();
+                if (e.key === 'Enter') handleClick()
               }}
             />
             <label>
@@ -182,13 +182,13 @@ const Header = () => {
         </S.LeftWrapper>
         <S.RightWrapper>
           <S.TagBtns>
-            {categoryArr.map((item) => (
+            {categoryArr.map(item => (
               <TagBtn
                 key={item}
                 id={item}
                 field={field}
-                isdefaultChecked={item === "전체"}
-                onClick={() => handleTagBtnClick(item === "전체" ? "" : item)}
+                isdefaultChecked={item === '전체'}
+                onClick={() => handleTagBtnClick(item === '전체' ? '' : item)}
               />
             ))}
           </S.TagBtns>
@@ -205,7 +205,7 @@ const Header = () => {
             <>
               <S.ModalOverlay onClick={() => setFilterToggleBtn(false)} />
               <S.FilterBox onMouseLeave={() => setFilterToggleBtn(false)}>
-                {CategoryArray.map((i, index) => (
+                {CategoryItems.map((i, index) => (
                   <CategorySelect
                     onClick={() => handleCategorySelectClick(i)}
                     key={index}
@@ -219,7 +219,7 @@ const Header = () => {
         </S.RightWrapper>
       </S.HeaderTopWrapper>
     </S.HeaderWrapper>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
