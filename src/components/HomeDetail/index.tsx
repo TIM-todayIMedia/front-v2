@@ -1,63 +1,61 @@
-"use client";
-import { listProps } from "@/types";
-import * as S from "./styled";
-import Image from "next/legacy/image";
-import { BackIcon, SpotifyIcon, WatchPediaIcon } from "@/assets/svg";
-import { CategoryBox } from "../common";
-import { CategoryColorArr } from "@/utils/CategoryArray";
-import YouTube from "react-youtube";
-import { useCallback, useEffect, useMemo } from "react";
-import { useRouter } from "next/navigation";
+'use client'
+import { listProps } from '@/types'
+import * as S from './styled'
+import Image from 'next/legacy/image'
+import { BackIcon, SpotifyIcon, WatchPediaIcon } from '@/assets/svg'
+import { CategoryBox } from '../common'
+import YouTube from 'react-youtube'
+import { useCallback, useEffect, useMemo } from 'react'
+import { useRouter } from 'next/navigation'
+import { CategoryColors, WtmListType } from 'wtm-api'
 
 const youtubeOpts = {
-  width: "704",
-  height: "396",
+  width: '704',
+  height: '396',
   playerVars: {
     autoplay: 1,
     rel: 0,
     modestbranding: 1,
   },
-};
+}
 
-const HomeDetail = ({ data }: { data: listProps }) => {
-  const router = useRouter();
+const HomeDetail = ({ data }: { data: WtmListType }) => {
+  const router = useRouter()
   const videoId = useMemo(() => {
-    return (data?.properties?.Trailer.url.match(
+    return (data?.trailer?.match(
       /^.*((youtube.\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/
-    ) ?? [])[7];
-  }, [data?.properties?.Trailer.url]);
-  const ImageUrl = data?.cover?.external?.url ?? data?.cover?.file?.url ?? "";
+    ) ?? [])[7]
+  }, [data?.trailer])
 
   const webSiteLink = useCallback((link: string) => {
-    return window.open(link);
-  }, []);
+    return window.open(link)
+  }, [])
 
   useEffect(() => {
-    router.prefetch("/home/1");
-  }, []);
+    router.prefetch('/home/1')
+  }, [])
 
   return (
     <S.Wrapper>
-
       <S.LeftWrapper>
         <Image
-          src={ImageUrl}
-          alt={"디테일 페이지 이미지"}
-          style={{ filter: "brightness(80%)" }}
-          layout={"fill"}
+          src={data.thumbnailUrl}
+          alt={'디테일 페이지 이미지'}
+          style={{ filter: 'brightness(80%)' }}
+          layout={'fill'}
         />
       </S.LeftWrapper>
       <S.RightWrapper>
         <S.MiddleWrapper>
           <S.TitleWrapper>
-            <S.Title>{data?.properties?.Name?.title[0]?.text?.content}</S.Title>
+            <S.Title>{data.title}</S.Title>
             <S.LinkWrapper>
               <SpotifyIcon
-                onClick={() => webSiteLink(data.properties.Ost.url)}
+                onClick={() => webSiteLink(data.ost)}
                 className="spotifyIcon"
               />
               <WatchPediaIcon
-                onClick={() => webSiteLink(data.properties.WatchaPedia.url)}
+                onClick={() => webSiteLink(data.watchaPedia)}
                 className="wpIcon"
               />
             </S.LinkWrapper>
@@ -65,9 +63,8 @@ const HomeDetail = ({ data }: { data: listProps }) => {
           <S.MiddleTop>
             <S.TitleWrapper>
               <span>
-                {`${data?.properties?.Date?.date?.start}`}
-                {data?.properties?.Date?.date?.end &&
-                  ` ~ ${data?.properties?.Date?.date?.end}`}
+                {`${data?.startDate}`}
+                {data?.endDate && ` ~ ${data?.endDate}`}
               </span>
             </S.TitleWrapper>
           </S.MiddleTop>
@@ -75,68 +72,60 @@ const HomeDetail = ({ data }: { data: listProps }) => {
 
         <S.DecsWrapper>
           <S.DecsLong>
-            <div>
-              {data?.properties?.Described?.rich_text[0]?.text?.content}
-            </div>
+            <div>{data?.described}</div>
           </S.DecsLong>
           <S.YouTubeWrapper>
             <YouTube
               videoId={videoId}
               opts={youtubeOpts}
-              onEnd={(e) => e.target.stopVideo(0)}
+              onEnd={e => e.target.stopVideo(0)}
             />
           </S.YouTubeWrapper>
           <S.DecsLong>
-            <pre>
-              {data?.properties?.FamousLine?.rich_text[0]?.text?.content}
-            </pre>
+            <pre>{/* {data?.} */}</pre>
           </S.DecsLong>
         </S.DecsWrapper>
       </S.RightWrapper>
 
-      
       <S.DetailHeader>
-      <S.BackIconWrapper
-        onClick={() =>
-          document.referrer ? router.back() : router.push("/home/1")
-        }
+        <S.BackIconWrapper
+          onClick={() =>
+            document.referrer ? router.back() : router.push('/home/1')
+          }
         >
-        <BackIcon />
-      </S.BackIconWrapper>
+          <BackIcon />
+        </S.BackIconWrapper>
 
-      <S.MiddleBottom>
-        <S.Grade>
-          {data?.properties.Grade.multi_select.map((GradeItem) => (
-            <span key={GradeItem.id}>
-              <span className="myScore">{GradeItem.name}</span>
+        <S.MiddleBottom>
+          <S.Grade>
+            <span>
+              <span className="myScore">{data.grade}</span>
               {`/5`}
             </span>
-          ))}
-        </S.Grade>
-        <S.CategoryBtns>
-          {data?.properties.Category.multi_select.map((categoryItem) => (
-            <CategoryBox
-            key={categoryItem.id}
-            color={CategoryColorArr[categoryItem.color] ?? categoryItem.color}
-            name={categoryItem.name}
-            fontSize={"15px"}
-            />
+          </S.Grade>
+          <S.CategoryBtns>
+            {data?.category?.map((categoryItem, idx) => (
+              <CategoryBox
+                key={idx}
+                color={CategoryColors[categoryItem]}
+                name={categoryItem}
+                fontSize={'15px'}
+              />
             ))}
           </S.CategoryBtns>
         </S.MiddleBottom>
       </S.DetailHeader>
 
-
       <S.DetailImagOverlay>
         <Image
-          src={ImageUrl}
-          alt={"디테일 페이지 오버레이 이미지"}
-          className={"detailImg"}
-          layout={"fill"}
+          src={data.thumbnailUrl}
+          alt={'디테일 페이지 오버레이 이미지'}
+          className={'detailImg'}
+          layout={'fill'}
         />
       </S.DetailImagOverlay>
     </S.Wrapper>
-  );
-};
+  )
+}
 
-export default HomeDetail;
+export default HomeDetail
