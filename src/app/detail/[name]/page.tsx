@@ -33,9 +33,8 @@ export async function generateStaticParams() {
 
 export const DetailPage = async ({ params: { name } }: Props) => {
   const detailData = await getWtmSearchData(decodeParams(name))
-  console.log(detailData)
 
-  return <HomeDetail data={detailData} />
+  return <HomeDetail data={detailData[0]} />
 }
 
 export default DetailPage
