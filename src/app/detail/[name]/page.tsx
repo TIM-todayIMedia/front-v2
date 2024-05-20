@@ -1,4 +1,3 @@
-import { getDetailData } from '@/api/list'
 import HomeDetail from '@/components/HomeDetail'
 import { Props } from '@/types/common'
 import { decodeParams } from '@/utils/decodeParams'
@@ -18,8 +17,10 @@ export async function generateMetadata(
   return {
     title: 'Detail',
     openGraph: {
+      type: 'website',
       title: detailData.title + '- WTM',
       description: detailData?.described,
+      siteName: 'WTM',
       images: [ImageUrl, ...previousImages],
     },
   }
@@ -31,7 +32,9 @@ export async function generateStaticParams() {
 }
 
 export const DetailPage = async ({ params: { name } }: Props) => {
-  const detailData = await getDetailData(decodeParams(name))
+  const detailData = await getWtmSearchData(decodeParams(name))
+  console.log(detailData)
+
   return <HomeDetail data={detailData} />
 }
 
