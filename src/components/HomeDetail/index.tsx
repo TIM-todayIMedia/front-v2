@@ -39,7 +39,7 @@ const HomeDetail = ({ data }: { data: WtmListType }) => {
     <S.Wrapper>
       <S.LeftWrapper>
         <Image
-          src={data.thumbnailUrl}
+          src={data?.thumbnailUrl}
           alt={'디테일 페이지 이미지'}
           style={{ filter: 'brightness(80%)' }}
           layout={'fill'}
@@ -48,14 +48,14 @@ const HomeDetail = ({ data }: { data: WtmListType }) => {
       <S.RightWrapper>
         <S.MiddleWrapper>
           <S.TitleWrapper>
-            <S.Title>{data.title}</S.Title>
+            <S.Title>{data?.title}</S.Title>
             <S.LinkWrapper>
               <SpotifyIcon
                 onClick={() => webSiteLink(data.ost)}
                 className="spotifyIcon"
               />
               <WatchPediaIcon
-                onClick={() => webSiteLink(data.watchaPedia)}
+                onClick={() => webSiteLink(data?.watchaPedia)}
                 className="wpIcon"
               />
             </S.LinkWrapper>
@@ -82,7 +82,7 @@ const HomeDetail = ({ data }: { data: WtmListType }) => {
             />
           </S.YouTubeWrapper>
           <S.DecsLong>
-            <pre>{/* {data?.} */}</pre>
+            <pre>{data?.famousLine}</pre>
           </S.DecsLong>
         </S.DecsWrapper>
       </S.RightWrapper>
@@ -99,7 +99,7 @@ const HomeDetail = ({ data }: { data: WtmListType }) => {
         <S.MiddleBottom>
           <S.Grade>
             <span>
-              <span className="myScore">{data.grade}</span>
+              <span className="myScore">{data?.grade}</span>
               {`/5`}
             </span>
           </S.Grade>
