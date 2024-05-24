@@ -1,6 +1,6 @@
 import * as S from './styled'
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname, useRouter, useParams } from 'next/navigation'
 import { SearchIcon, TriangleIcon } from '@/assets/svg'
 import CategorySelect from '../CategorySelect'
 import { useRecoilValue } from 'recoil'
@@ -16,13 +16,14 @@ import { CategoryItems } from 'wtm-api'
 const Header = () => {
   const router = useRouter()
   const pathname = usePathname()
+  const params = useParams()
   const imgUrl = useRecoilValue(imgAtom)
   const [filterCategoryArray, setFilterCategoryArray] = useState<string[]>([])
   const [filterToggleBtn, setFilterToggleBtn] = useState(false)
   const [searchValue, SetSearchValue] = useState<string>('')
   const [isDetailPage, setIsDetailPage] = useState(false)
   const [isScroll475, setIsScroll475] = useState(false)
-  const [field, setField] = useState('')
+  const [field, setField] = useState<string>('')
 
   useEffect(() => {
     if (isPathnameDetail(pathname)) {
@@ -39,7 +40,7 @@ const Header = () => {
         .replace('/filter/', '')
         .split(' ')
       paramsCategoryArr.map(i => {
-        if (i === '영화' || i === '드라마') {
+        if (i === '영화' || i === '드라마' || i === '예능') {
           setField(i)
         } else {
           CategoryTemp.push(i)

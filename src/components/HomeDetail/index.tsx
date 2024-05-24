@@ -1,5 +1,4 @@
 'use client'
-import { listProps } from '@/types'
 import * as S from './styled'
 import Image from 'next/legacy/image'
 import { BackIcon, SpotifyIcon, WatchPediaIcon } from '@/assets/svg'
