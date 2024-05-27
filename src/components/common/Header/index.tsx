@@ -7,12 +7,10 @@ import { useRecoilValue } from 'recoil'
 import { imgAtom } from '@/atom'
 import Image from 'next/legacy/image'
 import TagBtn from '../TagBtn'
-import { categoryArr } from '@/assets/data/categoryArr'
 import { isPathnameDetail } from '@/utils/isPathnameDetail'
 import { decodeParams } from '@/utils/decodeParams'
 import { throttle } from 'lodash'
-import { CategoryItems } from 'wtm-api'
-import { TagItems } from 'wtm-api/dist/utils/data'
+import { CategoryItems, TagItems } from 'wtm-api'
 
 const Header = () => {
   const router = useRouter()
