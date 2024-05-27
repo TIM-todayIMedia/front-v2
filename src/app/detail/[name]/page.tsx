@@ -1,5 +1,6 @@
 import HomeDetail from '@/components/HomeDetail'
 import { Props } from '@/types/common'
+import { decodeParams } from '@/utils/decodeParams'
 import type { Metadata, ResolvingMetadata } from 'next'
 import { WtmListType, getWtmData, getWtmSearchData } from 'wtm-api'
 
@@ -27,11 +28,11 @@ export async function generateMetadata(
 
 export async function generateStaticParams() {
   const detailData: WtmListType[] = await getWtmData()
-  return detailData.map(i => ({ name: encodeURIComponent(i.title) }))
+  return detailData.map(i => ({ name: decodeParams(i.title) }))
 }
 
 export const DetailPage = async ({ params: { name } }: Props) => {
-  const detailData = await getWtmSearchData(decodeURIComponent(name))
+  const detailData = await getWtmSearchData(decodeParams(name))
 
   return <HomeDetail data={detailData[0]} />
 }
