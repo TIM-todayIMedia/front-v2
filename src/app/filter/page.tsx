@@ -1,7 +1,7 @@
-import { decodeParams } from '@/utils/decodeParams'
 import { Metadata } from 'next'
-import { CategoryItems, TagType, WtmListType, getWtmFilterData } from 'wtm-api'
+import { CategoryType, TagType, WtmListType, getWtmFilterData } from 'wtm-api'
 import Home from '@/components/Home'
+import { decodeParams } from '@/utils/decodeParams'
 
 export const metadata: Metadata = {
   title: 'Filter',
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 type Props = {
   searchParams: {
     [key: string]: string
-    tag: string
+    tag: TagType
     categorys: string
   }
 }
@@ -18,26 +18,11 @@ type Props = {
 export const FilterPage = async ({
   searchParams: { tag, categorys },
 }: Props) => {
-  console.log(categorys?.split(' '))
+  const list: WtmListType[] = await getWtmFilterData(
+    tag,
+    decodeParams(categorys).split(' ') as CategoryType[]
+  )
 
-  const arr = ['로맨스', '코미디'] // decodeParams(categorys).split(' ')
-  const CategoryArr = CategoryItems
-
-  const filterArr1 = CategoryArr.slice(0, CategoryItems.length / 2)
-  const filterArr2 = CategoryArr.slice(CategoryItems.length / 2)
-
-  const notInArr = filterArr1.filter(i => !arr.includes(i))
-  const notInArr2 = filterArr2.filter(i => !arr.includes(i))
-
-  console.log(filterArr1)
-  console.log(notInArr)
-
-  const list: WtmListType[] = await getWtmFilterData('영화', [
-    ...notInArr,
-    notInArr2,
-  ])
-
-  console.log(list)
   return <Home initList={list} />
 }
 

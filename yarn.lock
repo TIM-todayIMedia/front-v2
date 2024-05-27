@@ -4007,10 +4007,10 @@ wrappy@1:
   resolved "https://registry.yarnpkg.com/wrappy/-/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
   integrity sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==
 
-wtm-api@^1.5.2:
-  version "1.5.2"
-  resolved "https://registry.yarnpkg.com/wtm-api/-/wtm-api-1.5.2.tgz#bece29119a57e0d4c16d250ee6fbedd0fc49c9f2"
-  integrity sha512-nOWj0LWRr/Ehbl61yN1rY3+q2gjGiU1htCd/eFdg0ff5MMGmrlnvEkuqzj/MRZaE5fhZvSnVx1zy9j1omScOVQ==
+wtm-api@^1.6.3:
+  version "1.6.3"
+  resolved "https://registry.yarnpkg.com/wtm-api/-/wtm-api-1.6.3.tgz#3843d14e76bc9203cd5bdfef32d02d12700e6ece"
+  integrity sha512-ifMU0EvvIaKTT126S7fcnA4u16MDv4QlVhmgD3SCu6mku38s3XnEz4UyDOxenLnOyEMwhq4FtHMxRQ9gC2B/Sw==
   dependencies:
     firebase "^10.11.1"
 
