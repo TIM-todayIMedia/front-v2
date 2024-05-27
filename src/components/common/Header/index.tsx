@@ -12,6 +12,7 @@ import { isPathnameDetail } from '@/utils/isPathnameDetail'
 import { decodeParams } from '@/utils/decodeParams'
 import { throttle } from 'lodash'
 import { CategoryItems } from 'wtm-api'
+import { TagItems } from 'wtm-api/dist/utils/data'
 
 const Header = () => {
   const router = useRouter()
@@ -183,7 +184,7 @@ const Header = () => {
         </S.LeftWrapper>
         <S.RightWrapper>
           <S.TagBtns>
-            {categoryArr.map(item => (
+            {TagItems.map(item => (
               <TagBtn
                 key={item}
                 id={item}
