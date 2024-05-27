@@ -31,7 +31,7 @@ const ListBox = ({
       <S.Decs>
         <S.Title>{title}</S.Title>
         <S.CategorysWrapper>
-          {categoryArr.map((categoryName, idx) => (
+          {categoryArr?.map((categoryName, idx) => (
             <CategoryBox
               key={idx}
               color={CategoryColors[categoryName]}
