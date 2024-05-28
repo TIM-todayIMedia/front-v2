@@ -1,2 +1,2 @@
 export const decodeParams = (name: string) =>
-  decodeURIComponent(decodeURI(name));
+  decodeURIComponent(decodeURI(name))

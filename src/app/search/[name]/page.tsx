@@ -1,18 +1,17 @@
-import { listProps } from "@/types";
-import Home from "@/components/Home";
-import { Props } from "@/types/common";
-import { decodeParams } from "@/utils/decodeParams";
-import { Metadata } from "next";
-import { getSearchList } from "@/api/list";
+import Home from '@/components/Home'
+import { Props } from '@/types/common'
+import { decodeParams } from '@/utils/decodeParams'
+import { Metadata } from 'next'
+import { wtm } from 'wtm-sdk'
 
 export const metadata: Metadata = {
-  title: "Search",
-};
+  title: 'Search',
+}
 
 export const SearchPage = async ({ params: { name } }: Props) => {
-  const list: listProps[] = await getSearchList(decodeParams(name));
+  const list = await wtm.getSearchData(decodeParams(name))
 
-  return <Home initList={list} />;
-};
+  return <Home initList={list} />
+}
 
-export default SearchPage;
+export default SearchPage

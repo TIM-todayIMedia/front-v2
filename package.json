@@ -24,7 +24,8 @@
     "react-dom": "^18.2.0",
     "react-youtube": "^10.1.0",
     "recoil": "^0.7.7",
-    "sharp": "^0.32.6"
+    "sharp": "^0.32.6",
+    "wtm-sdk": "^1.8.0"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.202",

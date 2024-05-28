@@ -1,49 +1,48 @@
-"use client";
-import { CoverProps, MultiSelectProps } from "@/types";
-import * as S from "./styled";
-import Image from "next/legacy/image";
-import { CategoryBox } from "..";
-import { useRouter } from "next/navigation";
-import { CategoryColorArr } from "@/utils/CategoryArray";
+'use client'
+import * as S from './styled'
+import Image from 'next/legacy/image'
+import { CategoryBox } from '..'
+import { useRouter } from 'next/navigation'
+import { CategoryColors, CategoryType } from 'wtm-sdk'
 
 const ListBox = ({
   cover,
   title,
-  categorys,
+  categoryArr,
 }: {
-  cover: CoverProps;
-  title: string;
-  categorys: MultiSelectProps[];
+  cover: string
+  title: string
+  categoryArr: CategoryType[]
 }) => {
-  const router = useRouter();
-  const detailDirectRoute = () => router.push(`/detail/${title}`);
+  const router = useRouter()
+  const detailDirectRoute = () => router.push(`/detail/${title}`)
 
   return (
     <S.Wrapper onClick={detailDirectRoute}>
       <Image
-        src={cover?.external?.url || cover?.file?.url || ""}
+        src={cover}
         alt="포스터 이미지"
         priority={true}
-        layout={"fixed"}
+        layout={'fixed'}
         width={200}
         height={296}
-        className={"listBoxImag"}
+        className={'listBoxImag'}
       />
       <S.Decs>
         <S.Title>{title}</S.Title>
         <S.CategorysWrapper>
-          {categorys.map((categoryItem) => (
+          {categoryArr?.map((categoryName, idx) => (
             <CategoryBox
-              key={categoryItem.id}
-              color={CategoryColorArr[categoryItem.color] ?? categoryItem.color}
-              name={categoryItem.name}
-              fontSize={"0.8rem"}
+              key={idx}
+              color={CategoryColors[categoryName]}
+              name={categoryName}
+              fontSize={'0.8rem'}
             />
           ))}
         </S.CategorysWrapper>
       </S.Decs>
     </S.Wrapper>
-  );
-};
+  )
+}
 
-export default ListBox;
+export default ListBox
