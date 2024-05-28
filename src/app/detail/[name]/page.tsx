@@ -2,14 +2,14 @@ import HomeDetail from '@/components/HomeDetail'
 import { Props } from '@/types/common'
 import { decodeParams } from '@/utils/decodeParams'
 import type { Metadata, ResolvingMetadata } from 'next'
-import { WtmListType, getWtmData, getWtmSearchData } from 'wtm-api'
+import { WtmListType, wtm } from 'wtm-sdk'
 
 export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const name = params.name
-  const data: WtmListType[] = await getWtmSearchData(name) // 이름이 같으면 예외사항 고려
+  const data: WtmListType[] = await wtm.getSearchData(name) // 이름이 같으면 예외사항 고려
   const previousImages = (await parent).openGraph?.images || []
   const detailData = data[0]
   const ImageUrl = detailData?.thumbnailUrl
@@ -27,12 +27,12 @@ export async function generateMetadata(
 }
 
 export async function generateStaticParams() {
-  const detailData: WtmListType[] = await getWtmData()
+  const detailData: WtmListType[] = await wtm.getData()
   return detailData.map(i => ({ name: decodeParams(i.title) }))
 }
 
 export const DetailPage = async ({ params: { name } }: Props) => {
-  const detailData = await getWtmSearchData(decodeParams(name))
+  const detailData = await wtm.getSearchData(decodeParams(name))
 
   return <HomeDetail data={detailData[0]} />
 }

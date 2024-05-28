@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { CategoryType, TagType, WtmListType, getWtmFilterData } from 'wtm-api'
+import { CategoryType, TagType, WtmListType, getWtmFilterData } from 'wtm-sdk'
 import Home from '@/components/Home'
 import { decodeParams } from '@/utils/decodeParams'
 

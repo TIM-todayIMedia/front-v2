@@ -9,7 +9,7 @@ import * as S from './styled'
 import Error404Icon from '@/assets/svg/Error404Icon'
 import { getRandomNumFromArrayLength } from '@/utils/getRandomNumFromArrayLength'
 import { usePathname } from 'next/navigation'
-import { WtmListType } from 'wtm-api'
+import { WtmListType } from 'wtm-sdk'
 
 const Home = ({ initList }: { initList: WtmListType[] }) => {
   const pathname = usePathname()

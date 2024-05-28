@@ -1,6 +1,6 @@
 import * as S from './styled'
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { usePathname, useRouter, useParams } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { SearchIcon, TriangleIcon } from '@/assets/svg'
 import CategorySelect from '../CategorySelect'
 import { useRecoilValue } from 'recoil'
@@ -10,12 +10,11 @@ import TagBtn from '../TagBtn'
 import { isPathnameDetail } from '@/utils/isPathnameDetail'
 import { decodeParams } from '@/utils/decodeParams'
 import { throttle } from 'lodash'
-import { CategoryItems, TagItems } from 'wtm-api'
+import { CategoryItems, TagItems } from 'wtm-sdk'
 
 const Header = () => {
   const router = useRouter()
   const pathname = usePathname()
-  const params = useParams()
   const imgUrl = useRecoilValue(imgAtom)
   const [filterCategoryArray, setFilterCategoryArray] = useState<string[]>([])
   const [filterToggleBtn, setFilterToggleBtn] = useState(false)

@@ -2,7 +2,7 @@ import { useVisible } from '@/hooks/useVisible'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import * as S from './styled'
-import { CategoryItems } from 'wtm-api'
+import { CategoryItems } from 'wtm-sdk'
 
 const CategorySection = () => {
   const router = useRouter()

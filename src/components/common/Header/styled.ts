@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled'
 
 export const HeaderWrapper = styled.div`
   height: 540px;
@@ -11,7 +11,7 @@ export const HeaderWrapper = styled.div`
   @media (max-width: 800px) {
     height: 290px;
   }
-`;
+`
 
 export const LeftWrapper = styled.div`
   width: 50%;
@@ -38,7 +38,7 @@ export const LeftWrapper = styled.div`
     width: 100%;
     height: 5vh;
   }
-`;
+`
 
 export const ProfileBox = styled.div`
   width: 50px;
@@ -48,7 +48,7 @@ export const ProfileBox = styled.div`
     height: 100%;
     cursor: pointer;
   }
-`;
+`
 
 export const DarkModeBtn = styled.div`
   width: 40px;
@@ -63,7 +63,7 @@ export const DarkModeBtn = styled.div`
   :hover {
     background-color: #efefef;
   }
-`;
+`
 
 export const InputWrapper = styled.div`
   position: relative;
@@ -105,7 +105,7 @@ export const InputWrapper = styled.div`
       left: 90%;
     }
   }
-`;
+`
 
 export const FilterBtn = styled.div`
   width: 150px;
@@ -125,7 +125,7 @@ export const FilterBtn = styled.div`
     transition: all ease 0.4s;
     width: 20px;
   }
-`;
+`
 
 export const FilterBox = styled.div`
   position: absolute;
@@ -140,7 +140,7 @@ export const FilterBox = styled.div`
   z-index: 5;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   background-color: rgba(0, 0, 0, 0.6);
-`;
+`
 
 export const TagBtns = styled.div`
   width: 270px;
@@ -180,7 +180,13 @@ export const TagBtns = styled.div`
   @media (max-width: 800px) {
     width: 55%;
   }
-`;
+
+  @media (max-width: 460px) {
+    input[type="radio"] + label {
+      font-size: 1rem;
+    }
+  }
+`
 
 export const RightWrapper = styled.div`
   height: 4.5vh;
@@ -195,7 +201,7 @@ export const RightWrapper = styled.div`
     justify-content: space-between;
     gap: 3%;
   }
-`;
+`
 
 export const ModalOverlay = styled.div`
   position: fixed;
@@ -204,7 +210,7 @@ export const ModalOverlay = styled.div`
   bottom: 0;
   right: 0;
   z-index: 5;
-`;
+`
 
 export const HeaderImg = styled.div`
   position: absolute;
@@ -215,7 +221,7 @@ export const HeaderImg = styled.div`
     object-fit: cover;
     cursor: pointer;
   }
-`;
+`
 
 export const HeaderTopWrapper = styled.div`
   position: fixed;
@@ -229,4 +235,4 @@ export const HeaderTopWrapper = styled.div`
     flex-direction: column;
     gap: 10px;
   }
-`;
+`

@@ -3,7 +3,7 @@ import * as S from './styled'
 import Image from 'next/legacy/image'
 import { CategoryBox } from '..'
 import { useRouter } from 'next/navigation'
-import { CategoryColors, CategoryType } from 'wtm-api'
+import { CategoryColors, CategoryType } from 'wtm-sdk'
 
 const ListBox = ({
   cover,

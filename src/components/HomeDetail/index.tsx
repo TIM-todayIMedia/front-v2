@@ -6,7 +6,7 @@ import { CategoryBox } from '../common'
 import YouTube from 'react-youtube'
 import { useCallback, useEffect, useMemo } from 'react'
 import { useRouter } from 'next/navigation'
-import { CategoryColors, WtmListType } from 'wtm-api'
+import { CategoryColors, WtmListType } from 'wtm-sdk'
 
 const youtubeOpts = {
   width: '704',
